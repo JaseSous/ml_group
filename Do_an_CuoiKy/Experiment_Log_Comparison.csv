@@ -1,0 +1,2 @@
+Timestamp,Model,Silhouette,Davies-Bouldin,Calinski-Harabasz
+2026-11-07 00:48:29,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
