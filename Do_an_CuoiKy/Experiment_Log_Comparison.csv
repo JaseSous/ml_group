@@ -1,2 +1,5 @@
 Timestamp,Model,Silhouette,Davies-Bouldin,Calinski-Harabasz
 2026-11-07 00:48:29,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
+2026-11-07 09:18:52,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
+2026-11-07 09:18:52,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2611,1.0428,2065.597
+2026-11-07 09:35:35,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",N/A,N/A,N/A
