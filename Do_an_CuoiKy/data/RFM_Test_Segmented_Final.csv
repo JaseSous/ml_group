@@ -1,0 +1,856 @@
+CustomerID,Recency,Frequency,Monetary,Cluster,Segment_Name
+17772,28,1,187.3,3,Lost / Hibernating
+15183,183,3,639.93,0,Champions (VIP)
+15973,2,2,665.62,3,Lost / Hibernating
+18123,149,1,92.2,2,At Risk
+15278,197,4,496.15999999999997,0,Champions (VIP)
+17082,30,4,2728.18,0,Champions (VIP)
+17217,255,1,96.6,2,At Risk
+15875,282,1,108.52,2,At Risk
+17307,31,11,3999.8900000000003,1,Potential Loyalists
+14651,30,7,1301.77,0,Champions (VIP)
+14874,171,1,116.18,2,At Risk
+16870,105,1,450.15999999999997,2,At Risk
+14623,16,5,1130.28,0,Champions (VIP)
+16797,29,5,1802.02,0,Champions (VIP)
+15228,64,2,2193.56,0,Champions (VIP)
+14435,137,1,90.42,2,At Risk
+14745,137,7,1331.15,0,Champions (VIP)
+12662,9,10,2830.2400000000002,1,Potential Loyalists
+15795,66,7,1369.8600000000001,0,Champions (VIP)
+16980,64,1,394.37,2,At Risk
+14454,12,5,977.3,3,Lost / Hibernating
+15986,17,1,186.3,3,Lost / Hibernating
+12507,220,1,455.25,2,At Risk
+17683,21,3,819.01,3,Lost / Hibernating
+15641,32,8,3458.35,1,Potential Loyalists
+14849,9,21,7832.91,1,Potential Loyalists
+17763,289,3,71.15,2,At Risk
+15065,46,1,168.73,2,At Risk
+14640,45,4,1541.98,0,Champions (VIP)
+13039,220,4,1010.73,0,Champions (VIP)
+12592,155,2,1322.04,0,Champions (VIP)
+12639,70,2,706.27,0,Champions (VIP)
+16315,172,1,176.34,2,At Risk
+16100,98,1,582.64,2,At Risk
+14614,22,1,295.13,3,Lost / Hibernating
+13872,163,3,919.57,0,Champions (VIP)
+15317,313,1,129.75,2,At Risk
+18098,32,1,527.94,3,Lost / Hibernating
+13629,49,8,5578.5,1,Potential Loyalists
+17860,4,4,717.39,3,Lost / Hibernating
+17396,7,7,1476.3,1,Potential Loyalists
+13869,17,6,4913.22,1,Potential Loyalists
+15748,85,2,465.45000000000005,2,At Risk
+15466,25,3,1225.93,0,Champions (VIP)
+12625,145,2,2265.06,0,Champions (VIP)
+14440,1,9,4281.05,1,Potential Loyalists
+15755,15,11,3628.87,1,Potential Loyalists
+14495,295,1,51.0,2,At Risk
+12979,365,1,517.7,2,At Risk
+17000,32,2,406.3,3,Lost / Hibernating
+17686,59,2,2557.35,0,Champions (VIP)
+14104,25,3,524.3199999999999,3,Lost / Hibernating
+16592,11,12,3694.23,1,Potential Loyalists
+12647,3,26,11769.53,1,Potential Loyalists
+12921,2,39,19333.95,1,Potential Loyalists
+14134,18,15,10998.35,1,Potential Loyalists
+13090,1,12,5094.37,1,Potential Loyalists
+17596,4,7,2075.7400000000002,1,Potential Loyalists
+15658,8,4,1399.3700000000001,3,Lost / Hibernating
+12605,12,3,1124.95,3,Lost / Hibernating
+18153,295,1,246.22,2,At Risk
+13852,246,1,187.35000000000002,2,At Risk
+13983,2,10,4479.82,1,Potential Loyalists
+17773,150,2,575.37,2,At Risk
+15401,88,2,216.95000000000002,2,At Risk
+13363,45,1,731.36,3,Lost / Hibernating
+15221,2,4,2062.2000000000003,1,Potential Loyalists
+13414,99,3,1103.64,0,Champions (VIP)
+12486,67,1,917.28,2,At Risk
+15793,14,5,1433.96,0,Champions (VIP)
+14952,32,21,9529.86,1,Potential Loyalists
+17536,56,2,288.33,2,At Risk
+13541,63,2,785.25,0,Champions (VIP)
+14932,1,2,566.13,3,Lost / Hibernating
+17963,107,4,643.16,0,Champions (VIP)
+12841,5,17,3472.61,1,Potential Loyalists
+14455,68,4,617.72,0,Champions (VIP)
+17974,17,3,1035.1,3,Lost / Hibernating
+14277,47,5,1511.48,0,Champions (VIP)
+14908,99,1,104.10000000000001,2,At Risk
+13451,17,6,4190.66,1,Potential Loyalists
+17320,4,4,1695.15,1,Potential Loyalists
+18160,22,1,365.82,3,Lost / Hibernating
+12594,14,5,1681.89,1,Potential Loyalists
+15128,66,1,312.68,2,At Risk
+13669,43,1,195.0,2,At Risk
+15926,178,1,134.44,2,At Risk
+14379,29,2,917.06,3,Lost / Hibernating
+12591,26,2,746.1,3,Lost / Hibernating
+17196,63,1,327.75,2,At Risk
+13608,176,1,232.05,2,At Risk
+15423,217,2,223.39,2,At Risk
+13087,362,1,313.64,2,At Risk
+14042,361,1,431.98,2,At Risk
+14918,40,7,4345.66,1,Potential Loyalists
+17681,233,5,731.2,0,Champions (VIP)
+15296,56,6,6650.17,0,Champions (VIP)
+17785,81,2,271.44,2,At Risk
+13829,57,1,102.0,2,At Risk
+16854,53,2,1408.96,0,Champions (VIP)
+15598,63,1,307.34,2,At Risk
+13258,15,2,336.59999999999997,3,Lost / Hibernating
+13214,53,7,3264.23,0,Champions (VIP)
+16916,8,3,530.14,3,Lost / Hibernating
+17480,80,1,370.40999999999997,2,At Risk
+12653,162,1,1950.98,0,Champions (VIP)
+17138,25,6,4036.77,1,Potential Loyalists
+13967,32,1,85.6,2,At Risk
+17515,30,5,913.54,0,Champions (VIP)
+13981,51,1,331.14,2,At Risk
+17305,284,1,2135.46,0,Champions (VIP)
+14044,54,6,2427.53,0,Champions (VIP)
+15346,61,2,343.7,2,At Risk
+16401,15,11,2749.13,1,Potential Loyalists
+13627,124,2,607.43,2,At Risk
+17672,53,4,2485.57,0,Champions (VIP)
+13083,61,1,91.67999999999999,2,At Risk
+14110,71,21,7304.8,1,Potential Loyalists
+13262,25,2,373.16,3,Lost / Hibernating
+15719,17,18,5165.9,1,Potential Loyalists
+17429,32,2,832.54,3,Lost / Hibernating
+15574,8,3,774.84,3,Lost / Hibernating
+14648,52,15,4463.39,1,Potential Loyalists
+15638,14,6,2265.2,1,Potential Loyalists
+12821,247,1,128.07999999999998,2,At Risk
+14390,8,5,1731.16,1,Potential Loyalists
+12530,51,5,1880.98,0,Champions (VIP)
+13615,35,7,5559.84,1,Potential Loyalists
+16005,11,6,1786.3600000000001,1,Potential Loyalists
+12356,16,3,3124.3,0,Champions (VIP)
+14215,4,4,1626.61,1,Potential Loyalists
+17109,42,2,410.42,3,Lost / Hibernating
+14970,45,8,3327.29,0,Champions (VIP)
+12809,201,2,979.03,0,Champions (VIP)
+16477,7,5,1825.56,1,Potential Loyalists
+16101,70,3,1938.46,0,Champions (VIP)
+16262,14,1,755.15,3,Lost / Hibernating
+18118,5,4,1068.05,3,Lost / Hibernating
+14172,241,3,369.02,2,At Risk
+13230,1,17,3447.33,1,Potential Loyalists
+17700,17,10,4020.33,1,Potential Loyalists
+13018,49,7,2360.46,0,Champions (VIP)
+17930,29,8,2534.74,1,Potential Loyalists
+16089,22,2,263.49,3,Lost / Hibernating
+14284,289,1,704.4,2,At Risk
+13207,87,2,285.6,2,At Risk
+15260,8,20,7377.46,1,Potential Loyalists
+15291,9,26,9178.26,1,Potential Loyalists
+15964,299,1,269.21000000000004,2,At Risk
+15482,22,7,3537.6,1,Potential Loyalists
+14933,79,4,1770.0,0,Champions (VIP)
+17521,30,2,554.85,3,Lost / Hibernating
+14584,57,4,705.1,0,Champions (VIP)
+13600,270,1,298.9,2,At Risk
+16605,360,1,60.48,2,At Risk
+13569,3,3,497.74,3,Lost / Hibernating
+17783,148,1,93.49,2,At Risk
+12471,10,44,17711.25,1,Potential Loyalists
+17513,44,2,645.6,3,Lost / Hibernating
+13010,10,2,330.12,3,Lost / Hibernating
+13579,5,4,1072.0,3,Lost / Hibernating
+14468,369,1,204.24,2,At Risk
+14433,101,1,280.7,2,At Risk
+16846,213,2,628.09,2,At Risk
+14845,235,1,150.0,2,At Risk
+15535,40,2,541.47,3,Lost / Hibernating
+12899,49,1,366.4,3,Lost / Hibernating
+14997,291,1,230.4,2,At Risk
+13513,77,2,619.49,0,Champions (VIP)
+15027,31,6,2129.45,0,Champions (VIP)
+13307,123,2,258.34,2,At Risk
+13052,56,6,2770.33,0,Champions (VIP)
+18029,278,1,433.77,2,At Risk
+15200,130,1,549.05,2,At Risk
+14541,52,6,1038.03,0,Champions (VIP)
+13432,207,2,436.55,2,At Risk
+12787,49,1,380.52,3,Lost / Hibernating
+14301,52,3,1352.04,0,Champions (VIP)
+16520,1,4,1427.57,1,Potential Loyalists
+16193,46,1,315.98,3,Lost / Hibernating
+15577,359,2,137.15,2,At Risk
+13233,56,2,571.34,3,Lost / Hibernating
+14545,310,1,349.25,2,At Risk
+16558,2,19,5535.02,1,Potential Loyalists
+14525,64,8,3802.69,0,Champions (VIP)
+16838,166,2,570.76,2,At Risk
+14930,106,3,2827.82,0,Champions (VIP)
+13380,68,1,62.4,2,At Risk
+13198,23,2,1572.99,3,Lost / Hibernating
+17864,21,2,321.72,3,Lost / Hibernating
+12840,73,3,1315.2,0,Champions (VIP)
+17071,17,4,1364.68,0,Champions (VIP)
+16858,4,10,4292.59,1,Potential Loyalists
+17926,80,3,638.2,0,Champions (VIP)
+15264,166,1,454.66,2,At Risk
+14177,17,9,1660.23,1,Potential Loyalists
+15816,178,2,144.14999999999998,2,At Risk
+17226,80,2,501.97999999999996,2,At Risk
+12820,33,7,1747.18,0,Champions (VIP)
+15549,57,5,652.7,0,Champions (VIP)
+15416,114,3,588.5,0,Champions (VIP)
+17818,373,1,124.78,2,At Risk
+14272,198,2,482.85,2,At Risk
+16670,29,9,3934.25,1,Potential Loyalists
+16223,10,2,1087.05,3,Lost / Hibernating
+18231,42,23,4776.5,1,Potential Loyalists
+12445,56,1,301.58000000000004,2,At Risk
+17760,9,5,631.34,3,Lost / Hibernating
+13584,134,2,243.3,2,At Risk
+14316,58,5,1007.4599999999999,0,Champions (VIP)
+12742,261,1,1201.52,2,At Risk
+15613,246,1,433.71999999999997,2,At Risk
+17524,74,2,394.14,2,At Risk
+18278,40,1,240.3,3,Lost / Hibernating
+13874,140,6,1508.7,0,Champions (VIP)
+14142,9,2,671.34,3,Lost / Hibernating
+14018,281,1,367.15000000000003,2,At Risk
+15311,1,120,55515.74,1,Potential Loyalists
+16946,19,5,1222.04,0,Champions (VIP)
+14466,8,7,2374.5,1,Potential Loyalists
+12672,231,1,181.15,2,At Risk
+12837,205,1,528.5600000000001,2,At Risk
+12711,247,2,1213.05,0,Champions (VIP)
+13895,151,2,1335.5,0,Champions (VIP)
+14662,63,3,635.06,0,Champions (VIP)
+15894,5,1,150.79000000000002,3,Lost / Hibernating
+12582,58,2,1469.04,0,Champions (VIP)
+17984,28,4,996.01,0,Champions (VIP)
+16875,73,6,2139.0,0,Champions (VIP)
+13836,35,2,620.37,3,Lost / Hibernating
+18089,82,1,428.45,2,At Risk
+13839,122,1,139.95000000000002,2,At Risk
+14602,292,1,205.35999999999999,2,At Risk
+12849,17,4,2023.33,0,Champions (VIP)
+17089,22,1,128.45,3,Lost / Hibernating
+16883,7,18,2101.61,1,Potential Loyalists
+17731,257,2,468.88,2,At Risk
+13765,289,1,352.82,2,At Risk
+15799,54,1,537.1999999999999,3,Lost / Hibernating
+12848,311,1,208.0,2,At Risk
+14195,75,4,1603.6,0,Champions (VIP)
+15914,14,2,205.99,3,Lost / Hibernating
+15779,99,2,124.08000000000001,2,At Risk
+18287,18,4,2295.71,0,Champions (VIP)
+18262,29,2,428.06,3,Lost / Hibernating
+16229,17,4,1857.26,0,Champions (VIP)
+16780,43,1,174.16,2,At Risk
+16442,240,2,282.68,2,At Risk
+12695,164,3,743.07,0,Champions (VIP)
+15473,80,1,274.8,2,At Risk
+14236,8,4,1253.78,3,Lost / Hibernating
+12791,9,5,656.83,3,Lost / Hibernating
+12370,260,3,534.62,2,At Risk
+15094,99,2,83.0,2,At Risk
+12686,7,1,71.14,3,Lost / Hibernating
+14989,297,1,342.4,2,At Risk
+18286,112,2,1246.43,0,Champions (VIP)
+16003,17,5,2694.66,1,Potential Loyalists
+15702,112,1,112.57000000000001,2,At Risk
+15913,170,1,6.300000000000001,2,At Risk
+14678,215,1,403.39,2,At Risk
+13448,9,8,5295.49,1,Potential Loyalists
+17721,295,1,307.21000000000004,2,At Risk
+14092,10,10,3152.54,1,Potential Loyalists
+12853,63,5,1950.4,0,Champions (VIP)
+14913,24,4,2845.7,0,Champions (VIP)
+14552,16,2,343.71,3,Lost / Hibernating
+12393,18,2,816.85,3,Lost / Hibernating
+17794,322,2,147.3,2,At Risk
+13510,11,7,2766.73,1,Potential Loyalists
+16382,44,2,353.1,3,Lost / Hibernating
+17225,217,1,131.15,2,At Risk
+17068,4,27,4594.19,1,Potential Loyalists
+13225,57,9,9796.23,1,Potential Loyalists
+14063,322,7,9471.5,0,Champions (VIP)
+16109,334,1,327.6,2,At Risk
+14544,106,1,934.23,2,At Risk
+16531,17,4,1053.74,3,Lost / Hibernating
+17706,2,17,10245.49,1,Potential Loyalists
+17993,253,1,225.99,2,At Risk
+16723,79,2,654.96,0,Champions (VIP)
+13435,12,2,637.44,3,Lost / Hibernating
+13222,213,1,88.5,2,At Risk
+15713,2,3,654.09,3,Lost / Hibernating
+16537,277,1,10.55,2,At Risk
+12767,11,1,949.82,3,Lost / Hibernating
+16166,64,2,435.83,2,At Risk
+14589,7,1,39.75,3,Lost / Hibernating
+17256,117,3,258.93,2,At Risk
+13823,16,5,2365.84,1,Potential Loyalists
+13797,72,3,1179.45,0,Champions (VIP)
+14984,24,4,1058.1399999999999,0,Champions (VIP)
+13825,257,2,255.59,2,At Risk
+15546,242,2,1079.1000000000001,0,Champions (VIP)
+13601,28,2,466.67,3,Lost / Hibernating
+16686,25,9,1921.19,1,Potential Loyalists
+16417,128,1,35.7,2,At Risk
+15131,30,1,80.28,3,Lost / Hibernating
+17340,2,8,9935.93,1,Potential Loyalists
+14619,177,1,896.8000000000001,2,At Risk
+12483,14,11,2158.2000000000003,1,Potential Loyalists
+13144,67,1,24.4,2,At Risk
+14811,23,1,170.5,3,Lost / Hibernating
+18077,2,8,1699.25,1,Potential Loyalists
+17655,2,3,1013.54,3,Lost / Hibernating
+18036,21,8,1142.37,1,Potential Loyalists
+12823,30,13,4742.0,1,Potential Loyalists
+14498,37,5,1943.51,0,Champions (VIP)
+13468,4,38,7624.59,1,Potential Loyalists
+13545,26,2,364.93,3,Lost / Hibernating
+12958,36,2,467.34,3,Lost / Hibernating
+15862,9,10,2028.49,1,Potential Loyalists
+13476,42,3,823.0,0,Champions (VIP)
+14929,57,1,612.8100000000001,3,Lost / Hibernating
+17025,9,4,1152.87,3,Lost / Hibernating
+15978,68,2,2180.64,0,Champions (VIP)
+18035,21,2,546.34,3,Lost / Hibernating
+17432,21,7,1363.23,0,Champions (VIP)
+14905,10,6,1355.24,1,Potential Loyalists
+16735,29,9,3970.0,1,Potential Loyalists
+17552,8,10,2154.88,1,Potential Loyalists
+14957,280,1,203.2,2,At Risk
+16550,4,14,7063.37,1,Potential Loyalists
+16885,21,1,232.94,3,Lost / Hibernating
+16075,138,2,736.9300000000001,0,Champions (VIP)
+15504,156,3,338.62,2,At Risk
+17799,25,10,3207.76,1,Potential Loyalists
+17726,31,7,1092.06,0,Champions (VIP)
+16710,4,13,3823.78,1,Potential Loyalists
+12443,368,1,365.31,2,At Risk
+13047,9,17,5557.62,1,Potential Loyalists
+16057,155,3,1591.73,0,Champions (VIP)
+14392,68,1,266.4,2,At Risk
+16739,172,1,463.43,2,At Risk
+14540,15,8,2756.98,1,Potential Loyalists
+17667,71,4,1895.19,0,Champions (VIP)
+13187,260,3,92.34,2,At Risk
+13642,68,3,159.92,2,At Risk
+14564,70,2,2605.62,0,Champions (VIP)
+15077,130,2,2428.08,0,Champions (VIP)
+15331,135,3,767.91,0,Champions (VIP)
+16918,58,10,2137.72,0,Champions (VIP)
+16833,75,2,1007.51,0,Champions (VIP)
+16239,18,4,1078.0,0,Champions (VIP)
+17378,10,1,10.95,3,Lost / Hibernating
+13794,182,1,126.03,2,At Risk
+17519,4,10,3185.5,1,Potential Loyalists
+14264,15,4,1183.39,3,Lost / Hibernating
+14538,166,3,706.89,0,Champions (VIP)
+13135,127,1,275.45,2,At Risk
+17745,113,2,600.34,2,At Risk
+12431,9,11,4145.52,1,Potential Loyalists
+18171,106,4,1106.1,0,Champions (VIP)
+13846,35,1,442.73,3,Lost / Hibernating
+16847,254,1,421.45000000000005,2,At Risk
+13672,366,1,233.53000000000003,2,At Risk
+16222,357,1,498.5,2,At Risk
+14192,24,1,293.74,3,Lost / Hibernating
+12366,269,1,500.24,2,At Risk
+12986,64,10,2729.84,0,Champions (VIP)
+15055,110,3,549.12,0,Champions (VIP)
+16917,268,1,1276.56,2,At Risk
+17149,87,1,143.10000000000002,2,At Risk
+15080,63,2,546.25,3,Lost / Hibernating
+14819,130,2,184.34,2,At Risk
+14045,9,13,9653.279999999999,1,Potential Loyalists
+17720,3,7,1572.97,1,Potential Loyalists
+13531,2,5,1254.72,1,Potential Loyalists
+17051,82,3,465.6,0,Champions (VIP)
+14771,257,2,594.62,2,At Risk
+15111,8,3,1163.39,3,Lost / Hibernating
+17137,52,6,1099.81,0,Champions (VIP)
+18132,140,1,220.13,2,At Risk
+17219,52,1,144.9,2,At Risk
+16934,19,4,1152.1100000000001,0,Champions (VIP)
+17438,80,4,1034.32,0,Champions (VIP)
+14861,16,9,1254.94,1,Potential Loyalists
+12418,49,3,1352.62,0,Champions (VIP)
+15477,285,1,368.4,2,At Risk
+13660,36,1,306.64,3,Lost / Hibernating
+18266,70,1,251.1,2,At Risk
+15979,238,1,329.22,2,At Risk
+14347,372,1,82.6,2,At Risk
+17960,158,2,61.300000000000004,2,At Risk
+15980,126,4,4144.82,0,Champions (VIP)
+14204,58,3,874.22,0,Champions (VIP)
+16195,359,1,323.25,2,At Risk
+15943,285,2,271.28999999999996,2,At Risk
+17268,81,7,970.25,0,Champions (VIP)
+17866,120,2,805.3000000000001,0,Champions (VIP)
+17919,74,1,536.28,2,At Risk
+14293,4,6,2221.37,1,Potential Loyalists
+15284,136,1,24.75,2,At Risk
+14899,31,1,1331.38,3,Lost / Hibernating
+13375,80,1,1013.58,2,At Risk
+13154,35,3,1624.84,0,Champions (VIP)
+15003,109,6,1027.03,0,Champions (VIP)
+18101,10,3,399.61,3,Lost / Hibernating
+12806,208,2,2558.96,0,Champions (VIP)
+14494,37,2,261.9,3,Lost / Hibernating
+13175,218,2,831.45,2,At Risk
+14491,8,1,127.2,3,Lost / Hibernating
+17474,235,1,1047.0,2,At Risk
+12554,84,1,384.5,2,At Risk
+16583,9,2,297.95,3,Lost / Hibernating
+14008,68,1,509.04,2,At Risk
+17659,8,3,835.33,3,Lost / Hibernating
+15704,138,2,1441.04,0,Champions (VIP)
+18093,80,4,2346.19,0,Champions (VIP)
+13818,65,1,61.28,2,At Risk
+14343,57,4,1079.66,0,Champions (VIP)
+15176,303,1,938.09,2,At Risk
+14471,227,2,400.95,2,At Risk
+15920,60,5,401.64,0,Champions (VIP)
+16042,15,3,1067.85,3,Lost / Hibernating
+14630,120,1,338.65,2,At Risk
+17083,45,6,2644.01,0,Champions (VIP)
+14566,53,3,2660.0,0,Champions (VIP)
+16044,71,1,340.84000000000003,2,At Risk
+14576,8,1,35.400000000000006,3,Lost / Hibernating
+13879,281,1,395.5,2,At Risk
+14043,127,2,302.6,2,At Risk
+14714,43,3,746.05,0,Champions (VIP)
+13747,9,2,169.79999999999998,3,Lost / Hibernating
+15290,29,8,2553.06,1,Potential Loyalists
+16787,33,4,1017.53,0,Champions (VIP)
+17617,194,1,385.19,2,At Risk
+12866,110,2,593.23,2,At Risk
+18043,2,1,287.91,3,Lost / Hibernating
+14061,143,3,917.4300000000001,0,Champions (VIP)
+16709,15,9,5946.19,1,Potential Loyalists
+13056,187,1,209.48,2,At Risk
+12562,21,2,1041.18,3,Lost / Hibernating
+15328,43,1,107.24,2,At Risk
+14381,87,1,423.26,2,At Risk
+15159,31,4,3475.7200000000003,0,Champions (VIP)
+16130,58,4,987.48,0,Champions (VIP)
+18285,296,1,377.0,2,At Risk
+14563,145,2,625.42,2,At Risk
+13103,73,2,465.70000000000005,2,At Risk
+17933,268,1,105.99,2,At Risk
+14472,325,1,266.05,2,At Risk
+16396,112,1,137.8,2,At Risk
+15430,103,2,954.75,0,Champions (VIP)
+12392,227,1,234.75000000000003,2,At Risk
+14916,67,4,1773.97,0,Champions (VIP)
+17678,239,1,301.65,2,At Risk
+14213,40,1,1192.2,3,Lost / Hibernating
+15030,16,6,1461.63,1,Potential Loyalists
+13167,26,1,333.82,3,Lost / Hibernating
+17388,56,7,1415.81,0,Champions (VIP)
+15037,12,2,397.76,3,Lost / Hibernating
+14510,11,3,979.85,3,Lost / Hibernating
+13045,37,2,503.64,3,Lost / Hibernating
+16256,129,2,826.9399999999999,0,Champions (VIP)
+13543,270,2,1439.6100000000001,0,Champions (VIP)
+17853,43,3,1596.29,0,Champions (VIP)
+17156,127,1,591.87,2,At Risk
+15586,228,3,1139.1,0,Champions (VIP)
+14868,16,4,1230.42,0,Champions (VIP)
+13302,162,1,95.45,2,At Risk
+13163,246,1,17.65,2,At Risk
+17576,1,23,5260.42,1,Potential Loyalists
+14207,323,1,157.8,2,At Risk
+16202,53,8,2136.72,0,Champions (VIP)
+16090,260,1,180.56,2,At Risk
+13617,44,5,734.57,0,Champions (VIP)
+12727,78,3,1464.8300000000002,0,Champions (VIP)
+16577,302,1,380.0,2,At Risk
+14999,228,1,129.48000000000002,2,At Risk
+18000,200,1,124.25,2,At Risk
+13417,183,4,1028.66,0,Champions (VIP)
+15918,267,1,248.65,2,At Risk
+12633,18,3,3226.18,0,Champions (VIP)
+14775,8,1,406.56,3,Lost / Hibernating
+12378,198,1,1407.7,2,At Risk
+12927,30,1,197.31,3,Lost / Hibernating
+17002,79,4,1077.82,0,Champions (VIP)
+15709,225,1,194.6,2,At Risk
+17732,8,8,2166.42,1,Potential Loyalists
+17826,10,1,133.34,3,Lost / Hibernating
+13263,29,4,1239.27,0,Champions (VIP)
+18177,196,3,875.45,0,Champions (VIP)
+12977,137,3,349.64,2,At Risk
+16848,12,3,1130.2,3,Lost / Hibernating
+13700,53,3,348.34,3,Lost / Hibernating
+13963,3,14,2347.33,1,Potential Loyalists
+13109,187,1,347.49,2,At Risk
+13238,66,2,305.9,2,At Risk
+15338,313,1,277.93,2,At Risk
+16835,9,5,1357.56,1,Potential Loyalists
+18025,15,6,1177.72,1,Potential Loyalists
+13416,372,1,228.3,2,At Risk
+17298,10,3,439.94,3,Lost / Hibernating
+13104,51,3,610.62,0,Champions (VIP)
+12412,38,3,1262.05,0,Champions (VIP)
+16534,278,1,635.9,2,At Risk
+16204,16,2,534.53,3,Lost / Hibernating
+14972,17,1,30.300000000000004,3,Lost / Hibernating
+12410,138,1,240.38,2,At Risk
+17404,45,8,14109.1,1,Potential Loyalists
+15960,10,4,410.95,3,Lost / Hibernating
+16032,92,6,1965.72,0,Champions (VIP)
+17626,238,1,254.0,2,At Risk
+13666,56,2,42.4,2,At Risk
+13241,47,1,112.53,2,At Risk
+16145,24,8,3005.9500000000003,1,Potential Loyalists
+17319,305,1,29.1,2,At Risk
+14441,10,7,2898.8,1,Potential Loyalists
+12763,5,1,320.08,3,Lost / Hibernating
+15363,8,2,678.11,3,Lost / Hibernating
+17343,12,5,1066.3,3,Lost / Hibernating
+15827,8,16,1957.98,1,Potential Loyalists
+14463,135,1,256.95,2,At Risk
+13330,91,3,1655.17,0,Champions (VIP)
+14613,316,1,76.32000000000001,2,At Risk
+12861,255,1,68.25,2,At Risk
+15424,99,1,214.44,2,At Risk
+16465,56,2,746.24,0,Champions (VIP)
+15754,129,6,2499.09,0,Champions (VIP)
+14907,3,10,2664.69,1,Potential Loyalists
+16896,191,1,103.95,2,At Risk
+17262,2,7,1504.26,1,Potential Loyalists
+15921,32,3,442.58,3,Lost / Hibernating
+15664,85,3,845.1,0,Champions (VIP)
+15742,255,1,156.87,2,At Risk
+14570,79,1,295.19,2,At Risk
+18255,92,1,199.85,2,At Risk
+12492,39,1,380.0,3,Lost / Hibernating
+15486,163,1,102.0,2,At Risk
+16062,15,4,1709.83,0,Champions (VIP)
+16125,3,14,4292.35,1,Potential Loyalists
+14865,8,3,77.52000000000001,3,Lost / Hibernating
+14776,23,4,1170.0,0,Champions (VIP)
+14783,295,1,307.3,2,At Risk
+13088,53,1,236.11,2,At Risk
+13340,53,4,7414.08,0,Champions (VIP)
+13292,51,3,415.57,3,Lost / Hibernating
+15525,9,2,430.78,3,Lost / Hibernating
+13094,4,2,505.8,3,Lost / Hibernating
+17220,53,7,1263.86,0,Champions (VIP)
+16078,305,1,283.79,2,At Risk
+15871,73,1,33.099999999999994,2,At Risk
+17203,24,4,2004.01,0,Champions (VIP)
+17689,24,2,317.08,3,Lost / Hibernating
+14650,224,1,62.5,2,At Risk
+17033,33,1,302.65000000000003,3,Lost / Hibernating
+15032,2,7,8821.55,1,Potential Loyalists
+14810,5,3,446.59,3,Lost / Hibernating
+13677,40,2,551.24,3,Lost / Hibernating
+14181,46,2,308.35,3,Lost / Hibernating
+12638,275,1,169.8,2,At Risk
+12705,19,5,4731.81,1,Potential Loyalists
+15814,29,2,689.11,3,Lost / Hibernating
+14412,60,1,656.16,2,At Risk
+18151,56,4,1226.09,0,Champions (VIP)
+14241,332,1,120.0,2,At Risk
+14247,40,4,616.79,0,Champions (VIP)
+15374,260,1,139.32,2,At Risk
+14408,107,4,1503.2400000000002,0,Champions (VIP)
+18246,245,1,162.72,2,At Risk
+15212,12,1,106.47999999999999,3,Lost / Hibernating
+14645,270,1,279.8,2,At Risk
+12601,40,1,86.2,2,At Risk
+17746,107,3,793.9300000000001,0,Champions (VIP)
+14947,24,4,758.97,0,Champions (VIP)
+15608,51,1,692.3,3,Lost / Hibernating
+15101,151,4,1160.41,0,Champions (VIP)
+14514,72,6,3389.84,0,Champions (VIP)
+14321,67,2,687.3100000000001,0,Champions (VIP)
+12485,165,1,708.1,2,At Risk
+17699,112,2,442.0,2,At Risk
+12745,122,2,723.85,0,Champions (VIP)
+13855,136,4,1310.3400000000001,0,Champions (VIP)
+16314,25,3,1491.4,0,Champions (VIP)
+13293,28,6,1192.94,0,Champions (VIP)
+17380,70,3,645.0,0,Champions (VIP)
+15447,163,4,337.71000000000004,2,At Risk
+16775,3,6,1361.23,1,Potential Loyalists
+13049,25,2,751.5600000000001,3,Lost / Hibernating
+16351,47,12,3176.13,1,Potential Loyalists
+13527,54,5,2298.93,0,Champions (VIP)
+18074,9,2,1019.44,3,Lost / Hibernating
+13851,15,5,1955.0,1,Potential Loyalists
+16781,8,2,623.0,3,Lost / Hibernating
+18084,19,2,704.75,3,Lost / Hibernating
+14160,246,7,8421.47,0,Champions (VIP)
+15747,11,6,1553.17,1,Potential Loyalists
+13736,61,5,2022.67,0,Champions (VIP)
+12644,66,3,1422.58,0,Champions (VIP)
+15560,33,2,153.52,3,Lost / Hibernating
+14657,65,2,601.97,0,Champions (VIP)
+18148,282,1,112.85000000000001,2,At Risk
+16391,36,4,1048.86,0,Champions (VIP)
+16676,38,2,769.78,3,Lost / Hibernating
+17440,185,1,137.16,2,At Risk
+15289,94,2,653.3100000000001,0,Champions (VIP)
+12451,99,3,3634.36,0,Champions (VIP)
+17096,19,7,2675.8,1,Potential Loyalists
+14115,137,2,622.6700000000001,2,At Risk
+18195,23,1,101.16,3,Lost / Hibernating
+13964,23,2,438.9,3,Lost / Hibernating
+18006,17,3,524.83,3,Lost / Hibernating
+17152,61,1,327.0,2,At Risk
+14993,199,1,36.13,2,At Risk
+18270,68,1,161.4,2,At Risk
+12419,21,2,391.01,3,Lost / Hibernating
+12971,2,33,4552.4800000000005,1,Potential Loyalists
+14183,47,2,278.34000000000003,3,Lost / Hibernating
+13014,68,1,1914.8,0,Champions (VIP)
+14546,12,6,2610.91,1,Potential Loyalists
+15123,57,3,2456.86,0,Champions (VIP)
+13179,254,1,572.3100000000001,2,At Risk
+17787,7,1,736.28,3,Lost / Hibernating
+12385,15,1,1668.4,3,Lost / Hibernating
+17723,11,1,102.0,3,Lost / Hibernating
+12699,53,1,566.11,3,Lost / Hibernating
+15870,32,3,506.02,3,Lost / Hibernating
+15590,18,5,1496.6,0,Champions (VIP)
+14021,10,4,1084.68,3,Lost / Hibernating
+14169,66,2,613.11,0,Champions (VIP)
+16791,19,8,2251.85,1,Potential Loyalists
+13434,21,3,1132.6200000000001,3,Lost / Hibernating
+15778,67,1,307.95,2,At Risk
+15868,219,1,94.53,2,At Risk
+16228,21,3,885.71,3,Lost / Hibernating
+12857,72,4,2581.6,0,Champions (VIP)
+17266,135,2,205.14,2,At Risk
+15685,86,1,55.980000000000004,2,At Risk
+16887,36,2,465.84000000000003,3,Lost / Hibernating
+16651,222,1,136.2,2,At Risk
+13649,2,5,1304.88,1,Potential Loyalists
+18128,173,1,399.29,2,At Risk
+13131,54,4,2240.47,0,Champions (VIP)
+17473,44,2,607.0,3,Lost / Hibernating
+12533,263,2,1223.89,0,Champions (VIP)
+17718,280,1,299.83,2,At Risk
+15792,35,2,933.84,3,Lost / Hibernating
+12411,45,1,346.9,3,Lost / Hibernating
+15819,67,6,2029.34,0,Champions (VIP)
+13653,123,1,152.2,2,At Risk
+14977,361,1,31.929999999999996,2,At Risk
+12905,212,2,1018.42,0,Champions (VIP)
+17322,12,5,922.59,3,Lost / Hibernating
+17254,37,1,198.29,3,Lost / Hibernating
+17964,8,1,261.76,3,Lost / Hibernating
+16336,56,4,3517.69,0,Champions (VIP)
+16377,253,1,496.2,2,At Risk
+15114,19,2,639.56,3,Lost / Hibernating
+13139,73,1,3138.04,0,Champions (VIP)
+16383,32,5,2244.23,0,Champions (VIP)
+15987,4,2,216.7,3,Lost / Hibernating
+15194,4,14,4811.16,1,Potential Loyalists
+12770,92,1,1895.0,0,Champions (VIP)
+13665,22,3,1711.6599999999999,0,Champions (VIP)
+13535,38,1,89.5,2,At Risk
+16607,35,11,2359.16,1,Potential Loyalists
+13643,18,7,1637.33,1,Potential Loyalists
+15231,257,1,250.26,2,At Risk
+15339,57,5,1246.95,0,Champions (VIP)
+14680,7,43,28615.27,1,Potential Loyalists
+16768,19,6,1220.48,0,Champions (VIP)
+13544,47,4,514.14,0,Champions (VIP)
+16214,71,1,975.5,0,Champions (VIP)
+12810,170,2,534.99,2,At Risk
+16237,73,1,136.65,2,At Risk
+13566,70,3,827.91,0,Champions (VIP)
+15201,75,2,606.4100000000001,0,Champions (VIP)
+16578,262,1,156.6,2,At Risk
+16996,18,3,666.6500000000001,3,Lost / Hibernating
+16001,17,1,583.39,3,Lost / Hibernating
+14751,320,2,126.45,2,At Risk
+12778,32,3,848.45,0,Champions (VIP)
+17177,141,1,119.5,2,At Risk
+18206,189,1,314.65999999999997,2,At Risk
+13397,73,5,1647.74,0,Champions (VIP)
+16673,315,1,171.13,2,At Risk
+12424,58,2,1579.07,0,Champions (VIP)
+13957,53,3,458.25,0,Champions (VIP)
+14382,26,1,578.14,3,Lost / Hibernating
+13462,46,4,1002.35,0,Champions (VIP)
+13360,67,4,1503.65,0,Champions (VIP)
+17426,88,7,3040.51,0,Champions (VIP)
+15322,112,1,631.23,2,At Risk
+17624,73,2,725.15,0,Champions (VIP)
+13754,73,1,164.45000000000002,2,At Risk
+13953,45,4,2125.0,0,Champions (VIP)
+14909,73,3,1404.68,0,Champions (VIP)
+13362,14,3,2303.33,0,Champions (VIP)
+18245,15,13,3757.92,1,Potential Loyalists
+15281,14,7,6211.42,1,Potential Loyalists
+14465,64,8,2887.4100000000003,0,Champions (VIP)
+17249,64,1,68.03,2,At Risk
+16987,12,4,882.65,3,Lost / Hibernating
+16705,36,22,29430.11,1,Potential Loyalists
+12360,28,3,1310.83,0,Champions (VIP)
+14425,70,3,661.39,0,Champions (VIP)
+12858,19,1,147.27,3,Lost / Hibernating
+14108,367,2,447.05,2,At Risk
+15336,37,1,240.5,3,Lost / Hibernating
+17969,138,18,2080.14,0,Champions (VIP)
+15177,61,1,948.93,3,Lost / Hibernating
+17980,29,1,201.27,3,Lost / Hibernating
+17171,297,1,159.68,2,At Risk
+16972,18,2,749.0,3,Lost / Hibernating
+14320,182,3,868.96,0,Champions (VIP)
+13537,61,2,717.85,0,Champions (VIP)
+17767,46,1,141.85,2,At Risk
+18021,145,2,216.41,2,At Risk
+17955,291,2,392.6,2,At Risk
+13374,50,2,372.8,3,Lost / Hibernating
+15972,92,4,1499.33,0,Champions (VIP)
+18048,129,1,222.64,2,At Risk
+15901,87,3,318.14,2,At Risk
+18236,24,6,913.11,0,Champions (VIP)
+14404,5,8,1324.09,1,Potential Loyalists
+16756,40,6,1072.97,0,Champions (VIP)
+17967,7,2,223.42,3,Lost / Hibernating
+12989,67,17,5817.64,1,Potential Loyalists
+14507,14,5,1848.8600000000001,1,Potential Loyalists
+15732,8,9,1387.95,1,Potential Loyalists
+12725,7,3,1906.76,3,Lost / Hibernating
+13931,28,9,4019.85,1,Potential Loyalists
+13859,165,1,314.7,2,At Risk
+17638,283,2,842.4,2,At Risk
+17032,239,5,2896.69,0,Champions (VIP)
+15928,292,1,293.53,2,At Risk
+17181,9,2,179.5,3,Lost / Hibernating
+13815,42,4,3070.38,0,Champions (VIP)
+14311,203,1,206.19,2,At Risk
+16998,80,1,107.0,2,At Risk
+18078,61,2,389.40000000000003,2,At Risk
+17774,33,5,2059.1,0,Champions (VIP)
+12652,70,1,97.05000000000001,2,At Risk
+13457,324,2,148.22,2,At Risk
+17768,23,4,1210.83,0,Champions (VIP)
+13079,53,1,199.08,2,At Risk
+16476,67,1,350.35,2,At Risk
+13912,59,1,124.95,2,At Risk
+14850,53,6,1445.21,0,Champions (VIP)
+12575,93,2,568.8199999999999,2,At Risk
+16496,67,3,731.25,0,Champions (VIP)
+15637,49,4,574.23,0,Champions (VIP)
+12782,10,6,1923.32,1,Potential Loyalists
+17457,15,9,4247.11,1,Potential Loyalists
+17339,1,2,119.0,3,Lost / Hibernating
+12434,17,1,297.29,3,Lost / Hibernating
+13739,163,1,75.3,2,At Risk
+15773,45,1,138.84,2,At Risk
+15617,32,3,828.5500000000001,0,Champions (VIP)
+17110,156,2,336.59999999999997,2,At Risk
+16108,70,3,1393.42,0,Champions (VIP)
+13975,29,6,2795.16,0,Champions (VIP)
+15246,191,1,266.25,2,At Risk
+14635,89,1,215.22,2,At Risk
+15276,30,3,491.17,3,Lost / Hibernating
+13864,22,1,662.4000000000001,3,Lost / Hibernating
+17975,2,12,2527.17,1,Potential Loyalists
+17965,1,17,4554.26,1,Potential Loyalists
+14051,2,15,6784.01,1,Potential Loyalists
+15887,42,3,1027.15,0,Champions (VIP)
+14228,73,3,745.5,0,Champions (VIP)
+17287,3,16,3000.5,1,Potential Loyalists
+15670,192,1,152.15,2,At Risk
+14038,33,2,1509.5,0,Champions (VIP)
+17204,10,5,3940.13,1,Potential Loyalists
+12798,57,1,1533.8899999999999,0,Champions (VIP)
+18267,308,1,269.37,2,At Risk
+17170,10,2,178.68,3,Lost / Hibernating
+17550,33,6,2239.48,0,Champions (VIP)
+12910,15,5,2721.48,1,Potential Loyalists
+16774,59,4,905.96,0,Champions (VIP)
+12825,157,2,518.63,2,At Risk
+13883,39,9,3860.89,1,Potential Loyalists
+15800,89,5,530.18,0,Champions (VIP)
+17838,1,10,3786.7000000000003,1,Potential Loyalists
+17623,45,6,1838.72,0,Champions (VIP)
+13472,99,2,592.24,2,At Risk
+13890,10,4,1043.57,3,Lost / Hibernating
+13519,78,1,220.46,2,At Risk
+12987,56,3,753.51,0,Champions (VIP)
+15558,275,1,202.68,2,At Risk
+15203,26,9,2572.38,1,Potential Loyalists
+17326,44,2,312.35,3,Lost / Hibernating
+17644,30,9,3132.96,1,Potential Loyalists
+16235,11,4,1186.4,3,Lost / Hibernating
+17121,38,1,314.74,3,Lost / Hibernating
+14278,45,1,205.83,2,At Risk
+15410,204,2,1234.88,0,Champions (VIP)
+14285,149,4,1374.41,0,Champions (VIP)
+17046,80,4,1264.05,0,Champions (VIP)
+14372,79,2,860.08,0,Champions (VIP)
+16007,19,3,1359.25,0,Champions (VIP)
+15382,10,6,7777.84,1,Potential Loyalists
+13779,151,1,161.13,2,At Risk
+14395,8,12,4630.7,1,Potential Loyalists
+17158,183,2,713.03,2,At Risk
+15984,4,21,5735.09,1,Potential Loyalists
+12426,298,1,690.48,2,At Risk
+12457,71,1,512.68,2,At Risk
+14097,117,2,422.85999999999996,2,At Risk
+12924,29,8,1535.7,0,Champions (VIP)
+14030,2,14,5384.46,1,Potential Loyalists
+13508,278,1,176.07999999999998,2,At Risk
+16736,141,5,2956.56,0,Champions (VIP)
+17244,19,4,871.14,3,Lost / Hibernating
+14736,121,2,374.05,2,At Risk
+16203,8,3,521.64,3,Lost / Hibernating
+14026,106,2,713.11,0,Champions (VIP)
+15992,32,2,854.61,3,Lost / Hibernating
+13820,54,3,652.75,0,Champions (VIP)
+17106,25,1,481.58,3,Lost / Hibernating
+16763,374,1,352.85,2,At Risk
+14024,26,1,318.04,3,Lost / Hibernating
+18047,17,2,326.09,3,Lost / Hibernating
+16599,21,1,172.8,3,Lost / Hibernating
+12538,14,1,276.5,3,Lost / Hibernating
+17531,163,2,970.12,0,Champions (VIP)
+13551,302,1,152.39999999999998,2,At Risk
+13706,262,1,300.38,2,At Risk
+16935,17,3,530.86,3,Lost / Hibernating
+15905,179,1,114.69,2,At Risk
+15945,1,4,646.27,3,Lost / Hibernating
+13007,215,1,175.25,2,At Risk
+14869,24,4,2056.69,0,Champions (VIP)
+13320,70,2,679.4,0,Champions (VIP)
+15488,92,4,340.6,0,Champions (VIP)
+13788,141,1,3.75,2,At Risk
+15005,2,29,7681.41,1,Potential Loyalists
+13873,19,5,649.32,3,Lost / Hibernating
+13022,65,1,50.3,2,At Risk
+14087,40,2,638.0,3,Lost / Hibernating
+17647,305,2,198.6,2,At Risk
+13011,8,1,50.550000000000004,3,Lost / Hibernating
+14794,38,3,344.14,3,Lost / Hibernating
+12949,18,14,11359.48,1,Potential Loyalists
+12389,38,3,1433.33,0,Champions (VIP)
+14210,7,11,3955.6800000000003,1,Potential Loyalists
+16725,7,8,1052.14,1,Potential Loyalists
+12682,1,22,10665.69,1,Potential Loyalists
+14439,79,4,6781.8,0,Champions (VIP)
+16631,117,7,1892.52,0,Champions (VIP)
+14127,16,3,1190.3700000000001,3,Lost / Hibernating
+18178,38,7,4512.93,1,Potential Loyalists
+12860,329,1,54.22,2,At Risk
+15524,242,1,151.4,2,At Risk
+13539,56,4,938.02,0,Champions (VIP)
+14415,15,10,6124.52,1,Potential Loyalists
+14821,2,7,1230.15,1,Potential Loyalists
+15479,369,1,147.4,2,At Risk
+16521,51,3,1136.36,0,Champions (VIP)
+13069,5,16,4451.11,1,Potential Loyalists
+13002,52,2,293.18,3,Lost / Hibernating
+14374,177,1,108.0,2,At Risk
+13023,164,1,651.13,2,At Risk

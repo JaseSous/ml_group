@@ -1,25 +1,10 @@
 Timestamp,Model,Silhouette,Davies-Bouldin,Calinski-Harabasz
-<<<<<<< HEAD
-
-
-2026-11-07 01:06:15,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
-2026-11-07 01:06:15,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2611,1.0428,2065.597
-2026-11-07 01:06:15,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",N/A,N/A,N/A
-2026-11-07 17:56:59,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
-2026-11-07 17:57:00,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2611,1.0428,2065.597
-2026-11-07 17:57:00,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",N/A,N/A,N/A
-2026-11-07 18:48:47,Mô hình 1: K-Means (Tuned K=2),0.4239,0.9078,3287.3052
-=======
-2026-11-07 00:48:29,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
-2026-11-07 09:18:52,"Baseline: K-Means (K=3, Untuned)",0.3286,1.0713,2751.479
-2026-11-07 09:18:52,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2611,1.0428,2065.597
-2026-11-07 09:35:35,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",N/A,N/A,N/A
->>>>>>> ecedfdda34be198fd19d7a824425ffe93a16b779
-2026-11-07 18:53:23,"Mô hình 2: Hierarchical (K=2, linkage='ward')",0.4144,0.8818,2681.1695
-2026-11-07 18:56:02,"Mô hình 3: DBSCAN (eps=0.5, min_samples=15)",0.3022,1.0514,1906.1222
-2026-11-07 18:57:10,"Mô hình 3: DBSCAN (eps=0.2, min_samples=15)",0.1356,1.2009,276.1607
-2026-11-07 19:04:58,Mô hình 1: K-Means (Tuned K=2),0.4239,0.9078,3287.3052
-2026-11-07 19:04:58,Mô hình 1: K-Means (Tuned K=4),0.3343,1.0035,2592.716
-2026-11-07 19:12:37,"Mô hình 2: Hierarchical (K=2, linkage='ward')",0.4144,0.8818,2681.1695
-2026-11-07 19:12:37,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2611,1.0428,2065.597
-2026-11-07 19:29:29,"Mô hình 3: DBSCAN (eps=0.3, min_samples=5)",0.0047,1.135,391.9241
+2026-11-07 20:32:18,"Baseline: K-Means (K=3, Untuned)",0.3298,1.0709,2199.3157
+2026-11-07 20:32:19,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
+2026-11-07 20:32:19,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",0.5254,0.4055,117.3186
+2026-11-07 20:32:21,Mô hình 1: K-Means (Tuned K=2),0.4224,0.9119,2614.5543
+2026-11-07 20:32:21,Mô hình 1: K-Means (Tuned K=4),0.3385,0.996,2090.7987
+2026-11-07 20:32:21,"Mô hình 2: Hierarchical (K=2, linkage='ward')",0.424,0.8194,1872.7922
+2026-11-07 20:32:21,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
+2026-11-07 20:32:22,"Mô hình 3: DBSCAN (eps=0.3, min_samples=5)",0.0242,1.1821,341.2215
+2026-11-07 20:32:22,Validation Set: K-Means (K=4),0.3193,1.021,503.8025
