@@ -16,3 +16,10 @@ Timestamp,Model,Silhouette,Davies-Bouldin,Calinski-Harabasz
 2026-11-07 09:35:35,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",N/A,N/A,N/A
 >>>>>>> ecedfdda34be198fd19d7a824425ffe93a16b779
 2026-11-07 18:53:23,"Mô hình 2: Hierarchical (K=2, linkage='ward')",0.4144,0.8818,2681.1695
+2026-11-07 18:56:02,"Mô hình 3: DBSCAN (eps=0.5, min_samples=15)",0.3022,1.0514,1906.1222
+2026-11-07 18:57:10,"Mô hình 3: DBSCAN (eps=0.2, min_samples=15)",0.1356,1.2009,276.1607
+2026-11-07 19:04:58,Mô hình 1: K-Means (Tuned K=2),0.4239,0.9078,3287.3052
+2026-11-07 19:04:58,Mô hình 1: K-Means (Tuned K=4),0.3343,1.0035,2592.716
+2026-11-07 19:12:37,"Mô hình 2: Hierarchical (K=2, linkage='ward')",0.4144,0.8818,2681.1695
+2026-11-07 19:12:37,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2611,1.0428,2065.597
+2026-11-07 19:29:29,"Mô hình 3: DBSCAN (eps=0.3, min_samples=5)",0.0047,1.135,391.9241
