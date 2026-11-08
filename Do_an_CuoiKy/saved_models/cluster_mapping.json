@@ -1,0 +1,18 @@
+{
+  "0": {
+    "name": "At Risk",
+    "description": "Khách hàng có nguy cơ rời bỏ (lâu không mua lại dù trước đây chi tiêu tốt)"
+  },
+  "1": {
+    "name": "Champions (VIP)",
+    "description": "Khách hàng VIP / Trung thành nhất (mua gần đây, tần suất cao, chi tiêu khủng)"
+  },
+  "2": {
+    "name": "Lost / Hibernating",
+    "description": "Khách hàng ngủ đông / đã rời bỏ (mua từ rất lâu, tần suất và chi tiêu rất thấp)"
+  },
+  "3": {
+    "name": "Potential Loyalists",
+    "description": "Khách hàng tiềm năng (mới mua gần đây, tần suất và chi tiêu ở mức khá)"
+  }
+}
