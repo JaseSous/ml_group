@@ -1,149 +1,158 @@
-# BÁO CÁO GIỮA KỲ MÔN HỌC MÁY HỌC (MACHINE LEARNING)
-## Đề tài: Phân Khúc Khách Hàng Bằng Mô Hình RFM và Hành Vi Mua Hàng Qua Các Thuật Toán Phân Cụm (Online Retail II)
+# Báo cáo giữa kỳ Máy học: Phân khúc khách hàng bằng RFM và các thuật toán phân cụm (Online Retail II)
+
+## Thông tin học phần và nhóm thực hiện
+
+- Trường: Đại học Sài Gòn (SGU), Khoa Công nghệ Thông tin
+- Môn học: Máy học (Machine Learning)
+- Lớp học phần: DCT124C1
+- Giảng viên hướng dẫn: TS. Đỗ Như Tài
+- Nhóm thực hiện: Nhóm 05
+  1. Trương Thuận Phú (MSSV: 3124411234), nhóm trưởng
+  2. Nguyễn Mạnh Thắng (MSSV: 3124411283)
+  3. Nguyễn Hoàng Quân (MSSV: 3124411250)
+  4. Phạm Minh Khôi (MSSV: 3124411135)
 
 ---
 
-### 🏫 THÔNG TIN HỌC PHẦN & NHÓM THỰC HIỆN
-- **Cơ sở đào tạo:** Trường Đại học Sài Gòn (SGU) - Khoa Công nghệ Thông tin
-- **Môn học:** Máy học (Machine Learning)
-- **Lớp học phần:** DCT124C1
-- **Giảng viên hướng dẫn:** TS. Đỗ Như Tài
-- **Nhóm thực hiện:** Nhóm 05
-  1. **Trương Thuận Phú** (MSSV: 3124411234) - *Nhóm trưởng*
-  2. **Nguyễn Mạnh Thắng** (MSSV: 3124411283)
-  3. **Nguyễn Hoàng Quân** (MSSV: 3124411250)
-  4. **Phạm Minh Khôi** (MSSV: 3124411135)
+## 1. Giới thiệu đề tài và bộ dữ liệu
+
+Trong bán lẻ trực tuyến, hiểu được hành vi khách hàng giúp doanh nghiệp tiết kiệm chi phí marketing và giữ chân khách tốt hơn (customer retention). Nhóm dùng học không giám sát (unsupervised learning) kết hợp mô hình RFM (Recency - Frequency - Monetary) để chia tập khách hàng lớn thành các cụm có hành vi gần nhau, rồi đề xuất cách chăm sóc riêng cho từng cụm.
+
+- Tập dữ liệu: [Online Retail II (UCI Machine Learning Repository / Kaggle)](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
+- Quy mô: hơn 400.000 giao dịch thương mại điện tử thực tế, giai đoạn 2009 đến 2010.
+- Ba thuộc tính RFM:
+  - Recency ($R$): số ngày từ lần mua gần nhất của khách đến ngày mốc phân tích.
+  - Frequency ($F$): tổng số hóa đơn khách đã thực hiện.
+  - Monetary ($M$): tổng số tiền khách đã chi.
 
 ---
 
-## 📌 1. Giới Thiệu Đề Tài & Bộ Dữ Liệu
-Trong kinh doanh bán lẻ trực tuyến (E-Commerce), việc thấu hiểu hành vi khách hàng là yếu tố sống còn để tối ưu hóa chi phí tiếp thị và gia tăng tỷ lệ giữ chân khách hàng (Customer Retention). Đề tài này ứng dụng kỹ thuật **Học không giám sát (Unsupervised Machine Learning)** kết hợp với mô hình định lượng hành vi **RFM (Recency - Frequency - Monetary)** để tự động phân nhóm tập khách hàng lớn thành các cụm đồng nhất, hỗ trợ doanh nghiệp đưa ra chiến lược kinh doanh chính xác.
-
-- **Tập dữ liệu:** [Online Retail II Dataset (UCI Machine Learning Repository / Kaggle)](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
-- **Quy mô:** Hơn 400.000 giao dịch thương mại điện tử thực tế từ 2009 đến 2010.
-- **Thuộc tính RFM:**
-  - **Recency ($R$):** Số ngày kể từ lần giao dịch gần nhất của khách hàng đến ngày mốc phân tích.
-  - **Frequency ($F$):** Tổng số hóa đơn/giao dịch mà khách hàng đã thực hiện.
-  - **Monetary ($M$):** Tổng số tiền tích lũy khách hàng đã chi tiêu.
-
----
-
-## 🏗️ 2. Kiến Trúc Cấu Trúc Thư Mục (Project Structure)
+## 2. Cấu trúc thư mục
 
 ```text
-G:\ml_group\
+ml_group/
 │
-├── data/                                 # Thư mục chứa dữ liệu xử lý và kết quả
+├── data/                                 # Dữ liệu đã xử lý và kết quả
 │   ├── online_retail_cleaned.csv         # Dữ liệu giao dịch đã làm sạch
-│   ├── rfm_train.csv / rfm_val.csv / rfm_test.csv  # Bộ dữ liệu RFM phân tách Train/Val/Test
-│   ├── RFM_Train_Segmented_Final.xlsx    # Kết quả phân cụm tập Train (kèm CustomerID & Phân khúc)
+│   ├── rfm_train.csv / rfm_val.csv / rfm_test.csv  # Bộ RFM chia Train/Val/Test
+│   ├── RFM_Train_Segmented_Final.xlsx    # Kết quả phân cụm tập Train (kèm CustomerID và phân khúc)
 │   └── RFM_Test_Segmented_Final.xlsx     # Kết quả phân cụm tập Test độc lập
 │
-├── figures/                              # Toàn bộ hình ảnh & biểu đồ gốc của đồ án
-│   ├── fig00_ml_pipeline_architecture.png# Sơ đồ quy trình tổng quan Pipeline Machine Learning
+├── figures/                              # Hình và biểu đồ gốc của đồ án
+│   ├── fig00_ml_pipeline_architecture.png# Sơ đồ tổng quan pipeline
 │   ├── fig01_eda_quantity_price_dist.png # Phân phối số lượng và đơn giá
-│   ├── fig02_eda_boxplot_outliers.png    # Biểu đồ Boxplot phát hiện ngoại lai
-│   ├── fig03_eda_monthly_revenue.png     # Biến động doanh thu theo tháng
-│   ├── fig04_elbow_method_sse.png        # Biểu đồ đường cong Elbow tìm K tối ưu
-│   ├── fig05_silhouette_scores_k.png     # Biểu đồ điểm Silhouette theo từng K
-│   ├── fig06_model_comparison_metrics.png# So sánh Silhouette & Davies-Bouldin giữa các model
-│   ├── fig07_pca_2d_train_clusters.png   # Trực quan hóa phân tách 4 cụm qua PCA 2D
-│   ├── fig08_rfm_cluster_profiles.png    # So sánh các chỉ số R-F-M giữa 4 phân khúc
-│   └── fig09_gantt_progress_chart.png    # Biểu đồ tiến độ thực hiện đề tài
+│   ├── fig02_eda_boxplot_outliers.png    # Boxplot phát hiện ngoại lai
+│   ├── fig03_eda_monthly_revenue.png     # Doanh thu theo tháng
+│   ├── fig04_elbow_method_sse.png        # Đường cong Elbow để chọn K
+│   ├── fig05_silhouette_scores_k.png     # Điểm Silhouette theo từng K
+│   ├── fig06_model_comparison_metrics.png# So sánh Silhouette và Davies-Bouldin giữa các mô hình
+│   ├── fig07_pca_2d_train_clusters.png   # 4 cụm trên PCA 2D
+│   ├── fig08_rfm_cluster_profiles.png    # So sánh R-F-M giữa 4 phân khúc
+│   └── fig09_gantt_progress_chart.png    # Tiến độ thực hiện đề tài
 │
-├── saved_models/                         # Lưu trữ mô hình đã huấn luyện (Model Persistence)
-│   ├── kmeans_k4_model.joblib            # Trọng số mô hình Tuned K-Means (K=4)
-│   ├── scaler.joblib                     # Bộ chuẩn hóa StandardScaler fit trên Train Set
-│   └── cluster_mapping.json              # Từ điển định danh phân khúc khách hàng
+├── saved_models/                         # Mô hình đã huấn luyện
+│   ├── kmeans_k4_model.joblib            # Tuned K-Means (K=4)
+│   ├── scaler.joblib                     # StandardScaler fit trên tập Train
+│   └── cluster_mapping.json              # Ánh xạ cụm sang tên phân khúc
 │
-├── Source/                               # Mã nguồn module hóa theo hướng đối tượng (OOP)
-│   ├── models/                           # Các lớp mô hình phân cụm kế thừa
+├── Source/                               # Mã nguồn chia module theo hướng đối tượng (OOP)
+│   ├── models/                           # Các lớp mô hình phân cụm
 │   │   ├── base_model.py                 # Baseline K-Means
-│   │   ├── kmeans_model.py               # Tuned K-Means & hàm dò tìm K
+│   │   ├── kmeans_model.py               # Tuned K-Means và hàm dò K
 │   │   ├── hierarchical_model.py         # Hierarchical Clustering (Ward linkage)
-│   │   └── dbscan_model.py               # DBSCAN Clustering (Density-based)
-│   ├── logger.py                         # Module ghi nhận log thực nghiệm tự động
+│   │   └── dbscan_model.py               # DBSCAN (dựa trên mật độ)
+│   ├── logger.py                         # Ghi log thực nghiệm tự động
 │   └── init.py                           # Cấu hình đường dẫn thư mục
 │
-├── Notebook.ipynb                        # Jupyter Notebook chạy toàn bộ quy trình thực nghiệm
-├── Notebook.html                         # Bản xuất HTML đầy đủ của Notebook
-├── predict.py                            # Script chạy dự đoán phân cụm độc lập (CLI)
-├── Experiment_Log_Detailed.xlsx          # Bảng nhật ký thực nghiệm chi tiết có nhận xét chuyên môn
+├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm
+├── Notebook.html                         # Bản xuất HTML của Notebook
+├── predict.py                            # Script dự đoán phân khúc độc lập (CLI)
+├── Experiment_Log_Detailed.xlsx          # Nhật ký thực nghiệm chi tiết, có nhận xét
 ├── Experiment_Log_Comparison.csv         # Nhật ký thực nghiệm dạng CSV
-├── requirements.txt                      # Danh sách thư viện phụ thuộc của dự án
-├── Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.docx # File Báo cáo giữa kỳ (.docx)
-├── Slide_Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.pptx # Slide thuyết trình giữa kỳ (.pptx)
-└── README.md                             # Hướng dẫn chi tiết dự án
+├── requirements.txt                      # Thư viện phụ thuộc
+├── Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.docx        # Báo cáo giữa kỳ (.docx)
+├── Slide_Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.pptx  # Slide thuyết trình giữa kỳ (.pptx)
+└── README.md
 ```
 
 ---
 
-## ⚙️ 3. Hướng Dẫn Cài Đặt & Chạy Lại Dự Án
+## 3. Cài đặt và chạy lại dự án
 
-### Bước 1: Khởi tạo môi trường ảo và cài đặt thư viện
-Yêu cầu Python 3.10 trở lên. Mở Terminal / PowerShell tại thư mục gốc của dự án:
+### Bước 1: Tạo môi trường ảo và cài thư viện
+
+Cần Python 3.10 trở lên. Mở Terminal hoặc PowerShell tại thư mục gốc của dự án:
 
 ```bash
-# Cài đặt toàn bộ thư viện cần thiết
+python -m venv venv
+venv\Scripts\activate        # Windows; trên Linux/macOS dùng: source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Bước 2: Chạy toàn bộ luồng thực nghiệm trên Notebook
-Khởi chạy Jupyter Notebook hoặc JupyterLab:
+### Bước 2: Chạy Notebook
+
 ```bash
 jupyter notebook Notebook.ipynb
 ```
-Chọn **Run All Cells** để tái lập lại toàn bộ quy trình từ Khám phá dữ liệu (EDA), Tính toán chỉ số RFM, Huấn luyện 3 mô hình, Tối ưu siêu tham số đến Trực quan hóa PCA 2D.
 
-### Bước 3: Sử dụng Script dự đoán phân khúc độc lập (`predict.py`)
-Mô hình tối ưu đã được đóng gói sẵn trong `saved_models/`. Bạn có thể sử dụng script `predict.py` để phân khúc khách hàng mới mà không cần train lại:
+Chọn Run All Cells để chạy lại toàn bộ quy trình: EDA, tính RFM, huấn luyện 3 mô hình, tối ưu siêu tham số và vẽ PCA 2D.
 
-- **Dự đoán cho 1 khách hàng cụ thể:**
-  ```bash
-  python predict.py --recency 15 --frequency 8 --monetary 2500
-  ```
-  *Kết quả in trực tiếp phân khúc tương ứng (Ví dụ: Potential Loyalists).*
+### Bước 3: Dự đoán phân khúc bằng `predict.py`
 
-- **Dự đoán hàng loạt từ file dữ liệu CSV:**
-  ```bash
-  python predict.py --file data/rfm_test.csv --output data/predictions_test.csv
-  ```
+Mô hình tốt nhất đã được lưu trong `saved_models/`, nên có thể phân khúc khách hàng mới mà không cần huấn luyện lại.
+
+Một khách hàng:
+
+```bash
+python predict.py --recency 15 --frequency 8 --monetary 2500
+```
+
+Kết quả in ra phân khúc tương ứng, ví dụ Potential Loyalists.
+
+Nhiều khách hàng từ file CSV:
+
+```bash
+python predict.py --file data/rfm_test.csv --output data/predictions_test.csv
+```
 
 ---
 
-## 📊 4. Tóm Tắt Kết Quả Thực Nghiệm
+## 4. Kết quả thực nghiệm
 
-Nhóm đã khảo sát và so sánh 3 thuật toán phân cụm chính: **K-Means**, **Hierarchical Clustering (Agglomerative)** và **DBSCAN** trên tập Train đã chuẩn hóa (`StandardScaler`), đồng thời kiểm định độ ổn định trên tập Validation:
+Nhóm so sánh 3 thuật toán phân cụm là K-Means, Hierarchical Clustering (Agglomerative) và DBSCAN. Dữ liệu Train được chuẩn hóa bằng `StandardScaler`, độ ổn định được kiểm tra thêm trên tập Validation.
 
-| STT | Thuật toán / Mô hình | Cấu hình tham số | Silhouette Score | Davies-Bouldin | Calinski-Harabasz | Đánh giá & Kết luận |
+| STT | Mô hình | Tham số | Silhouette | Davies-Bouldin | Calinski-Harabasz | Nhận xét |
 | :-: | :--- | :--- | :-: | :-: | :-: | :--- |
-| 1 | Baseline K-Means | $K=3$, untuned | 0.3298 | 1.0709 | 2199.32 | Tham chiếu cơ sở |
-| 2 | Hierarchical Clustering | $K=4$, linkage='ward' | 0.2976 | 1.0827 | 1808.38 | Độ phân tách kém hơn K-Means |
-| 3 | DBSCAN | $\varepsilon=0.6, min\_pts=10$ | 0.5254* | 0.4055* | 117.32 | Chỉ số ảo (gom 95% vào 1 cụm) |
-| 4 | Tuned K-Means | $K=2$ | 0.4224 | 0.9119 | 2614.55 | Tối ưu toán học nhưng quá thô |
-| **5** | **Tuned K-Means (CHỌN)** | **$K=4$** | **0.3385** | **0.9960** | **2090.80** | **Tối ưu nghiệp vụ bán lẻ (4 phân khúc rõ nét)** |
-| 6 | Tuned DBSCAN | $\varepsilon=0.3, min\_pts=5$ | 0.0242 | 1.1821 | 341.22 | Phân mảnh 13 cụm và 224 điểm nhiễu |
-| **7** | **Validation Test** | **$K=4$ trên 684 khách hàng** | **0.3193** | **1.0210** | **503.80** | **Độ ổn định cao, không bị Overfitting** |
+| 1 | Baseline K-Means | $K=3$, chưa tinh chỉnh | 0.3298 | 1.0709 | 2199.32 | Mốc tham chiếu |
+| 2 | Hierarchical Clustering | $K=4$, linkage='ward' | 0.2976 | 1.0827 | 1808.38 | Phân tách kém hơn K-Means |
+| 3 | DBSCAN | $\varepsilon=0.6$, $min\_pts=10$ | 0.5254* | 0.4055* | 117.32 | Chỉ số cao nhưng không đáng tin: 95% điểm nằm trong một cụm |
+| 4 | Tuned K-Means | $K=2$ | 0.4224 | 0.9119 | 2614.55 | Chỉ số tốt nhất nhưng chỉ có 2 nhóm, quá thô |
+| 5 | **Tuned K-Means (chọn)** | **$K=4$** | 0.3385 | 0.9960 | 2090.80 | Cho 4 phân khúc dễ diễn giải |
+| 6 | Tuned DBSCAN | $\varepsilon=0.3$, $min\_pts=5$ | 0.0242 | 1.1821 | 341.22 | Vỡ thành 13 cụm và 224 điểm nhiễu |
+| 7 | Validation | $K=4$, 684 khách hàng | 0.3193 | 1.0210 | 503.80 | Gần với kết quả trên Train, không thấy dấu hiệu overfit |
 
-> **Quyết định lựa chọn:** Nhóm thống nhất lựa chọn **Tuned K-Means ($K=4$)**. Mặc dù $K=2$ cho Silhouette Score cao hơn, nhưng $K=4$ là sự đánh đổi khoa học hợp lý để phân định 4 nhóm hành vi khách hàng phục vụ trực tiếp cho hoạt động kinh doanh.
+\* Hai chỉ số này cao vì gần như toàn bộ điểm bị gom vào một cụm, không phản ánh chất lượng phân cụm.
+
+Nhóm chọn Tuned K-Means với $K=4$. $K=2$ có Silhouette cao hơn (0.4224 so với 0.3385) nhưng chỉ tách được hai nhóm lớn, không đủ để làm chiến lược marketing riêng. $K=4$ cho bốn nhóm hành vi đủ khác nhau để áp dụng cách chăm sóc khác nhau. Trên tập Validation, Silhouette chỉ giảm nhẹ xuống 0.3193.
 
 ---
 
-## 👥 5. Định Danh 4 Phân Khúc & Chiến Lược Marketing Đề Xuất
+## 5. Bốn phân khúc khách hàng và chiến lược đề xuất
 
-| Cụm | Tên Phân Khúc (Segment Name) | Đặc trưng hành vi RFM | Tỷ lệ (%) | Chiến lược Marketing & Chăm sóc khách hàng |
+| Cụm | Phân khúc | Đặc trưng RFM | Tỷ lệ | Chiến lược đề xuất |
 | :-: | :--- | :--- | :-: | :--- |
-| **1** | **Champions (Khách VIP)** | $R$ rất thấp (gần đây), $F$ cao vượt trội, $M$ lớn nhất. | ~18 - 27% | **Tri ân & Giữ chân đặc quyền:** Cấp thẻ hội viên VIP, quà sinh nhật cá nhân hóa, quyền truy cập trải nghiệm sớm sản phẩm mới; không spam giảm giá đại trà. |
-| **3** | **Potential Loyalists (Tiềm năng)** | Mới mua gần đây, tần suất và chi tiêu ở mức khá. | ~21 - 25% | **Kích thích tần suất:** Gợi ý sản phẩm mua kèm (Cross-sell / Up-sell), cấp voucher giảm giá cho đơn hàng tiếp theo, mời gia nhập chương trình tích điểm. |
-| **0** | **At Risk (Nguy cơ rời bỏ)** | Trước đây mua tốt nhưng $R$ rất cao (> 180 ngày chưa quay lại). | ~24 - 32% | **Chiến dịch tái kích hoạt (Win-back):** Gửi email cá nhân hóa *"Chúng tôi nhớ bạn"*, tặng mã giảm giá đặc biệt để lôi kéo quay lại trước khi chuyển sang đối thủ. |
-| **2** | **Lost / Hibernating (Đã rời bỏ)** | Đã rất lâu không mua sắm, tần suất và giá trị đơn hàng rất thấp. | ~20 - 25% | **Tối ưu ngân sách:** Không dồn chi phí gửi SMS / Telesale riêng lẻ; chỉ tiếp cận thông qua quảng cáo mạng xã hội diện rộng với chi phí thấp. |
+| 1 | Champions (khách VIP) | $R$ rất thấp (mới mua), $F$ cao nhất, $M$ lớn nhất | ~18 - 27% | Giữ chân bằng đặc quyền: thẻ VIP, quà sinh nhật cá nhân hóa, được trải nghiệm sản phẩm mới sớm. Tránh giảm giá đại trà. |
+| 3 | Potential Loyalists (tiềm năng) | Mới mua gần đây, $F$ và $M$ ở mức khá | ~21 - 25% | Tăng tần suất mua: gợi ý sản phẩm mua kèm (cross-sell, up-sell), voucher cho đơn kế tiếp, mời tham gia tích điểm. |
+| 0 | At Risk (nguy cơ rời bỏ) | Trước đây mua tốt nhưng $R$ rất cao (hơn 180 ngày chưa quay lại) | ~24 - 32% | Kéo khách quay lại (win-back): gửi email cá nhân hóa kiểu "Chúng tôi nhớ bạn" kèm mã giảm giá riêng, trước khi khách chuyển sang đối thủ. |
+| 2 | Lost / Hibernating (đã rời bỏ) | Rất lâu không mua, $F$ và $M$ rất thấp | ~20 - 25% | Tiết kiệm ngân sách: không tốn SMS hay telesale cho từng người, chỉ tiếp cận qua quảng cáo mạng xã hội diện rộng với chi phí thấp. |
 
 ---
 
-## 📦 6. Danh Mục Sản Phẩm Bàn Giao
-1. `Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.docx` - Báo cáo khoa học chi tiết (20+ trang).
-2. `Slide_Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.pptx` - Slide báo cáo thuyết trình.
-3. `Notebook.ipynb` & `Notebook.html` - Toàn bộ mã nguồn thực nghiệm và trực quan hóa.
-4. `Experiment_Log_Detailed.xlsx` - Bảng nhật ký thực nghiệm chi tiết theo quy chuẩn.
-5. `figures/` - Thư mục chứa toàn bộ 10+ hình ảnh biểu đồ gốc độ phân giải cao.
-6. `saved_models/` & `predict.py` - Trọng số mô hình đã huấn luyện và script dự đoán sẵn sàng triển khai.
+## 6. Sản phẩm bàn giao
+
+1. `Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.docx`: báo cáo chi tiết (20+ trang).
+2. `Slide_Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.pptx`: slide thuyết trình.
+3. `Notebook.ipynb` và `Notebook.html`: mã nguồn thực nghiệm và trực quan hóa.
+4. `Experiment_Log_Detailed.xlsx`: nhật ký thực nghiệm chi tiết.
+5. `figures/`: hơn 10 biểu đồ gốc.
+6. `saved_models/` và `predict.py`: mô hình đã huấn luyện và script dự đoán.
