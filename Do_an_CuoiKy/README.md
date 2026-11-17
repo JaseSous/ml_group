@@ -27,21 +27,21 @@ Trong bán lẻ trực tuyến, hiểu được hành vi khách hàng giúp doan
 
 ---
 
-## 2. Cấu trúc thư mục
+## 2. Cấu trúc thư mục dự án
 
 ```text
 ml_group/
 │
 ├── data/                                 # Dữ liệu phục vụ đề tài
 │   ├── online_retail_cleaned.csv         # Dữ liệu giao dịch gốc ban đầu
-│   ├── data_clean.csv                    # Toàn bộ dữ liệu giao dịch đã làm sạch
-│   ├── train.csv / valid.csv / test.csv  # Dữ liệu giao dịch làm sạch phân chia Train/Val/Test
-│   ├── rfm_data.csv                      # Bảng chỉ số RFM toàn bộ khách hàng
-│   └── rfm_train.csv / rfm_val.csv / rfm_test.csv  # Bộ chỉ số RFM phân chia Train/Val/Test
+│   ├── data_clean.csv                    # Toàn bộ dữ liệu giao dịch đã làm sạch (398,971 dòng)
+│   ├── train.csv / valid.csv / test.csv  # Dữ liệu giao dịch sạch chia Train/Val/Test
+│   ├── rfm_data.csv                      # Bảng chỉ số RFM toàn bộ khách hàng (4,275 KH)
+│   └── rfm_train.csv / rfm_val.csv / rfm_test.csv  # Bộ chỉ số RFM chia Train/Val/Test
 │
-├── EDA/                                  # Khám phá Dữ liệu, Tiền xử lý & Rút trích RFM
-│   ├── EDA.ipynb                         # Notebook thực hiện EDA, tiền xử lý, phân chia và trích xuất RFM
-│   └── README.md                         # Tài liệu giải thích chi tiết quy trình chuẩn bị dữ liệu
+├── EDA/                                  # Khám phá Dữ liệu & Tiền xử lý Làm sạch
+│   ├── EDA.ipynb                         # Notebook phân tích EDA, làm sạch và chia train/val/test data_clean
+│   └── README.md                         # Tài liệu chi tiết quy trình chuẩn bị dữ liệu
 │
 ├── figures/                              # Hình và biểu đồ gốc của đồ án
 │   ├── fig00_ml_pipeline_architecture.png# Sơ đồ tổng quan pipeline
@@ -55,21 +55,24 @@ ml_group/
 │   ├── fig08_rfm_cluster_profiles.png    # So sánh R-F-M giữa 4 phân khúc
 │   └── fig09_gantt_progress_chart.png    # Tiến độ thực hiện đề tài
 │
-├── saved_models/                         # Mô hình đã huấn luyện
-│   ├── kmeans_k4_model.joblib            # Tuned K-Means (K=4)
-│   ├── scaler.joblib                     # StandardScaler fit trên tập Train
-│   └── cluster_mapping.json              # Ánh xạ cụm sang tên phân khúc
-│
-├── Source/                               # Mã nguồn chia module theo hướng đối tượng (OOP)
+├── Source/                               # Mã nguồn chia module và thực nghiệm (OOP)
 │   ├── models/                           # Các lớp mô hình phân cụm
-│   │   ├── base_model.py                 # Baseline K-Means
 │   │   ├── kmeans_model.py               # Tuned K-Means và hàm dò K
 │   │   ├── hierarchical_model.py         # Hierarchical Clustering (Ward linkage)
 │   │   └── dbscan_model.py               # DBSCAN (dựa trên mật độ)
+│   ├── notebook/                         # Thực nghiệm Baseline & Feature Engineering RFM
+│   │   ├── KMeans_baseline.ipynb         # Mô hình 1: K-Means Baseline (K=3, data clean)
+│   │   ├── Hierarchical_baseline.ipynb   # Mô hình 2: Hierarchical Baseline (K=4, Ward, data clean)
+│   │   ├── DBSCAN_baseline.ipynb         # Mô hình 3: DBSCAN Baseline (eps=0.5, min_samples=10, data clean)
+│   │   ├── note_baseline.ipynb           # Báo cáo tổng kết đối chuẩn & chọn model Baseline tối ưu
+│   │   ├── RFM.ipynb                     # Rút trích đặc trưng RFM, Skewness & chia tập RFM
+│   │   └── README.md                     # Hướng dẫn chi tiết thư mục notebook
 │   ├── logger.py                         # Ghi log thực nghiệm tự động
-│   └── init.py                           # Cấu hình đường dẫn thư mục
+│   └── init.py                           # Định nghĩa đường dẫn và cấu hình hệ thống
 │
-├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm
+├── note_baseline.ipynb                   # Notebook tổng kết đối chuẩn Baseline ở thư mục gốc
+├── note_baseline.md                      # Báo cáo văn bản tổng kết đối chuẩn Baseline
+├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm tổng thể
 ├── Notebook.html                         # Bản xuất HTML của Notebook
 ├── predict.py                            # Script dự đoán phân khúc độc lập (CLI)
 ├── Experiment_Log_Detailed.xlsx          # Nhật ký thực nghiệm chi tiết, có nhận xét
@@ -82,11 +85,33 @@ ml_group/
 
 ---
 
-## 3. Cài đặt và chạy lại dự án
+## 3. Quy trình thực nghiệm chuẩn của dự án
+
+Quy trình thực hiện được chia làm các giai đoạn rõ ràng và tuần tự:
+
+```mermaid
+flowchart LR
+    A["1. EDA & Làm sạch<br>(EDA/EDA.ipynb)"] --> B["2. Mô hình Baseline<br>(Source/notebook/*_baseline)"]
+    B --> C["3. Tổng kết Baseline<br>(note_baseline.ipynb)"]
+    C --> D["4. Rút trích RFM<br>(Source/notebook/RFM.ipynb)"]
+    D --> E["5. Tinh chỉnh Mô hình<br>(Notebook.ipynb)"]
+```
+
+1. **Giai đoạn 1 - Khám phá & Làm sạch:** Chạy `EDA/EDA.ipynb` để làm sạch dữ liệu, khử đơn hủy/hoàn, tính `TotalPrice` và xuất `data/data_clean.csv`, phân chia ra 3 tập giao dịch sạch: `data/train.csv`, `data/valid.csv`, `data/test.csv`.
+2. **Giai đoạn 2 - Xây dựng mốc đối chuẩn (Baseline):** Chạy 3 notebook trong `Source/notebook/`:
+   - `KMeans_baseline.ipynb`: K-Means ($K=3$) trên `Quantity`, `UnitPrice`, `TotalPrice`.
+   - `Hierarchical_baseline.ipynb`: Hierarchical ($K=4$, Ward) trên dữ liệu sạch cơ bản.
+   - `DBSCAN_baseline.ipynb`: DBSCAN (`eps=0.5`, `min_samples=10`) trên dữ liệu sạch cơ bản.
+3. **Giai đoạn 3 - Tổng kết và chọn Model Baseline tốt nhất:** Chạy `Source/notebook/note_baseline.ipynb` để so sánh định lượng và chọn **K-Means Clustering** làm mô hình cơ sở tối ưu.
+4. **Giai đoạn 4 - Rút trích đặc trưng RFM chuyên sâu:** Chạy `Source/notebook/RFM.ipynb` để tính $R, F, M$ theo `CustomerID`, xử lý độ lệch Skewness, chia Train/Val/Test và fit `StandardScaler`.
+5. **Giai đoạn 5 - Tinh chỉnh mô hình nâng cao & Dự đoán:** Chạy `Notebook.ipynb` để tìm $K$ tối ưu (Elbow, Silhouette), đánh giá phân khúc khách hàng và sử dụng `predict.py` để dự đoán khách hàng mới.
+
+---
+
+## 4. Cài đặt và chạy dự án
 
 ### Bước 1: Tạo môi trường ảo và cài thư viện
-
-Cần Python 3.10 trở lên. Mở Terminal hoặc PowerShell tại thư mục gốc của dự án:
+Cần Python 3.10 trở lên. Mở Terminal / PowerShell tại thư mục gốc:
 
 ```bash
 python -m venv venv
@@ -94,70 +119,74 @@ venv\Scripts\activate        # Windows; trên Linux/macOS dùng: source venv/bin
 pip install -r requirements.txt
 ```
 
-### Bước 2: Chạy Notebook
+### Bước 2: Chạy các Notebook thực nghiệm
+Mở trực tiếp từng notebook trên VS Code và chọn **Run All**:
+- `EDA/EDA.ipynb`
+- `Source/notebook/KMeans_baseline.ipynb`
+- `Source/notebook/Hierarchical_baseline.ipynb`
+- `Source/notebook/DBSCAN_baseline.ipynb`
+- `Source/notebook/note_baseline.ipynb`
+- `Source/notebook/RFM.ipynb`
+- `Notebook.ipynb`
 
-```bash
-jupyter notebook Notebook.ipynb
-```
-
-Chọn Run All Cells để chạy lại toàn bộ quy trình: EDA, tính RFM, huấn luyện 3 mô hình, tối ưu siêu tham số và vẽ PCA 2D.
-
-### Bước 3: Dự đoán phân khúc bằng `predict.py`
-
-Mô hình tốt nhất đã được lưu trong `saved_models/`, nên có thể phân khúc khách hàng mới mà không cần huấn luyện lại.
-
-Một khách hàng:
-
+### Bước 3: Dự đoán phân khúc khách hàng bằng `predict.py`
+Dự đoán một khách hàng độc lập qua CLI:
 ```bash
 python predict.py --recency 15 --frequency 8 --monetary 2500
 ```
-
-Kết quả in ra phân khúc tương ứng, ví dụ Potential Loyalists.
-
-Nhiều khách hàng từ file CSV:
-
+Dự đoán hàng loạt khách hàng từ file CSV:
 ```bash
 python predict.py --file data/rfm_test.csv --output data/predictions_test.csv
 ```
 
 ---
 
-## 4. Kết quả thực nghiệm
+## 5. Kết quả thực nghiệm
 
-Nhóm so sánh 3 thuật toán phân cụm là K-Means, Hierarchical Clustering (Agglomerative) và DBSCAN. Dữ liệu Train được chuẩn hóa bằng `StandardScaler`, độ ổn định được kiểm tra thêm trên tập Validation.
+### 5.1. Bảng số liệu đối chuẩn ở mức Baseline (Dữ liệu sạch cơ bản)
 
-| STT | Mô hình | Tham số | Silhouette | Davies-Bouldin | Calinski-Harabasz | Nhận xét |
+| Mô hình Baseline | Cấu hình | Train Silhouette | Validation Silhouette | Test Silhouette | Calinski-Harabasz (Train) | Tốc độ | Đánh giá |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **K-Means (chọn)** | **$K=3$, basic** | **0.6244** | **0.6175** | **0.6417** | **150,925.86** | **0.52s** | **Tốt nhất:** Tốc độ nhanh, ổn định tuyệt đối qua 3 tập, cụm cân đối. |
+| **Hierarchical** | $K=4$, ward | 0.6258 | 0.6346 | 0.6566 | 3,130.95 | 0.34s (5K) | Cây Dendrogram trực quan nhưng nghẽn bộ nhớ $O(N^2)$, phải lấy mẫu. |
+| **DBSCAN** | $eps=0.5, min=10$ | 0.6440\* | 0.6413\* | 0.6600\* | 963.99 | 0.50s (10K) | Điểm cao nhưng 98.2% điểm dồn vào cụm 0, mất ý nghĩa phân khúc. |
+
+*\*Lưu ý: Chỉ số DBSCAN tính trên các cụm hợp lệ, tách được 1.71% điểm nhiễu ngoại lai.*
+
+### 5.2. Bảng kết quả các mô hình tinh chỉnh trên bộ chỉ số RFM
+
+Khi áp dụng kỹ thuật rút trích đặc trưng RFM và tinh chỉnh tham số (Hyperparameter Tuning):
+
+| STT | Mô hình | Cấu hình | Silhouette | Davies-Bouldin | Calinski-Harabasz | Nhận xét thực tế |
 | :-: | :--- | :--- | :-: | :-: | :-: | :--- |
-| 1 | Baseline K-Means | $K=3$, chưa tinh chỉnh | 0.3298 | 1.0709 | 2199.32 | Mốc tham chiếu |
-| 2 | Hierarchical Clustering | $K=4$, linkage='ward' | 0.2976 | 1.0827 | 1808.38 | Phân tách kém hơn K-Means |
-| 3 | DBSCAN | $\varepsilon=0.6$, $min\_pts=10$ | 0.5254* | 0.4055* | 117.32 | Chỉ số cao nhưng không đáng tin: 95% điểm nằm trong một cụm |
-| 4 | Tuned K-Means | $K=2$ | 0.4224 | 0.9119 | 2614.55 | Chỉ số tốt nhất nhưng chỉ có 2 nhóm, quá thô |
-| 5 | **Tuned K-Means (chọn)** | **$K=4$** | 0.3385 | 0.9960 | 2090.80 | Cho 4 phân khúc dễ diễn giải |
-| 6 | Tuned DBSCAN | $\varepsilon=0.3$, $min\_pts=5$ | 0.0242 | 1.1821 | 341.22 | Vỡ thành 13 cụm và 224 điểm nhiễu |
-| 7 | Validation | $K=4$, 684 khách hàng | 0.3193 | 1.0210 | 503.80 | Gần với kết quả trên Train, không thấy dấu hiệu overfit |
-
-\* Hai chỉ số này cao vì gần như toàn bộ điểm bị gom vào một cụm, không phản ánh chất lượng phân cụm.
-
-Nhóm chọn Tuned K-Means với $K=4$. $K=2$ có Silhouette cao hơn (0.4224 so với 0.3385) nhưng chỉ tách được hai nhóm lớn, không đủ để làm chiến lược marketing riêng. $K=4$ cho bốn nhóm hành vi đủ khác nhau để áp dụng cách chăm sóc khác nhau. Trên tập Validation, Silhouette chỉ giảm nhẹ xuống 0.3193.
+| 1 | Baseline K-Means | $K=3$, RFM thô | 0.3298 | 1.0709 | 2,199.32 | Mốc tham chiếu RFM ban đầu |
+| 2 | Hierarchical | $K=4$, ward | 0.2976 | 1.0827 | 1,808.38 | Phân cụm thứ bậc tự nhiên |
+| 3 | DBSCAN | $\varepsilon=0.6$, $min=10$ | 0.5254\* | 0.4055\* | 117.32 | Chỉ số cao do 1 cụm chiếm đa số, nhạy cảm với $\epsilon$ |
+| 4 | Tuned K-Means | $K=2$ | 0.4224 | 0.9119 | 2,614.55 | Silhouette cao nhất nhưng chỉ có 2 nhóm, quá thô |
+| 5 | **Tuned K-Means (chọn)** | **$K=4$** | **0.3385** | **0.9960** | **2,090.80** | **Tối ưu nhất:** 4 phân khúc khách hàng rõ nét, dễ diễn giải marketing |
+| 6 | Tuned DBSCAN | $\varepsilon=0.3$, $min=5$ | 0.0242 | 1.1821 | 341.22 | Vỡ vụn thành 13 cụm nhỏ và 224 điểm nhiễu |
+| 7 | **Validation Set** | $K=4$, 684 KH | **0.3193** | **1.0210** | **503.80** | Rất gần với Train, độ suy giảm chỉ 5.6%, không có Overfitting |
 
 ---
 
-## 5. Bốn phân khúc khách hàng và chiến lược đề xuất
+## 6. Bốn phân khúc khách hàng và chiến lược kinh doanh đề xuất
 
-| Cụm | Phân khúc | Đặc trưng RFM | Tỷ lệ | Chiến lược đề xuất |
-| :-: | :--- | :--- | :-: | :--- |
-| 1 | Champions (khách VIP) | $R$ rất thấp (mới mua), $F$ cao nhất, $M$ lớn nhất | ~18 - 27% | Giữ chân bằng đặc quyền: thẻ VIP, quà sinh nhật cá nhân hóa, được trải nghiệm sản phẩm mới sớm. Tránh giảm giá đại trà. |
-| 3 | Potential Loyalists (tiềm năng) | Mới mua gần đây, $F$ và $M$ ở mức khá | ~21 - 25% | Tăng tần suất mua: gợi ý sản phẩm mua kèm (cross-sell, up-sell), voucher cho đơn kế tiếp, mời tham gia tích điểm. |
-| 0 | At Risk (nguy cơ rời bỏ) | Trước đây mua tốt nhưng $R$ rất cao (hơn 180 ngày chưa quay lại) | ~24 - 32% | Kéo khách quay lại (win-back): gửi email cá nhân hóa kiểu "Chúng tôi nhớ bạn" kèm mã giảm giá riêng, trước khi khách chuyển sang đối thủ. |
-| 2 | Lost / Hibernating (đã rời bỏ) | Rất lâu không mua, $F$ và $M$ rất thấp | ~20 - 25% | Tiết kiệm ngân sách: không tốn SMS hay telesale cho từng người, chỉ tiếp cận qua quảng cáo mạng xã hội diện rộng với chi phí thấp. |
+| Cụm | Phân khúc | Đặc trưng RFM | Tỷ lệ | Chiến lược Marketing & Chăm sóc đề xuất |
+| :-: | :--- | :--- | :---: | :--- |
+| **1** | **Champions (Khách VIP)** | $R$ rất thấp (mới mua), $F$ cao nhất, $M$ lớn nhất | ~18 - 27% | Giữ chân bằng đặc quyền: Thẻ VIP, quà sinh nhật cá nhân hóa, trải nghiệm sản phẩm mới sớm. Tuyệt đối tránh giảm giá đại trà làm mất giá trị thương hiệu. |
+| **3** | **Potential Loyalists (Tiềm năng)** | Mua gần đây, $F$ và $M$ ở mức khá | ~21 - 25% | Tăng tần suất mua: Gợi ý sản phẩm mua kèm (Cross-sell / Up-sell), tặng voucher cho đơn kế tiếp, mời tham gia chương trình khách hàng thân thiết. |
+| **0** | **At Risk (Nguy cơ rời bỏ)** | Trước đây mua tốt nhưng $R$ cao (> 180 ngày chưa quay lại) | ~24 - 32% | Kéo khách quay lại (Win-back): Gửi email cá nhân hóa "Chúng tôi nhớ bạn" kèm mã giảm giá riêng, khảo sát lý do trước khi khách chuyển sang đối thủ. |
+| **2** | **Lost / Hibernating (Rời bỏ)** | Rất lâu không mua, $F$ và $M$ rất thấp | ~20 - 25% | Tiết kiệm chi phí: Không tốn ngân sách telesale hay SMS trực tiếp, chỉ tiếp cận qua quảng cáo mạng xã hội diện rộng với chi phí tối thiểu. |
 
 ---
 
-## 6. Sản phẩm bàn giao
+## 7. Sản phẩm bàn giao
 
-1. `Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.docx`: báo cáo chi tiết (20+ trang).
-2. `Slide_Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.pptx`: slide thuyết trình.
-3. `Notebook.ipynb` và `Notebook.html`: mã nguồn thực nghiệm và trực quan hóa.
-4. `Experiment_Log_Detailed.xlsx`: nhật ký thực nghiệm chi tiết.
-5. `figures/`: hơn 10 biểu đồ gốc.
-6. `saved_models/` và `predict.py`: mô hình đã huấn luyện và script dự đoán.
+1. `Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.docx`: Báo cáo chi tiết đề tài (20+ trang).
+2. `Slide_Bao_Cao_Giua_Ky_Nhom05_OnlineRetailII.pptx`: Slide thuyết trình báo cáo giữa kỳ.
+3. `EDA/EDA.ipynb`: Toàn bộ phân tích khám phá và làm sạch dữ liệu giao dịch.
+4. `Source/notebook/`: 5 notebook thực nghiệm Baseline, đối chuẩn và rút trích RFM.
+5. `Notebook.ipynb` và `Notebook.html`: Toàn bộ quy trình mô hình hóa tinh chỉnh tổng thể.
+6. `Experiment_Log_Detailed.xlsx` & `Experiment_Log_Comparison.csv`: Nhật ký thực nghiệm khoa học.
+7. `figures/`: Hơn 10 biểu đồ trực quan hóa độ phân giải cao.
+8. `saved_models/` & `predict.py`: Mô hình K-Means tối ưu đã lưu và script dự đoán CLI.
