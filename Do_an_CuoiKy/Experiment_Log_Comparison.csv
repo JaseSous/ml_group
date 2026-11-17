@@ -1,10 +1,29 @@
 Timestamp,Model,Silhouette,Davies-Bouldin,Calinski-Harabasz
-2026-11-07 20:32:18,"Baseline: K-Means (K=3, Untuned)",0.3298,1.0709,2199.3157
-2026-11-07 20:32:19,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
-2026-11-07 20:32:19,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",0.5254,0.4055,117.3186
+ ph?n th�ng tin train b? chia sai d? li?u
+"2026-11-07 01:06:15,""Baseline: K-Means (K=3, Untuned)"",0.3286,1.0713,2751.479"
+"2026-11-07 01:06:15,""M� h�nh 2: Hierarchical (K=4, linkage='ward')"",0.2611,1.0428,2065.597"
+"2026-11-07 01:06:15,""M� h�nh 3: DBSCAN (eps=0.6, min_samples=10)"",N/A,N/A,N/A"
+"2026-11-07 17:56:59,""Baseline: K-Means (K=3, Untuned)"",0.3286,1.0713,2751.479"
+"2026-11-07 17:57:00,""M� h�nh 2: Hierarchical (K=4, linkage='ward')"",0.2611,1.0428,2065.597"
+"2026-11-07 17:57:00,""M� h�nh 3: DBSCAN (eps=0.6, min_samples=10)"",N/A,N/A,N/A"
+2026-11-07 18:48:47,M� h�nh 1: K-Means (Tuned K=2),0.4239,0.9078,3287.3052
+
+ph?n k?t qu? train khi chia d? li?u chu?n 
+"2026-11-07 20:32:18,""Baseline: K-Means (K=3, Untuned)"",0.3298,1.0709,2199.3157"
+"2026-11-07 20:32:19,""Mô hình 2: Hierarchical (K=4, linkage='ward')"",0.2976,1.0827,1808.3841"
+"2026-11-07 20:32:19,""Mô hình 3: DBSCAN (eps=0.6, min_samples=10)"",0.5254,0.4055,117.3186"
 2026-11-07 20:32:21,Mô hình 1: K-Means (Tuned K=2),0.4224,0.9119,2614.5543
 2026-11-07 20:32:21,Mô hình 1: K-Means (Tuned K=4),0.3385,0.996,2090.7987
-2026-11-07 20:32:21,"Mô hình 2: Hierarchical (K=2, linkage='ward')",0.424,0.8194,1872.7922
-2026-11-07 20:32:21,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
-2026-11-07 20:32:22,"Mô hình 3: DBSCAN (eps=0.3, min_samples=5)",0.0242,1.1821,341.2215
+"2026-11-07 20:32:21,""Mô hình 2: Hierarchical (K=2, linkage='ward')"",0.424,0.8194,1872.7922"
+"2026-11-07 20:32:21,""Mô hình 2: Hierarchical (K=4, linkage='ward')"",0.2976,1.0827,1808.3841"
+"2026-11-07 20:32:22,""Mô hình 3: DBSCAN (eps=0.3, min_samples=5)"",0.0242,1.1821,341.2215"
 2026-11-07 20:32:22,Validation Set: K-Means (K=4),0.3193,1.021,503.8025
+2026-11-17 18:12:48,"Baseline: K-Means (K=3, Untuned)",0.3298,1.0709,2199.3157
+2026-11-17 18:12:49,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
+2026-11-17 18:12:49,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",0.5254,0.4055,117.3186
+2026-11-17 18:25:36,"Baseline: K-Means (K=3, Untuned)",0.3298,1.0709,2199.3157
+2026-11-17 18:25:36,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
+2026-11-17 18:25:36,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",0.5254,0.4055,117.3186
+2026-11-17 18:27:43,"Baseline: K-Means (K=3, Untuned)",0.3298,1.0709,2199.3157
+2026-11-17 18:27:43,"Mô hình 2: Hierarchical (K=4, linkage='ward')",0.2976,1.0827,1808.3841
+2026-11-17 18:27:43,"Mô hình 3: DBSCAN (eps=0.6, min_samples=10)",0.5254,0.4055,117.3186

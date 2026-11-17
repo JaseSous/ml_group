@@ -32,11 +32,16 @@ Trong bán lẻ trực tuyến, hiểu được hành vi khách hàng giúp doan
 ```text
 ml_group/
 │
-├── data/                                 # Dữ liệu đã xử lý và kết quả
-│   ├── online_retail_cleaned.csv         # Dữ liệu giao dịch đã làm sạch
-│   ├── rfm_train.csv / rfm_val.csv / rfm_test.csv  # Bộ RFM chia Train/Val/Test
-│   ├── RFM_Train_Segmented_Final.xlsx    # Kết quả phân cụm tập Train (kèm CustomerID và phân khúc)
-│   └── RFM_Test_Segmented_Final.xlsx     # Kết quả phân cụm tập Test độc lập
+├── data/                                 # Dữ liệu phục vụ đề tài
+│   ├── online_retail_cleaned.csv         # Dữ liệu giao dịch gốc ban đầu
+│   ├── data_clean.csv                    # Toàn bộ dữ liệu giao dịch đã làm sạch
+│   ├── train.csv / valid.csv / test.csv  # Dữ liệu giao dịch làm sạch phân chia Train/Val/Test
+│   ├── rfm_data.csv                      # Bảng chỉ số RFM toàn bộ khách hàng
+│   └── rfm_train.csv / rfm_val.csv / rfm_test.csv  # Bộ chỉ số RFM phân chia Train/Val/Test
+│
+├── EDA/                                  # Khám phá Dữ liệu, Tiền xử lý & Rút trích RFM
+│   ├── EDA.ipynb                         # Notebook thực hiện EDA, tiền xử lý, phân chia và trích xuất RFM
+│   └── README.md                         # Tài liệu giải thích chi tiết quy trình chuẩn bị dữ liệu
 │
 ├── figures/                              # Hình và biểu đồ gốc của đồ án
 │   ├── fig00_ml_pipeline_architecture.png# Sơ đồ tổng quan pipeline
