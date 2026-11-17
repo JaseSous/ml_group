@@ -13,6 +13,7 @@ Source/notebook/
 ├── DBSCAN_baseline.ipynb         # Mô hình 3: DBSCAN Baseline (eps=0.5, min_samples=10, data clean)
 ├── note_baseline.ipynb           # Báo cáo tổng kết, đối chuẩn số liệu & chọn model Baseline tối ưu
 ├── RFM.ipynb                     # Rút trích đặc trưng RFM, Skewness & chia tập RFM Train/Val/Test
+├── KMeans_RFM.ipynb              # Mô hình K-Means nâng cao trên bộ chỉ số đặc trưng RFM (Tuned K=4)
 └── README.md                     # Tài liệu hướng dẫn chi tiết thư mục
 ```
 
@@ -25,6 +26,7 @@ Source/notebook/
 | 3 | [DBSCAN_baseline.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/DBSCAN_baseline.ipynb) | **Mô hình 3: DBSCAN Baseline:**<br>• Huấn luyện phân cụm mật độ `eps=0.5`, `min_samples=10` trên mẫu Train.<br>• Đồ thị $k$-distance khảo sát bán kính $\epsilon$.<br>• Tách lọc giao dịch ngoại lai (Noise); kiểm thử Validation và Test qua Core Samples.<br>• Phân tích thuộc tính chi phối & trực quan PCA 2D. | `data/train.csv`<br>`data/valid.csv`<br>`data/test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` |
 | 4 | [note_baseline.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/note_baseline.ipynb) | **Notebook tổng kết & Đối chuẩn Baseline:**<br>• Tổng hợp bảng so sánh số liệu đối chuẩn 3 mô hình trên Train/Val/Test.<br>• Biểu đồ cột nhóm so sánh Silhouette và Davies-Bouldin.<br>• So sánh tỷ lệ % đóng góp của thuộc tính giữa 3 mô hình.<br>• Luận cứ khoa học lựa chọn **K-Means** là mô hình tốt nhất ở mức Baseline. | Toàn bộ 3 mô hình Baseline | Quyết định chọn mô hình tối ưu |
 | 5 | [RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/RFM.ipynb) | **Rút trích đặc trưng RFM chuyên sâu:**<br>• Tính bộ 3 chỉ số Recency ($R$), Frequency ($F$), Monetary ($M$) theo từng `CustomerID`.<br>• Khám phá phân phối Skewness & biến đổi Log `np.log1p`.<br>• Phân chia Train 64% / Val 16% / Test 20% độc lập.<br>• Chuẩn hóa `StandardScaler` (fit duy nhất trên Train chống Data Leakage). | `data/data_clean.csv` | `data/rfm_data.csv`<br>`data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` |
+| 6 | [KMeans_RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/KMeans_RFM.ipynb) | **K-Means trên bộ đặc trưng RFM (Tuned K=4):**<br>• Tìm $K$ tối ưu qua phương pháp Elbow và Silhouette ($K \in [2, 10]$).<br>• Huấn luyện $K=4$ trên Train, kiểm định trên Validation và Test.<br>• Phân tích mức độ chi phối thuộc tính (ANOVA F-Score: $F$ 39.1%, $R$ 30.5%, $M$ 30.4%).<br>• Xác lập chân dung 4 phân khúc (VIP, Tiềm năng, Nguy cơ, Rời bỏ) và chiến lược Marketing. | `data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` |
 
 ---
 
