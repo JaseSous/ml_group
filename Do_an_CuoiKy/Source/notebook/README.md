@@ -13,7 +13,9 @@ Source/notebook/
 ├── DBSCAN_baseline.ipynb         # Mô hình 3: DBSCAN Baseline (eps=0.5, min_samples=10, data clean)
 ├── note_baseline.ipynb           # Báo cáo tổng kết, đối chuẩn số liệu & chọn model Baseline tối ưu
 ├── RFM.ipynb                     # Rút trích đặc trưng RFM, Skewness & chia tập RFM Train/Val/Test
-├── KMeans_RFM.ipynb              # Mô hình K-Means nâng cao trên bộ chỉ số đặc trưng RFM (Tuned K=4)
+├── KMeans_RFM.ipynb              # Mô hình K-Means nâng cao trên bộ đặc trưng RFM (Tuned K=4)
+├── Hierarchical_RFM.ipynb        # Mô hình Hierarchical nâng cao trên bộ đặc trưng RFM (Ward, K=4)
+├── DBSCAN_RFM.ipynb              # Mô hình DBSCAN trên bộ đặc trưng RFM (Tìm k & eps qua k-distance)
 └── README.md                     # Tài liệu hướng dẫn chi tiết thư mục
 ```
 
@@ -26,7 +28,9 @@ Source/notebook/
 | 3 | [DBSCAN_baseline.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/DBSCAN_baseline.ipynb) | **Mô hình 3: DBSCAN Baseline:**<br>• Huấn luyện phân cụm mật độ `eps=0.5`, `min_samples=10` trên mẫu Train.<br>• Đồ thị $k$-distance khảo sát bán kính $\epsilon$.<br>• Tách lọc giao dịch ngoại lai (Noise); kiểm thử Validation và Test qua Core Samples.<br>• Phân tích thuộc tính chi phối & trực quan PCA 2D. | `data/train.csv`<br>`data/valid.csv`<br>`data/test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` |
 | 4 | [note_baseline.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/note_baseline.ipynb) | **Notebook tổng kết & Đối chuẩn Baseline:**<br>• Tổng hợp bảng so sánh số liệu đối chuẩn 3 mô hình trên Train/Val/Test.<br>• Biểu đồ cột nhóm so sánh Silhouette và Davies-Bouldin.<br>• So sánh tỷ lệ % đóng góp của thuộc tính giữa 3 mô hình.<br>• Luận cứ khoa học lựa chọn **K-Means** là mô hình tốt nhất ở mức Baseline. | Toàn bộ 3 mô hình Baseline | Quyết định chọn mô hình tối ưu |
 | 5 | [RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/RFM.ipynb) | **Rút trích đặc trưng RFM chuyên sâu:**<br>• Tính bộ 3 chỉ số Recency ($R$), Frequency ($F$), Monetary ($M$) theo từng `CustomerID`.<br>• Khám phá phân phối Skewness & biến đổi Log `np.log1p`.<br>• Phân chia Train 64% / Val 16% / Test 20% độc lập.<br>• Chuẩn hóa `StandardScaler` (fit duy nhất trên Train chống Data Leakage). | `data/data_clean.csv` | `data/rfm_data.csv`<br>`data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` |
-| 6 | [KMeans_RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/KMeans_RFM.ipynb) | **K-Means trên bộ đặc trưng RFM (Tuned K=4):**<br>• Tìm $K$ tối ưu qua phương pháp Elbow và Silhouette ($K \in [2, 10]$).<br>• Huấn luyện $K=4$ trên Train, kiểm định trên Validation và Test.<br>• Phân tích mức độ chi phối thuộc tính (ANOVA F-Score: $F$ 39.1%, $R$ 30.5%, $M$ 30.4%).<br>• Xác lập chân dung 4 phân khúc (VIP, Tiềm năng, Nguy cơ, Rời bỏ) và chiến lược Marketing. | `data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` |
+| 6 | [KMeans_RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/KMeans_RFM.ipynb) | **K-Means trên bộ đặc trưng RFM (Tuned K=4):**<br>• Tìm $K$ tối ưu qua phương pháp Elbow và Silhouette ($K \in [2, 10]$).<br>• Huấn luyện $K=4$ trên Train, kiểm định trên Validation và Test.<br>• Phân tích mức độ chi phối thuộc tính (ANOVA F-Score: $F$ 39.1%, $R$ 30.5%, $M$ 30.4%).<br>• Xác lập chân dung 4 phân khúc (VIP, Tiềm năng, Nguy cơ, Rời bỏ) và chiến lược Marketing. | `data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` và `Experiment_Log_Detailed.xlsx` |
+| 7 | [Hierarchical_RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/Hierarchical_RFM.ipynb) | **Hierarchical trên bộ đặc trưng RFM (Ward, K=4):**<br>• Khảo sát cây phả hệ qua Dendrogram và các chỉ số Silhouette/DB trên $K \in [2, 8]$.<br>• Huấn luyện $K=4$ trên 100% dữ liệu RFM Train (không cần lấy mẫu).<br>• Đánh giá trên Validation và Test qua `NearestCentroid`.<br>• Phân tích ANOVA F-Score, chân dung 4 phân khúc và đối chiếu với K-Means. | `data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` và `Experiment_Log_Detailed.xlsx` |
+| 8 | [DBSCAN_RFM.ipynb](file:///c:/Users/Quân/Desktop/ml_group/Source/notebook/DBSCAN_RFM.ipynb) | **DBSCAN trên bộ đặc trưng RFM:**<br>• Tìm $k$ và bán kính $\epsilon$ tối ưu qua đồ thị $k$-distance (K-NN distances với $k \in \{4, 6, 10\}$).<br>• Huấn luyện DBSCAN với tham số tối ưu ($k=10, \epsilon=0.6$).<br>• Tách lọc khách hàng ngoại lai (Noise/Outliers gồm nhóm Siêu VIP và Dị biệt).<br>• Kiểm định trên Validation và Test qua Nearest Core Sample.<br>• Phân tích ANOVA F-Score, chân dung nhóm Noise và đối chiếu với K-Means. | `data/rfm_train.csv`<br>`data/rfm_val.csv`<br>`data/rfm_test.csv` | Ghi log vào `Experiment_Log_Comparison.csv` và `Experiment_Log_Detailed.xlsx` |
 
 ---
 
@@ -90,4 +94,7 @@ Trong mỗi notebook baseline, chúng tôi tích hợp kiểm định **ANOVA F-
    - `Source/notebook/Hierarchical_baseline.ipynb`
    - `Source/notebook/DBSCAN_baseline.ipynb`
 3. **Bước 3:** Mở `Source/notebook/note_baseline.ipynb` để xem báo cáo so sánh đối chuẩn tổng thể và kết luận chọn model Baseline tốt nhất.
-4. **Bước 4:** Mở `Source/notebook/RFM.ipynb` để tiến hành Feature Engineering bộ chỉ số RFM (chuẩn bị dữ liệu cho các mô hình tinh chỉnh Tuned Models).
+4. **Bước 4:** Mở `Source/notebook/RFM.ipynb` để tiến hành Feature Engineering bộ chỉ số RFM (chuẩn bị dữ liệu cho các mô hình phân cụm nâng cao).
+5. **Bước 5:** Mở `Source/notebook/KMeans_RFM.ipynb` để tìm $K$ tối ưu (Elbow, Silhouette) và huấn luyện mô hình K-Means nâng cao trên bộ chỉ số RFM.
+6. **Bước 6:** Mở `Source/notebook/Hierarchical_RFM.ipynb` để khảo sát Dendrogram, tìm số cụm tối ưu và huấn luyện phân cụm thứ bậc Agglomerative ($K=4$, Ward).
+7. **Bước 7:** Mở `Source/notebook/DBSCAN_RFM.ipynb` để tìm $k$ và $\epsilon$ tối ưu qua đồ thị $k$-distance, huấn luyện DBSCAN và phân tích nhóm khách hàng dị biệt/ngoại lai (Noise).

@@ -67,6 +67,8 @@ ml_group/
 │   │   ├── note_baseline.ipynb           # Báo cáo tổng kết đối chuẩn & chọn model Baseline tối ưu
 │   │   ├── RFM.ipynb                     # Rút trích đặc trưng RFM, Skewness & chia tập RFM
 │   │   ├── KMeans_RFM.ipynb              # Mô hình K-Means nâng cao trên bộ đặc trưng RFM (Tuned K=4)
+│   │   ├── Hierarchical_RFM.ipynb        # Mô hình Hierarchical trên bộ đặc trưng RFM (Ward, K=4)
+│   │   ├── DBSCAN_RFM.ipynb              # Mô hình DBSCAN trên bộ đặc trưng RFM (Tìm k & eps qua k-distance)
 │   │   └── README.md                     # Hướng dẫn chi tiết thư mục notebook
 │   ├── logger.py                         # Ghi log thực nghiệm tự động
 │   └── init.py                           # Định nghĩa đường dẫn và cấu hình hệ thống
