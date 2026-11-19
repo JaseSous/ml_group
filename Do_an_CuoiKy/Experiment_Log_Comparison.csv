@@ -1,50 +1,26 @@
-Timestamp,Model,Silhouette,Davies-Bouldin,Calinski-Harabasz,Parameters,Dataset,Data_Shape,Silhouette_Score,Davies_Bouldin_Index,Calinski_Harabasz_Index,Execution_Time_Seconds,Notes
- ph?n th�ng tin train b? chia sai d? li?u,,,,,,,,,,,,
-"2026-11-07 01:06:15,""Baseline: K-Means (K=3, Untuned)"",0.3286,1.0713,2751.479",,,,,,,,,,,,
-"2026-11-07 01:06:15,""M� h�nh 2: Hierarchical (K=4, linkage='ward')"",0.2611,1.0428,2065.597",,,,,,,,,,,,
-"2026-11-07 01:06:15,""M� h�nh 3: DBSCAN (eps=0.6, min_samples=10)"",N/A,N/A,N/A",,,,,,,,,,,,
-"2026-11-07 17:56:59,""Baseline: K-Means (K=3, Untuned)"",0.3286,1.0713,2751.479",,,,,,,,,,,,
-"2026-11-07 17:57:00,""M� h�nh 2: Hierarchical (K=4, linkage='ward')"",0.2611,1.0428,2065.597",,,,,,,,,,,,
-"2026-11-07 17:57:00,""M� h�nh 3: DBSCAN (eps=0.6, min_samples=10)"",N/A,N/A,N/A",,,,,,,,,,,,
-2026-11-07 18:48:47,M� h�nh 1: K-Means (Tuned K=2),0.4239,0.9078,3287.3052,,,,,,,,
-ph?n k?t qu? train khi chia d? li?u chu?n (bản chua chuẩn lại cấu trúc file),,,,,,,,,,,,
-"2026-11-07 20:32:18,""Baseline: K-Means (K=3, Untuned)"",0.3298,1.0709,2199.3157",,,,,,,,,,,,
-"2026-11-07 20:32:19,""Mô hình 2: Hierarchical (K=4, linkage='ward')"",0.2976,1.0827,1808.3841",,,,,,,,,,,,
-"2026-11-07 20:32:19,""Mô hình 3: DBSCAN (eps=0.6, min_samples=10)"",0.5254,0.4055,117.3186",,,,,,,,,,,,
-2026-11-07 20:32:21,Mô hình 1: K-Means (Tuned K=2),0.4224,0.9119,2614.5543,,,,,,,,
-2026-11-07 20:32:21,Mô hình 1: K-Means (Tuned K=4),0.3385,0.996,2090.7987,,,,,,,,
-"2026-11-07 20:32:21,""Mô hình 2: Hierarchical (K=2, linkage='ward')"",0.424,0.8194,1872.7922",,,,,,,,,,,,
-"2026-11-07 20:32:21,""Mô hình 2: Hierarchical (K=4, linkage='ward')"",0.2976,1.0827,1808.3841",,,,,,,,,,,,
-"2026-11-07 20:32:22,""Mô hình 3: DBSCAN (eps=0.3, min_samples=5)"",0.0242,1.1821,341.2215",,,,,,,,,,,,
-2026-11-07 20:32:22,Validation Set: K-Means (K=4),0.3193,1.021,503.8025,,,,,,,,
-Số liệu thông kê lại sau khi cáu trúc lại file ,,,,,,,,,,,,
-2026-11-17 20:32:09,"K-Means Baseline (K=3, Data Clean) - Train",0.6244,0.6626,150925.86,,,,,,,,
-2026-11-17 20:32:09,"K-Means Baseline (K=3, Data Clean) - Validation",0.6175,0.6215,46703.92,,,,,,,,
-2026-11-17 20:32:09,"K-Means Baseline (K=3, Data Clean) - Test",0.6417,0.604,46310.08,,,,,,,,
-2026-11-17 20:39:35,"K-Means Baseline (K=3, Data Clean) - Train",0.6244,0.6626,150925.86,,,,,,,,
-2026-11-17 20:39:35,"K-Means Baseline (K=3, Data Clean) - Validation",0.6175,0.6215,46703.92,,,,,,,,
-2026-11-17 20:39:35,"K-Means Baseline (K=3, Data Clean) - Test",0.6417,0.604,46310.08,,,,,,,,
-2026-11-17 20:47:49,"Hierarchical Baseline (K=4, Ward, Data Clean) - Train",0.6258,0.6843,3130.95,,,,,,,,
-2026-11-17 20:47:49,"Hierarchical Baseline (K=4, Ward, Data Clean) - Validation",0.6154,0.6215,2681.96,,,,,,,,
-2026-11-17 20:47:49,"Hierarchical Baseline (K=4, Ward, Data Clean) - Test",0.6398,0.6005,2355.78,,,,,,,,
-2026-11-17 20:49:15,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean) - Train",0.644,0.3666,963.99,,,,,,,,
-2026-11-17 20:49:15,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean) - Validation",0.6353,0.3173,297.9,,,,,,,,
-2026-11-17 20:49:15,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean) - Test",0.6568,0.3796,438.36,,,,,,,,
-2026-11-17 21:32:15,"Tuned K-Means (K=4, RFM) - Train",0.3385,0.996,2090.8,,,,,,,,
-2026-11-17 21:32:15,"Tuned K-Means (K=4, RFM) - Validation",0.3193,1.021,503.8,,,,,,,,
-2026-11-17 21:32:15,"Tuned K-Means (K=4, RFM) - Test",0.3253,1.0248,629.08,,,,,,,,
-2026-11-18 23:52:16,"DBSCAN (eps=0.6, k=10, RFM) - Train",0.5254,0.4055,117.32,,,,,,,,
-2026-11-18 23:52:16,"DBSCAN (eps=0.6, k=10, RFM) - Validation",0.5274,0.3382,17.46,,,,,,,,
-2026-11-18 23:52:16,"DBSCAN (eps=0.6, k=10, RFM) - Test",0.5298,0.4017,25.43,,,,,,,,
-2026-11-18 23:58:45,"DBSCAN (eps=0.6, k=10, RFM) - Train",0.5254,0.4055,117.32,,,,,,,,
-2026-11-18 23:58:45,"DBSCAN (eps=0.6, k=10, RFM) - Validation",0.5274,0.3382,17.46,,,,,,,,
-2026-11-18 23:58:45,"DBSCAN (eps=0.6, k=10, RFM) - Test",0.5298,0.4017,25.43,,,,,,,,
-2026-11-19 00:55:44,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Train (64%),"2736 samples, 3 features",0.2976,1.0827,1808.38,0.1456,Huấn luyện trên 100% dữ liệu RFM Train; K=4 phân khúc có cấu trúc cây phả hệ rõ ràng.
-2026-11-19 00:55:44,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Validation (16%),"684 samples, 3 features",0.3093,1.0281,485.68,0.1456,Đánh giá qua NearestCentroid; kiểm chứng tính ổn định phân cụm trên dữ liệu mới.
-2026-11-19 00:55:44,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Test (20%),"855 samples, 3 features",0.321,1.0485,621.1,0.1456,Đánh giá qua NearestCentroid; Silhouette đạt 0.3210 khẳng định khả năng tổng quát hóa xuất sắc.
-2026-11-19 00:59:07,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Train (64%),"2736 samples, 3 features",0.2976,1.0827,1808.38,0.1352,Huấn luyện trên 100% dữ liệu RFM Train; K=4 phân khúc có cấu trúc cây phả hệ rõ ràng.
-2026-11-19 00:59:07,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Validation (16%),"684 samples, 3 features",0.3093,1.0281,485.68,0.1352,Đánh giá qua NearestCentroid; kiểm chứng tính ổn định phân cụm trên dữ liệu mới.
-2026-11-19 00:59:07,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Test (20%),"855 samples, 3 features",0.321,1.0485,621.1,0.1352,Đánh giá qua NearestCentroid; Silhouette đạt 0.3210 khẳng định khả năng tổng quát hóa xuất sắc.
-2026-11-19 01:02:00,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Train (64%),"2736 samples, 3 features",0.2976,1.0827,1808.38,0.1514,Huấn luyện trên 100% dữ liệu RFM Train; K=4 phân khúc có cấu trúc cây phả hệ rõ ràng.
-2026-11-19 01:02:00,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Validation (16%),"684 samples, 3 features",0.3093,1.0281,485.68,0.1514,Đánh giá qua NearestCentroid; kiểm chứng tính ổn định phân cụm trên dữ liệu mới.
-2026-11-19 01:02:00,"Hierarchical Clustering (Agglomerative, Ward, RFM)",,,,"K=4, linkage='ward', features=['R','F','M']",Test (20%),"855 samples, 3 features",0.321,1.0485,621.1,0.1514,Đánh giá qua NearestCentroid; Silhouette đạt 0.3210 khẳng định khả năng tổng quát hóa xuất sắc.
+﻿STT,Thời gian,Mô hình / Thuật toán,Siêu tham số,Tập dữ liệu,Quy mô dữ liệu,Silhouette Score,Davies-Bouldin,Calinski-Harabasz,Thời gian chạy,Trạng thái,Ghi chú / Nhận xét
+1,07/11/2026 12:53,Baseline K-Means (Chưa tinh chỉnh),"K=3, init=k-means++, n_init=10, seed=42",Train (64%),"2,736 KH, 3 đặc trưng",0.3298,1.0709,2199.32,~0.04s,Mốc tham chiếu,"Mô hình cơ sở trên RFM thô. Gom cụm ở mức khá, nhưng K=3 chưa đủ tách các nhóm kinh doanh."
+2,07/11/2026 14:15,Hierarchical Clustering (Agglomerative),"K=4, linkage=ward, metric=euclidean",Train (64%),"2,736 KH, 3 đặc trưng",0.2976,1.0827,1808.38,~0.11s,Khảo sát,Phân cụm thứ bậc từ dưới lên. Cấu trúc cây Dendrogram cho thấy K=4 là điểm chia tự nhiên.
+3,07/11/2026 14:30,DBSCAN (Cấu hình ban đầu),"eps=0.6, min_samples=10, metric=euclidean",Train (64%),"2,736 KH, 3 đặc trưng",0.5254,0.4055,117.32,~0.08s,Lệch cụm,"Chỉ số nội tại cao do loại trừ điểm nhiễu, nhưng hơn 98% khách bị dồn vào Cụm 0."
+4,07/11/2026 16:45,Tuned K-Means (K=2),"K=2, init=k-means++, n_init=10, seed=42",Train (64%),"2,736 KH, 3 đặc trưng",0.4224,0.9119,2614.55,~0.03s,Không chọn,"Silhouette cao nhất toán học, nhưng K=2 chỉ tách nhóm mua/không mua, thiếu chiều sâu ứng dụng."
+5,07/11/2026 17:15,Tuned K-Means (K=4),"K=4, init=k-means++, n_init=10, seed=42",Train (64%),"2,736 KH, 3 đặc trưng",0.3385,0.996,2090.8,~0.04s,Mô hình được chọn,"Chia được 4 phân khúc chuẩn bán lẻ: Champions, Potential Loyalists, At Risk, Lost."
+6,07/11/2026 17:45,Tuned Hierarchical (K=2),"K=2, linkage=ward",Train (64%),"2,736 KH, 3 đặc trưng",0.424,0.8194,1872.79,~0.10s,Đối chứng,"Chỉ số nội tại tốt nhưng phân cụm quá thô (2 nhóm), không đáp ứng mục tiêu phân khúc."
+7,07/11/2026 18:20,Tuned DBSCAN (eps=0.3),"eps=0.3, min_samples=5",Train (64%),"2,736 KH, 3 đặc trưng",0.0242,1.1821,341.22,~0.06s,Không phù hợp,Tạo ra 13 cụm nhỏ và 224 điểm nhiễu. Bán kính eps=0.3 quá hẹp trong không gian RFM.
+8,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Train (64%),"251,501 dòng, 3 đặc trưng",0.6244,0.6626,150925.86,~0.52s,Thành công (Train),"Baseline giao dịch. Phân cụm trên Quantity, UnitPrice, TotalPrice. Cụm bị kéo theo độ lớn đơn hàng."
+9,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Validation (16%),"72,685 dòng, 3 đặc trưng",0.6175,0.6215,46703.92,~0.15s,Ổn định (Val),"Độ suy giảm Silhouette chỉ 1.1% so với Train, chứng minh tính tổng quát hóa tốt."
+10,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Test (20%),"74,785 dòng, 3 đặc trưng",0.6417,0.604,46310.08,~0.15s,Mô hình Baseline tốt nhất,Chiến thắng ở cấp độ Baseline nhờ tốc độ xử lý vượt trội và phân vùng ổn định trên tập Test.
+11,17/11/2026 20:47,"Hierarchical Baseline (K=4, Ward, Data Clean)","K=4, linkage=ward, metric=euclidean",Train (64%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.6258,0.6843,3130.95,~0.34s,Khảo sát (Mẫu),"Bắt buộc lấy mẫu 5,000 dòng để tránh tràn bộ nhớ O(N^2) trên 251K dòng giao dịch."
+12,17/11/2026 20:47,"Hierarchical Baseline (K=4, Ward, Data Clean)","K=4, linkage=ward, NearestCentroid predict",Validation (16%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.6154,0.6215,2681.96,~0.18s,Ổn định (Val),Gán nhãn bằng NearestCentroid cho kết quả nhất quán với cây phân cấp đã học.
+13,17/11/2026 20:47,"Hierarchical Baseline (K=4, Ward, Data Clean)","K=4, linkage=ward, NearestCentroid predict",Test (20%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.6398,0.6005,2355.78,~0.18s,Khả thi (Test),"Chỉ số duy trì tốt trên Test, tuy nhiên hạn chế lớn là không thể huấn luyện trên toàn bộ 251K dòng."
+14,17/11/2026 20:49,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean)","eps=0.5, min_samples=10, metric=euclidean",Train (64%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.644,0.3666,963.99,~0.50s,Khảo sát (Mẫu),Tách được 1.71% giao dịch ngoại lai. Các giao dịch hợp lệ đạt độ gắn kết cao.
+15,17/11/2026 20:49,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean)","eps=0.5, min_samples=10, Nearest Core predict",Validation (16%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.6353,0.3173,297.9,~0.20s,Ổn định (Val),"Tỷ lệ nhiễu 1.94%, mô hình duy trì chỉ số phân cụm tương đương tập Train."
+16,17/11/2026 20:49,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean)","eps=0.5, min_samples=10, Nearest Core predict",Test (20%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.6568,0.3796,438.36,~0.20s,Khả thi (Test),"Tỷ lệ nhiễu 0.94%, ranh giới mật độ nhận diện tốt các giao dịch ngoại vi."
+17,17/11/2026 21:49,"Tuned K-Means (K=4, RFM)","K=4, init=k-means++, n_init=10, seed=42",Train (64%),"2,736 KH, 3 đặc trưng RFM",0.3385,0.996,2090.8,~0.04s,Thành công (Train),Huấn luyện trên RFM đã biến đổi log(x+1) và chuẩn hóa StandardScaler. 4 cụm cân đối (18% - 33%).
+18,17/11/2026 21:49,"Tuned K-Means (K=4, RFM)","K=4, init=k-means++, n_init=10, seed=42",Validation (16%),"684 KH, 3 đặc trưng RFM",0.3193,1.021,503.8,~0.01s,Thành công (Kiểm định),"Độ suy giảm Silhouette chỉ 5.6% so với Train, mô hình ổn định cao, không Overfit."
+19,17/11/2026 21:49,"Tuned K-Means (K=4, RFM)","K=4, init=k-means++, n_init=10, seed=42",Test (20%),"855 KH, 3 đặc trưng RFM",0.3253,1.0248,629.08,~0.01s,Mô hình RFM tốt nhất,Tổng quát hóa xuất sắc trên tập Test độc lập. Được chọn làm mô hình triển khai chính thức.
+20,18/11/2026 23:52,"DBSCAN (eps=0.6, k=10, RFM)","eps=0.6, min_samples=10, metric=euclidean",Train (64%),"2,736 KH, 3 đặc trưng RFM",0.5254,0.4055,117.32,~0.08s,Thành công (Train),"Tìm được qua đồ thị k-distance (k=10, eps=0.6). Tách được 1.57% điểm ngoại lai (nhóm Siêu VIP/Cá voi)."
+21,18/11/2026 23:52,"DBSCAN (eps=0.6, k=10, RFM)","eps=0.6, min_samples=10, Nearest Core predict",Validation (16%),"684 KH, 3 đặc trưng RFM",0.5274,0.3382,17.46,~0.03s,Thành công (Kiểm định),"Gán nhãn qua Core Samples, tỷ lệ nhiễu 1.46%, Silhouette đạt 0.5274, chỉ số ổn định."
+22,18/11/2026 23:52,"DBSCAN (eps=0.6, k=10, RFM)","eps=0.6, min_samples=10, Nearest Core predict",Test (20%),"855 KH, 3 đặc trưng RFM",0.5298,0.4017,25.43,~0.03s,Bộ lọc ngoại lai tốt nhất,Khả năng phát hiện ngoại lai bền vững (1.64% trên Test). Phù hợp làm tầng lọc Anomaly.
+23,19/11/2026 01:00,"Hierarchical Clustering (Agglomerative, Ward, RFM)","K=4, linkage='ward', metric=euclidean",Train (64%),"2,736 KH, 3 đặc trưng RFM",0.2976,1.0827,1808.38,~0.11s,Thành công (Train),Huấn luyện trên 100% dữ liệu RFM Train không cần lấy mẫu. 4 cụm tương đồng cao với K-Means.
+24,19/11/2026 01:00,"Hierarchical Clustering (Agglomerative, Ward, RFM)","K=4, linkage='ward', NearestCentroid predict",Validation (16%),"684 KH, 3 đặc trưng RFM",0.3093,1.0281,485.68,~0.02s,Thành công (Kiểm định),Đánh giá qua NearestCentroid; kiểm chứng tính ổn định phân cụm trên dữ liệu mới.
+25,19/11/2026 01:00,"Hierarchical Clustering (Agglomerative, Ward, RFM)","K=4, linkage='ward', NearestCentroid predict",Test (20%),"855 KH, 3 đặc trưng RFM",0.321,1.0485,621.1,~0.02s,Thành công (Kiểm thử),Silhouette đạt 0.3210 trên Test khẳng định khả năng tổng quát hóa xuất sắc.

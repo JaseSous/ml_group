@@ -66,9 +66,11 @@ ml_group/
 │   │   ├── DBSCAN_baseline.ipynb         # Mô hình 3: DBSCAN Baseline (eps=0.5, min_samples=10, data clean)
 │   │   ├── note_baseline.ipynb           # Báo cáo tổng kết đối chuẩn & chọn model Baseline tối ưu
 │   │   ├── RFM.ipynb                     # Rút trích đặc trưng RFM, Skewness & chia tập RFM
-│   │   ├── KMeans_RFM.ipynb              # Mô hình K-Means nâng cao trên bộ đặc trưng RFM (Tuned K=4)
+│   │   ├── KMeans_RFM.ipynb              # Mô hình K-Means cơ sở trên bộ đặc trưng RFM (K=4)
+│   │   ├── KMeans_RFM_Tuned.ipynb        # Tinh chỉnh siêu tham số K-Means RFM (Phân tích tham số & kịch bản)
 │   │   ├── Hierarchical_RFM.ipynb        # Mô hình Hierarchical trên bộ đặc trưng RFM (Ward, K=4)
 │   │   ├── DBSCAN_RFM.ipynb              # Mô hình DBSCAN trên bộ đặc trưng RFM (Tìm k & eps qua k-distance)
+│   │   ├── DBSCAN_RFM_Tuned.ipynb        # Tinh chỉnh siêu tham số DBSCAN RFM (7 kịch bản, tối ưu eps & min_samples)
 │   │   ├── note_RFM.ipynb                # Báo cáo tổng kết đối chuẩn 3 mô hình RFM & so sánh với Baseline
 │   │   └── README.md                     # Hướng dẫn chi tiết thư mục notebook
 │   ├── logger.py                         # Ghi log thực nghiệm tự động
