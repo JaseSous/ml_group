@@ -74,6 +74,8 @@ ml_group/
 │   │   ├── DBSCAN_RFM_Tuned.ipynb        # Tinh chỉnh siêu tham số DBSCAN RFM (7 kịch bản, tối ưu eps & min_samples)
 │   │   ├── note_RFM.ipynb                # Báo cáo tổng kết đối chuẩn 3 mô hình RFM & so sánh với Baseline
 │   │   ├── note_RFM_Tuned.ipynb          # Báo cáo tổng kết đối chuẩn Version 3 (Tuned RFM) & kiến trúc Hybrid
+│   │   ├── KMeans_DBSCAN_Tuned_RFM.ipynb # Mô hình lai 2 tầng: K-Means phân cụm vĩ mô & DBSCAN bóc tách dị biệt
+│   │   ├── note_final.ipynb              # Báo cáo tổng kết toàn diện nghiệm thu đề tài cho Giảng viên
 │   │   └── README.md                     # Hướng dẫn chi tiết thư mục notebook
 │   ├── logger.py                         # Ghi log thực nghiệm tự động
 │   └── init.py                           # Định nghĩa đường dẫn và cấu hình hệ thống
@@ -81,8 +83,10 @@ ml_group/
 ├── note_baseline.ipynb                   # Notebook tổng kết đối chuẩn Baseline ở thư mục gốc
 ├── note_RFM.ipynb                        # Notebook tổng kết đối chuẩn RFM ở thư mục gốc
 ├── note_RFM_Tuned.ipynb                  # Notebook tổng kết đối chuẩn Version 3 (Tuned RFM) ở thư mục gốc
+├── note_final.ipynb                      # Notebook tổng kết toàn diện nghiệm thu đề tài cho Giảng viên
 ├── note_RFM.md                           # Báo cáo văn bản tổng kết đối chuẩn RFM & so sánh Baseline
 ├── note_RFM_Tuned.md                     # Báo cáo văn bản tổng kết đối chuẩn Version 3 (Tuned RFM) & kiến trúc Hybrid
+├── note_final.md                         # Báo cáo văn bản tổng kết toàn diện nghiệm thu đề tài cho Giảng viên
 ├── note_baseline.md                      # Báo cáo văn bản tổng kết đối chuẩn Baseline
 ├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm tổng thể
 ├── Notebook.html                         # Bản xuất HTML của Notebook
