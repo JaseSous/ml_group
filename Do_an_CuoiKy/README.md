@@ -69,16 +69,20 @@ ml_group/
 │   │   ├── KMeans_RFM.ipynb              # Mô hình K-Means cơ sở trên bộ đặc trưng RFM (K=4)
 │   │   ├── KMeans_RFM_Tuned.ipynb        # Tinh chỉnh siêu tham số K-Means RFM (Phân tích tham số & kịch bản)
 │   │   ├── Hierarchical_RFM.ipynb        # Mô hình Hierarchical trên bộ đặc trưng RFM (Ward, K=4)
+│   │   ├── Hierarchical_RFM_Tuned.ipynb  # Tinh chỉnh siêu tham số Hierarchical RFM (7 kịch bản, tối ưu Ward & K=4)
 │   │   ├── DBSCAN_RFM.ipynb              # Mô hình DBSCAN trên bộ đặc trưng RFM (Tìm k & eps qua k-distance)
 │   │   ├── DBSCAN_RFM_Tuned.ipynb        # Tinh chỉnh siêu tham số DBSCAN RFM (7 kịch bản, tối ưu eps & min_samples)
 │   │   ├── note_RFM.ipynb                # Báo cáo tổng kết đối chuẩn 3 mô hình RFM & so sánh với Baseline
+│   │   ├── note_RFM_Tuned.ipynb          # Báo cáo tổng kết đối chuẩn Version 3 (Tuned RFM) & kiến trúc Hybrid
 │   │   └── README.md                     # Hướng dẫn chi tiết thư mục notebook
 │   ├── logger.py                         # Ghi log thực nghiệm tự động
 │   └── init.py                           # Định nghĩa đường dẫn và cấu hình hệ thống
 │
 ├── note_baseline.ipynb                   # Notebook tổng kết đối chuẩn Baseline ở thư mục gốc
 ├── note_RFM.ipynb                        # Notebook tổng kết đối chuẩn RFM ở thư mục gốc
+├── note_RFM_Tuned.ipynb                  # Notebook tổng kết đối chuẩn Version 3 (Tuned RFM) ở thư mục gốc
 ├── note_RFM.md                           # Báo cáo văn bản tổng kết đối chuẩn RFM & so sánh Baseline
+├── note_RFM_Tuned.md                     # Báo cáo văn bản tổng kết đối chuẩn Version 3 (Tuned RFM) & kiến trúc Hybrid
 ├── note_baseline.md                      # Báo cáo văn bản tổng kết đối chuẩn Baseline
 ├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm tổng thể
 ├── Notebook.html                         # Bản xuất HTML của Notebook
