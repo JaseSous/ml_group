@@ -87,6 +87,7 @@ ml_group/
 ├── note_RFM.md                           # Báo cáo văn bản tổng kết đối chuẩn RFM & so sánh Baseline
 ├── note_RFM_Tuned.md                     # Báo cáo văn bản tổng kết đối chuẩn Version 3 (Tuned RFM) & kiến trúc Hybrid
 ├── note_final.md                         # Báo cáo văn bản tổng kết toàn diện nghiệm thu đề tài cho Giảng viên
+├── PROJECT_STORY.md                      # Toàn bộ câu chuyện dự án (Storyline) dùng để viết báo cáo và slide
 ├── note_baseline.md                      # Báo cáo văn bản tổng kết đối chuẩn Baseline
 ├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm tổng thể
 ├── Notebook.html                         # Bản xuất HTML của Notebook
