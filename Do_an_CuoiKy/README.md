@@ -92,6 +92,7 @@ ml_group/
 ├── Notebook.ipynb                        # Notebook chạy toàn bộ quy trình thực nghiệm tổng thể
 ├── Notebook.html                         # Bản xuất HTML của Notebook
 ├── predict.py                            # Script dự đoán phân khúc độc lập (CLI)
+├── Lịch sử làm việc ML.xlsx               # Nhật ký phân công và lịch sử làm việc chia đều 4 thành viên
 ├── Experiment_Log_Detailed.xlsx          # Nhật ký thực nghiệm chi tiết, có nhận xét
 ├── Experiment_Log_Comparison.csv         # Nhật ký thực nghiệm dạng CSV
 ├── requirements.txt                      # Thư viện phụ thuộc
