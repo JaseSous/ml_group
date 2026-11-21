@@ -1,0 +1,43 @@
+{
+  "experiment_id": "EXP01",
+  "experiment_name": "Tuned K-Means Clustering on RFM Features (K=4)",
+  "date_executed": "2026-11-17 21:49:00",
+  "algorithm": "KMeans",
+  "hyperparameters": {
+    "n_clusters": 4,
+    "init": "k-means++",
+    "n_init": 10,
+    "max_iter": 300,
+    "random_state": 42
+  },
+  "preprocessing": {
+    "features": ["Recency", "Frequency", "Monetary"],
+    "transformation": "Log1p Transformation (log(x + 1))",
+    "scaling": "StandardScaler"
+  },
+  "metrics": {
+    "train": {
+      "sample_count": 2736,
+      "silhouette_score": 0.3385,
+      "davies_bouldin_index": 0.996,
+      "calinski_harabasz_score": 2090.8
+    },
+    "validation": {
+      "sample_count": 684,
+      "silhouette_score": 0.3193,
+      "davies_bouldin_index": 1.021,
+      "calinski_harabasz_score": 503.8
+    },
+    "test": {
+      "sample_count": 855,
+      "silhouette_score": 0.3253,
+      "davies_bouldin_index": 1.0248,
+      "calinski_harabasz_score": 629.08
+    }
+  },
+  "evaluation_verdict": {
+    "status": "Mô hình được chọn chính thức (Official Best Model)",
+    "generalization": "Độ suy giảm Silhouette trên Val chỉ 5.6% và đạt 0.3253 trên Test độc lập, chứng minh mô hình tổng quát hóa cực kỳ ổn định, không bị Overfit.",
+    "business_actionability": "4 phân khúc rõ ràng phù hợp nghiệp vụ bán lẻ: Champions, Potential Loyalists, At Risk, Lost."
+  }
+}

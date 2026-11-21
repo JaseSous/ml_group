@@ -1,0 +1,4 @@
+Split,Samples,Features,Silhouette_Score,Davies_Bouldin,Calinski_Harabasz,Status
+Train,2736,"R, F, M (Log + Scaled)",0.3385,0.9960,2090.80,Thành công
+Validation,684,"R, F, M (Log + Scaled)",0.3193,1.0210,503.80,Ổn định (Drop 5.6%)
+Test,855,"R, F, M (Log + Scaled)",0.3253,1.0248,629.08,Chiến thắng (Best Model)
