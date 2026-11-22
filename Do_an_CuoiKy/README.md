@@ -74,7 +74,9 @@ ml_group/
 │   │   ├── DBSCAN_RFM_Tuned.ipynb        # Tinh chỉnh siêu tham số DBSCAN RFM (7 kịch bản, tối ưu eps & min_samples)
 │   │   ├── note_RFM.ipynb                # Báo cáo tổng kết đối chuẩn 3 mô hình RFM & so sánh với Baseline
 │   │   ├── note_RFM_Tuned.ipynb          # Báo cáo tổng kết đối chuẩn Version 3 (Tuned RFM) & kiến trúc Hybrid
-│   │   ├── KMeans_DBSCAN_Tuned_RFM.ipynb # Mô hình lai 2 tầng: K-Means phân cụm vĩ mô & DBSCAN bóc tách dị biệt
+│   │   ├── KMeans_DBSCAN_Tuned_RFM.ipynb # Mô hình lai 2 tầng 1: K-Means phân cụm vĩ mô & DBSCAN bóc tách dị biệt
+│   │   ├── Hierarchical_DBSCAN_Tuned_RFM.ipynb # Mô hình lai 2 tầng 2: Hierarchical phân cụm thứ bậc & DBSCAN bóc tách dị biệt
+│   │   ├── Comparison_Hybrid_KMeans_vs_Hierarchical_DBSCAN.ipynb # So sánh đối đầu chuyên sâu giữa 2 kiến trúc lai (KMeans+DBSCAN vs Hierarchical+DBSCAN)
 │   │   ├── note_final.ipynb              # Báo cáo tổng kết toàn diện nghiệm thu đề tài cho Giảng viên
 │   │   └── README.md                     # Hướng dẫn chi tiết thư mục notebook
 │   ├── logger.py                         # Ghi log thực nghiệm tự động

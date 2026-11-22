@@ -1,0 +1,10 @@
+﻿Tiêu chí,K-Means + DBSCAN,Hierarchical + DBSCAN
+1. Thuật toán phân vùng Tầng 1,Tâm cụm hình cầu (Voronoi cell),Cây phân cấp phương sai Ward (Dendrogram)
+2. Tính xác định (Determinism),Phụ thuộc vào seed ban đầu (random_state),100% Xác định (Không phụ thuộc random_state)
+3. Tốc độ huấn luyện,"Cực nhanh (~0.15s với 2,736 mẫu)","Nhanh (~0.17s với 2,736 mẫu, chậm dần khi N lớn)"
+4. Độ phức tạp tính toán,O(N * K * I) - Tuyến tính với số mẫu,O(N^2 log N) - Bậc hai với số mẫu
+5. Silhouette Score trên Test,0.3253 (Cao hơn nhẹ),"0.3210 (Tương đương, chênh lệch < 1.3%)"
+6. Nhận diện Siêu Cá Voi (£58K),"Phát hiện 22 KH (£56,419.64)","Phát hiện 21 KH (£58,236.42, tinh chọn hơn)"
+7. Mức độ trùng khớp ngoại lai,96.8% trùng khớp,96.8% trùng khớp
+8. Khả năng giải thích nghiệp vụ,Rất trực quan qua khoảng cách tâm cụm,Rất sâu sắc qua sơ đồ phả hệ cây quyết định
+9. Kịch bản đề xuất triển khai,Hệ thống Bán lẻ Big Data quy mô hàng triệu khách,Phân khúc chiến lược định kỳ B2B & Tư vấn quản trị

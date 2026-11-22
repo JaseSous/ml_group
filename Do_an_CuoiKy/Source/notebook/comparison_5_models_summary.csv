@@ -1,0 +1,8 @@
+﻿Tiêu chí,K-Means Độc Lập,Hierarchical Độc Lập,DBSCAN Độc Lập,Mô Hình Lai 1 (KMeans + DBSCAN),Mô Hình Lai 2 (Hierarchical + DBSCAN)
+Triết lý thuật toán,Tâm hình học (Centroid-based),Cây phân cấp (Ward Linkage),Mật độ không gian (Density-based),Hai tầng: Vĩ mô tâm + Vi mô mật độ,Hai tầng: Vĩ mô cây phân cấp + Vi mô mật độ
+Tính ngẫu nhiên (Determinism),Phụ thuộc random_state,100% Xác định (Deterministic),100% Xác định (Deterministic),Tầng 1 phụ thuộc seed K-Means,100% Xác định (Không phụ thuộc seed)
+Số lượng phân khúc,4 phân khúc cố định,4 phân khúc cố định,2 cụm (bị dồn 98% vào cụm 0),8 phân khúc chuyên sâu (4 chính + 4 đặc biệt),8 phân khúc chuyên sâu (4 chính + 4 đặc biệt)
+Xử lý khách hàng Cá voi / Siêu VIP,Bị nuốt chửng vào nhóm VIP thường,Bị hòa lẫn vào nhánh VIP,Bóc tách được (xếp vào Noise),Bóc tách chuẩn xác 22 siêu cá voi (£56K),Bóc tách chuẩn xác 21 siêu cá voi (£58K)
+Khả năng dự đoán dữ liệu mới,Cực nhanh qua predict(),Cần NearestCentroid,"Chậm, cần Nearest Core",Hai bước: KMeans predict + Nearest Core,Hai bước: NearestCentroid + Nearest Core
+Khả năng mở rộng quy mô (Scalability),Rất cao O(N*K*I),Trung bình O(N^2 log N),Trung bình O(N log N),Rất cao cho tập dữ liệu lớn,Tối ưu cho tập dữ liệu vừa và trung bình
+Mức độ phù hợp triển khai sản xuất,Tốt cho bài toán tổng quan ban đầu,Tốt cho việc giải thích cấu trúc cây,Kém (do hiện tượng dồn cụm),Xuất sắc (Tốc độ cao + Chi tiết),Xuất sắc (Tính xác định + Cấu trúc phân cấp bền vững)
