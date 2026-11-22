@@ -1,0 +1,21 @@
+================================================================================
+BÁO CÁO TỔNG HỢP KẾT QUẢ KHÁM PHÁ DỮ LIỆU (EDA SUMMARY REPORT)
+Dự án: Phân khúc khách hàng Online Retail II bằng RFM & Machine Learning
+================================================================================
+1. THÔNG SỐ TỔNG QUAN TẬP DỮ LIỆU GỐC:
+   - Tổng số dòng giao dịch       : 405,714 dòng
+   - Tổng số cột thuộc tính       : 9 cột
+   - Số dòng trùng lặp hoàn toàn  : 6,743 dòng (1.66%)
+   - Giao dịch thiếu CustomerID   : 0 dòng
+
+2. KIỂM TRA GIÁ TRỊ BẤT THƯỜNG:
+   - Quantity âm / bằng 0         : 0 dòng
+   - Price âm / bằng 0            : 0 dòng
+   - Ngoại lai Quantity (theo IQR): 25,944 dòng (6.39%)
+   - Ngoại lai Price (theo IQR)   : 31,722 dòng (7.82%)
+
+3. HOẠT ĐỘNG KINH DOANH & THỊ TRƯỜNG:
+   - Thị trường lớn nhất          : United Kingdom (369,984 giao dịch, 91.2%)
+   - Sản phẩm bán chạy nhất       : WHITE HANGING HEART T-LIGHT HOLDER (53,899 sản phẩm)
+   - Tháng đạt doanh thu cao nhất : 2010-11 (1,110,899.67 £)
+================================================================================

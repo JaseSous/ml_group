@@ -1,0 +1,5 @@
+﻿Buoc,So_dong,Thay_doi
+1. Dữ liệu gốc ban đầu,405714,0
+2. Sau khi khử trùng lặp,398971,-6743
+3. Sau khi lọc thiếu CustomerID,398971,0
+4. Sau khi lọc Quantity/Price <= 0,398971,0

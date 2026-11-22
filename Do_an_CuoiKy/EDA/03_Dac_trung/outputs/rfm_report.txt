@@ -1,0 +1,19 @@
+================================================================================
+BÁO CÁO TỔNG HỢP GIAI ĐOẠN RÚT TRÍCH ĐẶC TRƯNG RFM (FEATURE REPORT)
+Dự án: Phân khúc khách hàng Online Retail II bằng RFM & Machine Learning
+================================================================================
+1. TỔNG QUAN BỘ ĐẶC TRƯNG RFM:
+   - Tổng số khách hàng hợp lệ   : 4,275 khách hàng
+   - Mốc thời gian Snapshot Date : 2010-12-10 20:01:00
+   - Độ lệch Skewness thô        : Recency=1.29, Frequency=9.94, Monetary=24.22
+   - Độ lệch sau biến đổi log1p  : Recency=-0.44, Frequency=1.17, Monetary=0.31
+
+2. KẾT QUẢ PHÂN CHIA TẬP KHÁCH HÀNG RFM:
+   - Tập RFM Train      : 2,736 khách hàng (~64.0%) -> 'data/rfm_train.csv'
+   - Tập RFM Validation : 684 khách hàng (~16.0%) -> 'data/rfm_val.csv'
+   - Tập RFM Test       : 855 khách hàng (~20.0%) -> 'data/rfm_test.csv'
+
+3. CHUẨN HÓA DỮ LIỆU (ANTI-DATA LEAKAGE):
+   - StandardScaler Mean (Train) : [3.87071216 1.36812491 6.59253003]
+   - StandardScaler Scale (Train): [1.31027186 0.69482988 1.27756134]
+================================================================================
