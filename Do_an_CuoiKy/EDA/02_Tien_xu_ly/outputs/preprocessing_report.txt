@@ -1,0 +1,20 @@
+================================================================================
+BÁO CÁO TỔNG HỢP GIAI ĐOẠN TIỀN XỬ LÝ DỮ LIỆU (PREPROCESSING REPORT)
+Dự án: Phân khúc khách hàng Online Retail II bằng RFM & Machine Learning
+================================================================================
+1. QUY TRÌNH LÀM SẠCH DỮ LIỆU:
+   - Số dòng ban đầu               : 405,714 dòng
+   - Loại bỏ trùng lặp             : -6,743 dòng
+   - Loại bỏ thiếu CustomerID      : -0 dòng
+   - Loại bỏ Quantity/UnitPrice <= 0: -0 dòng
+   - TỔNG SỐ DÒNG SẠCH CUỐI CÙNG   : 398,971 dòng (98.34% dữ liệu gốc)
+   - TỔNG SỐ KHÁCH HÀNG DUY NHẤT   : 4,275 khách hàng
+
+2. KẾT QUẢ PHÂN CHIA DỮ LIỆU GIAO DỊCH SẠCH (CHỐNG DATA LEAKAGE):
+   - Train set      : 251,501 giao dịch (2,736 KH, ~64.0%) -> 'data/train.csv'
+   - Validation set : 72,685 giao dịch (684 KH, ~16.0%) -> 'data/valid.csv' / 'val.csv'
+   - Test set       : 74,785 giao dịch (855 KH, ~20.0%) -> 'data/test.csv'
+
+3. FILE SẠCH CỐT LÕI:
+   - 'data/data_clean.csv' (38,825,207 bytes)
+================================================================================
