@@ -1,0 +1,4 @@
+Split,Samples,Features,Silhouette_Score,Davies_Bouldin,Calinski_Harabasz,Inference_Method,Status
+Train,2736,"R, F, M (Log + Scaled)",0.2976,1.0827,1808.38,Agglomerative (Fit),Thành công (Train)
+Validation,684,"R, F, M (Log + Scaled)",0.3093,1.0281,485.68,NearestCentroid,Ổn định (Val +3.92%)
+Test,855,"R, F, M (Log + Scaled)",0.3210,1.0485,621.10,NearestCentroid,Tổng quát hóa xuất sắc (+7.84%)

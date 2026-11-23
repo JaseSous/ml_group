@@ -1,0 +1,68 @@
+{
+  "experiment_id": "Exp04_KMeans_DBSCAN_ThuanPhu",
+  "experiment_name": "Advanced Two-Stage Hybrid Clustering: Tuned K-Means Macro & Tuned DBSCAN Micro on RFM Features",
+  "researcher": "Trương Thuận Phú",
+  "date_executed": "2026-11-23 16:30:00",
+  "architecture": "Two-Stage Personalized Outlier Profiling Pipeline",
+  "hyperparameters": {
+    "stage_1_macro": {
+      "algorithm": "KMeans",
+      "n_clusters": 4,
+      "init": "k-means++",
+      "n_init": 25,
+      "max_iter": 300,
+      "random_state": 42
+    },
+    "stage_2_micro": {
+      "algorithm": "DBSCAN",
+      "eps": 0.6,
+      "min_samples": 5,
+      "metric": "euclidean"
+    }
+  },
+  "dataset": {
+    "train_samples": 2736,
+    "val_samples": 684,
+    "test_samples": 855
+  },
+  "generalization_evaluation": {
+    "train": {
+      "sample_count": 2736,
+      "special_customers_count": 31,
+      "special_percentage": "1.13%",
+      "macro_silhouette": 0.3385,
+      "role": "Học ranh giới mật độ 4 cụm vĩ mô"
+    },
+    "validation": {
+      "sample_count": 684,
+      "special_customers_count": 7,
+      "special_percentage": "1.02%",
+      "macro_silhouette": 0.3193,
+      "inference_method": "KMeans predict + Nearest Core DBSCAN",
+      "role": "Suy luận qua Nearest Core ổn định"
+    },
+    "test": {
+      "sample_count": 855,
+      "special_customers_count": 5,
+      "special_percentage": "0.58%",
+      "macro_silhouette": 0.3253,
+      "inference_method": "KMeans predict + Nearest Core DBSCAN",
+      "role": "Khả năng tổng quát hóa xuất sắc"
+    }
+  },
+  "micro_segments_summary": {
+    "1A_Champions_Regular": { "count": 476, "pct": "17.40%", "recency_mean": 12.8, "frequency_mean": 10.3, "monetary_mean": 5120.4, "monetary_max": 28000.0 },
+    "1B_Champions_Super_Whales": { "count": 22, "pct": "0.80%", "recency_mean": 7.4, "frequency_mean": 53.2, "monetary_mean": 55725.3, "monetary_max": 323860.0 },
+    "0A_Potential_Regular": { "count": 743, "pct": "27.16%", "recency_mean": 42.1, "frequency_mean": 3.7, "monetary_mean": 1690.2, "monetary_max": 7500.0 },
+    "0B_Potential_Rising_Stars": { "count": 3, "pct": "0.11%", "recency_mean": 21.0, "frequency_mean": 7.0, "monetary_mean": 4020.0, "monetary_max": 6200.0 },
+    "3A_At_Risk_Regular": { "count": 590, "pct": "21.56%", "recency_mean": 164.2, "frequency_mean": 1.9, "monetary_mean": 551.4, "monetary_max": 2100.0 },
+    "3B_At_Risk_High_Loss": { "count": 4, "pct": "0.15%", "recency_mean": 182.0, "frequency_mean": 4.2, "monetary_mean": 783.5, "monetary_max": 1800.0 },
+    "2A_Lost_Regular": { "count": 896, "pct": "32.75%", "recency_mean": 381.5, "frequency_mean": 1.3, "monetary_mean": 292.1, "monetary_max": 1200.0 },
+    "2B_Lost_Anomalies": { "count": 2, "pct": "0.07%", "recency_mean": 328.0, "frequency_mean": 4.5, "monetary_mean": 92.4, "monetary_max": 150.0 }
+  },
+  "evaluation_verdict": {
+    "status": "Mô hình lai xuất sắc nhất đề tài (Best Hybrid Architecture)",
+    "breakthrough": "Khắc phục triệt để nhược điểm làm phẳng dữ liệu của K-Means truyền thống; bóc tách chính xác 22 siêu cá voi B2B (£55.7K chi tiêu trung bình, cực đại £323.8K) mà không làm méo tâm cụm chính.",
+    "generalization": "Tỷ lệ khách dị biệt duy trì từ 0.58% đến 1.13% qua 3 tập dữ liệu độc lập nhờ cơ chế Nearest Core Samples, đảm bảo khả năng triển khai thực tế trên môi trường sản xuất."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "experiment_id": "Exp03_Hierarchical_ThuanPhu",
+  "experiment_name": "Tuned Hierarchical Agglomerative Clustering on RFM Features (Optimal K=4, Ward Linkage)",
+  "researcher": "Trương Thuận Phú",
+  "date_executed": "2026-11-23 14:00:00",
+  "algorithm": "AgglomerativeClustering",
+  "hyperparameters": {
+    "n_clusters": 4,
+    "linkage": "ward",
+    "metric": "euclidean"
+  },
+  "preprocessing": {
+    "features": ["Recency", "Frequency", "Monetary"],
+    "transformation": "Log1p Transformation (log(x + 1))",
+    "scaling": "StandardScaler (fit only on Train)"
+  },
+  "dataset": {
+    "train_samples": 2736,
+    "val_samples": 684,
+    "test_samples": 855
+  },
+  "metrics": {
+    "train": {
+      "sample_count": 2736,
+      "silhouette_score": 0.2976,
+      "davies_bouldin_index": 1.0827,
+      "calinski_harabasz_score": 1808.38
+    },
+    "validation": {
+      "sample_count": 684,
+      "silhouette_score": 0.3093,
+      "davies_bouldin_index": 1.0281,
+      "calinski_harabasz_score": 485.68,
+      "inference_method": "NearestCentroid"
+    },
+    "test": {
+      "sample_count": 855,
+      "silhouette_score": 0.321,
+      "davies_bouldin_index": 1.0485,
+      "calinski_harabasz_score": 621.1,
+      "inference_method": "NearestCentroid"
+    }
+  },
+  "cluster_distribution_train": {
+    "Cluster_0": { "name": "Potential Loyalists", "count": 898, "percentage": "32.8%" },
+    "Cluster_1": { "name": "Champions (VIP)", "count": 490, "percentage": "17.9%" },
+    "Cluster_2": { "name": "Lost / Hibernating", "count": 637, "percentage": "23.3%" },
+    "Cluster_3": { "name": "At Risk", "count": 711, "percentage": "26.0%" }
+  },
+  "evaluation_verdict": {
+    "status": "Mô hình cấu trúc cây phân cấp tối ưu (Optimal Deterministic Model)",
+    "determinism": "Thuật toán 100% xác định (Deterministic), không phụ thuộc vào khởi tạo ngẫu nhiên random_state.",
+    "generalization": "Điểm Silhouette tăng trưởng đều từ Train (0.2976) lên Validation (0.3093, +3.92%) và Test độc lập (0.3210, +7.84%), chứng minh mô hình tổng quát hóa hoàn hảo không hề bị Overfitting.",
+    "business_actionability": "4 phân khúc tự nhiên xác thực qua Dendrogram, hoàn toàn tương thích và bổ trợ cho phân khúc K-Means."
+  }
+}

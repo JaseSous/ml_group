@@ -1,0 +1,4 @@
+Split,Samples,KMeans_Clusters,Special_Customers,Special_Pct,Macro_Silhouette,Generalization_Role,Status
+Train,2736,4,31,1.13%,0.3385,Học ranh giới mật độ 4 cụm,Thành công (Train)
+Validation,684,4,7,1.02%,0.3193,Suy luận qua Nearest Core ổn định,Ổn định (Val)
+Test,855,4,5,0.58%,0.3253,Khả năng tổng quát hóa xuất sắc,Mô hình Lai Xuất Sắc
