@@ -6,7 +6,7 @@
 5,07/11/2026 17:15,Tuned K-Means (K=4),"K=4, init=k-means++, n_init=10, seed=42",Train (64%),"2,736 KH, 3 đặc trưng",0.3385,0.996,2090.8,~0.04s,Mô hình được chọn,"Chia được 4 phân khúc chuẩn bán lẻ: Champions, Potential Loyalists, At Risk, Lost."
 6,07/11/2026 17:45,Tuned Hierarchical (K=2),"K=2, linkage=ward",Train (64%),"2,736 KH, 3 đặc trưng",0.424,0.8194,1872.79,~0.10s,Đối chứng,"Chỉ số nội tại tốt nhưng phân cụm quá thô (2 nhóm), không đáp ứng mục tiêu phân khúc."
 7,07/11/2026 18:20,Tuned DBSCAN (eps=0.3),"eps=0.3, min_samples=5",Train (64%),"2,736 KH, 3 đặc trưng",0.0242,1.1821,341.22,~0.06s,Không phù hợp,Tạo ra 13 cụm nhỏ và 224 điểm nhiễu. Bán kính eps=0.3 quá hẹp trong không gian RFM.
-8,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Train (64%),"251,501 dòng, 3 đặc trưng",0.6244,0.6626,150925.86,~0.52s,Thành công (Train),"Baseline giao dịch. Phân cụm trên Quantity, UnitPrice, TotalPrice. Cụm bị kéo theo độ lớn đơn hàng."
+8,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Train (64%),"251,501 dòng, 3 đặc trưng",0.6244,0.6626,150925.86,~0.52s,Thành công (Train),"Baseline giao dịch. Phân cụm trên Quantity, Price, TotalPrice. Cụm bị kéo theo độ lớn đơn hàng."
 9,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Validation (16%),"72,685 dòng, 3 đặc trưng",0.6175,0.6215,46703.92,~0.15s,Ổn định (Val),"Độ suy giảm Silhouette chỉ 1.1% so với Train, chứng minh tính tổng quát hóa tốt."
 10,17/11/2026 19:37,"K-Means Baseline (K=3, Data Clean)","K=3, init=k-means++, n_init=10, seed=42",Test (20%),"74,785 dòng, 3 đặc trưng",0.6417,0.604,46310.08,~0.15s,Mô hình Baseline tốt nhất,Chiến thắng ở cấp độ Baseline nhờ tốc độ xử lý vượt trội và phân vùng ổn định trên tập Test.
 11,17/11/2026 20:47,"Hierarchical Baseline (K=4, Ward, Data Clean)","K=4, linkage=ward, metric=euclidean",Train (64%),"5,000 dòng lấy mẫu, 3 đặc trưng",0.6258,0.6843,3130.95,~0.34s,Khảo sát (Mẫu),"Bắt buộc lấy mẫu 5,000 dòng để tránh tràn bộ nhớ O(N^2) trên 251K dòng giao dịch."
@@ -29,3 +29,12 @@
 28,22/11/2026 22:35,Mô Hình Lai 2: Hierarchical + DBSCAN,NearestCentroid + Nearest Core predict,Test (20%),"855 KH, 3 đặc trưng RFM",0.321,1.0485,621.1,<0.01s,Mô hình Lai Xuất Sắc,Tổng quát hóa trên tập Test tách 5 khách đặc biệt (0.58%). Không phụ thuộc random_state.
 29,22/11/2026 22:52,Tri-Model Hybrid & Consensus (Hierarchical + KMeans + DBSCAN),"Ward K=4 -> KMeans init -> DBSCAN eps=0.6, min_s=10",Train (64%),"2,736 KH, 3 đặc trưng RFM",0.3385,0.9961,2090.8,~318.6ms,Mô hình tổng hợp tối ưu,"Đồng thuận 80.8% KH lõi (Silhouette=0.42), tách 43 Super Whales và 481 KH biên."
 30,22/11/2026 22:52,Tri-Model Hybrid & Consensus (Hierarchical + KMeans + DBSCAN),NearestCentroid trên Core Consensus,Test (20%),"855 KH, 3 đặc trưng RFM",0.3251,1.0328,626.85,<0.01s,Kiểm định thành công,Khả năng tổng quát hóa vượt trội trên tập Test độc lập (Silhouette=0.3216).
+2026-11-23 14:24:02,"K-Means Baseline (K=3, Data Clean) - Train",0.6244,0.6626,150925.86
+2026-11-23 14:24:02,"K-Means Baseline (K=3, Data Clean) - Validation",0.6175,0.6215,46703.92
+2026-11-23 14:24:02,"K-Means Baseline (K=3, Data Clean) - Test",0.6417,0.604,46310.08
+2026-11-23 14:24:09,"Hierarchical Baseline (K=4, Ward, Data Clean) - Train",0.6258,0.6843,3130.95
+2026-11-23 14:24:09,"Hierarchical Baseline (K=4, Ward, Data Clean) - Validation",0.6154,0.6215,2681.96
+2026-11-23 14:24:09,"Hierarchical Baseline (K=4, Ward, Data Clean) - Test",0.6398,0.6005,2355.78
+2026-11-23 14:24:18,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean) - Train",0.644,0.3666,963.99
+2026-11-23 14:24:18,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean) - Validation",0.6353,0.3173,297.9
+2026-11-23 14:24:18,"DBSCAN Baseline (eps=0.5, min_samples=10, Data Clean) - Test",0.6568,0.3796,438.36

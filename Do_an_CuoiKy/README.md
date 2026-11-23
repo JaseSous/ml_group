@@ -119,7 +119,7 @@ flowchart LR
 
 1. **Giai đoạn 1 - Khám phá & Làm sạch:** Chạy `EDA/EDA.ipynb` để làm sạch dữ liệu, khử đơn hủy/hoàn, tính `TotalPrice` và xuất `data/data_clean.csv`, phân chia ra 3 tập giao dịch sạch: `data/train.csv`, `data/valid.csv`, `data/test.csv`.
 2. **Giai đoạn 2 - Xây dựng mốc đối chuẩn (Baseline):** Chạy 3 notebook trong `Source/notebook/`:
-   - `KMeans_baseline.ipynb`: K-Means ($K=3$) trên `Quantity`, `UnitPrice`, `TotalPrice`.
+   - `KMeans_baseline.ipynb`: K-Means ($K=3$) trên `Quantity`, `Price`, `TotalPrice`.
    - `Hierarchical_baseline.ipynb`: Hierarchical ($K=4$, Ward) trên dữ liệu sạch cơ bản.
    - `DBSCAN_baseline.ipynb`: DBSCAN (`eps=0.5`, `min_samples=10`) trên dữ liệu sạch cơ bản.
 3. **Giai đoạn 3 - Tổng kết và chọn Model Baseline tốt nhất:** Chạy `Source/notebook/note_baseline.ipynb` để so sánh định lượng và chọn **K-Means Clustering** làm mô hình cơ sở tối ưu.

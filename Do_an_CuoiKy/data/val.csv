@@ -1,4 +1,4 @@
-﻿InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country,TotalPrice
+﻿InvoiceNo,StockCode,Description,Quantity,InvoiceDate,Price,CustomerID,Country,TotalPrice
 489440,22350,CAT BOWL ,8,2009-12-01 09:43:00,2.55,18087,United Kingdom,20.4
 489440,22349,"DOG BOWL , CHASING BALL DESIGN",8,2009-12-01 09:43:00,3.75,18087,United Kingdom,30.0
 489441,22321,BIRD DECORATION RED SPOT,12,2009-12-01 09:44:00,0.72,18087,United Kingdom,8.64

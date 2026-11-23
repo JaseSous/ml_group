@@ -41,7 +41,7 @@ Xây dựng một hệ thống phân khúc khách hàng tự động dựa trên
 ## HỒI 2: CÁI BẪY BAN ĐẦU: MÔ HÌNH BASELINE & NGHỊCH LÝ SILHOUETTE (THE BASELINE TRAP)
 
 ### 2.1. Trực giác ban đầu và sai lầm thường gặp
-Khi bắt tay vào đề tài, trực giác đầu tiên của nhóm (cũng là sai lầm phổ biến của nhiều người mới làm quen với dữ liệu e-commerce) là: *Làm sạch các dòng giao dịch và đưa trực tiếp các thuộc tính số có sẵn (`Quantity`, `UnitPrice`, `TotalPrice`) vào các thuật toán phân cụm.*
+Khi bắt tay vào đề tài, trực giác đầu tiên của nhóm (cũng là sai lầm phổ biến của nhiều người mới làm quen với dữ liệu e-commerce) là: *Làm sạch các dòng giao dịch và đưa trực tiếp các thuộc tính số có sẵn (`Quantity`, `Price`, `TotalPrice`) vào các thuật toán phân cụm.*
 
 Sau khi tiền xử lý lọc đơn hủy/hoàn và đơn giá âm, tập dữ liệu sạch còn lại 251,000 dòng giao dịch ở tập Train. Nhóm xây dựng 3 mô hình Baseline:
 - **K-Means Baseline ($K=3$):** Silhouette = 0.6244 (Train), 0.6417 (Test).
@@ -214,7 +214,7 @@ Khung dàn ý chuẩn khoa học cho báo cáo chi tiết (`Bao_Cao_Giua_Ky_Nhom
   - 1.4. Phân tích doanh thu theo thời gian, phân bố quốc gia và mặt hàng chủ lực.
 
 - **CHƯƠNG 2: THỰC NGHIỆM MỐC ĐỐI CHUẨN (BASELINE MODELS)**
-  - 2.1. Thiết lập bài toán Baseline trên dữ liệu giao dịch sạch (`Quantity`, `UnitPrice`, `TotalPrice`).
+  - 2.1. Thiết lập bài toán Baseline trên dữ liệu giao dịch sạch (`Quantity`, `Price`, `TotalPrice`).
   - 2.2. Huấn luyện 3 mô hình cơ sở: K-Means ($K=3$), Hierarchical (Ward), DBSCAN.
   - 2.3. Đánh giá trên 3 tập dữ liệu độc lập (Train, Validation, Test).
   - 2.4. Phân tích nguyên nhân thất bại của Baseline: Nghịch lý Silhouette và hiện tượng phân cụm theo giỏ hàng.

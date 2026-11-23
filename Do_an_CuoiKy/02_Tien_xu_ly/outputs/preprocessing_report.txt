@@ -6,7 +6,7 @@ Dự án: Phân khúc khách hàng Online Retail II bằng RFM & Machine Learnin
    - Số dòng ban đầu               : 405,714 dòng
    - Loại bỏ trùng lặp             : -6,743 dòng
    - Loại bỏ thiếu CustomerID      : -0 dòng
-   - Loại bỏ Quantity/UnitPrice <= 0: -0 dòng
+   - Loại bỏ Quantity/Price <= 0: -0 dòng
    - TỔNG SỐ DÒNG SẠCH CUỐI CÙNG   : 398,971 dòng (98.34% dữ liệu gốc)
    - TỔNG SỐ KHÁCH HÀNG DUY NHẤT   : 4,275 khách hàng
 
@@ -16,5 +16,5 @@ Dự án: Phân khúc khách hàng Online Retail II bằng RFM & Machine Learnin
    - Test set       : 74,785 giao dịch (855 KH, ~20.0%) -> 'data/test.csv'
 
 3. FILE SẠCH CỐT LÕI:
-   - 'data/data_clean.csv' (38,825,207 bytes)
+   - 'data/data_clean.csv' (38,825,203 bytes)
 ================================================================================
