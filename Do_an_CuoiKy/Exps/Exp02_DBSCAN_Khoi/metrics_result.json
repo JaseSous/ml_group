@@ -1,0 +1,50 @@
+{
+  "experiment_id": "Exp02_DBSCAN_Khoi",
+  "experiment_name": "Tuned DBSCAN on RFM Features (Optimal eps=0.6, min_samples=10)",
+  "researcher": "Phạm Minh Khôi",
+  "date_executed": "2026-11-23 09:30:00",
+  "algorithm": "DBSCAN",
+  "hyperparameters": {
+    "eps": 0.6,
+    "min_samples": 10,
+    "metric": "euclidean",
+    "leaf_size": 30
+  },
+  "dataset": {
+    "features": ["Recency_scaled", "Frequency_scaled", "Monetary_scaled"],
+    "train_samples": 2736,
+    "val_samples": 684,
+    "test_samples": 855
+  },
+  "metrics": {
+    "train": {
+      "sample_count": 2736,
+      "silhouette_score": 0.5254,
+      "davies_bouldin_index": 0.4055,
+      "calinski_harabasz_score": 117.32,
+      "outlier_count": 43,
+      "outlier_percentage": "1.57%"
+    },
+    "validation": {
+      "sample_count": 684,
+      "silhouette_score": 0.5274,
+      "davies_bouldin_index": 0.3382,
+      "calinski_harabasz_score": 17.46,
+      "outlier_count": 10,
+      "outlier_percentage": "1.46%"
+    },
+    "test": {
+      "sample_count": 855,
+      "silhouette_score": 0.5298,
+      "davies_bouldin_index": 0.4017,
+      "calinski_harabasz_score": 25.43,
+      "outlier_count": 14,
+      "outlier_percentage": "1.64%"
+    }
+  },
+  "evaluation_verdict": {
+    "role": "Bộ lọc ngoại lai & Nhận diện B2B Whales (Anomaly Detection Layer)",
+    "generalization": "Tỷ lệ ngoại lai duy trì ổn định cao qua cả 3 tập (1.57% -> 1.46% -> 1.64%), xác nhận mô hình không bị rò rỉ dữ liệu qua cơ chế Nearest Core Samples.",
+    "business_actionability": "Bóc tách thành công nhóm khách hàng cá voi siêu VIP chi tiêu đột biến mà các thuật toán phân vùng hình cầu (như K-Means) dễ bị nhiễu."
+  }
+}

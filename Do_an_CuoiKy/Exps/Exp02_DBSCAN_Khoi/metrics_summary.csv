@@ -1,0 +1,4 @@
+Split,Samples,Silhouette_Score,Davies_Bouldin,Calinski_Harabasz,Outlier_Count,Outlier_Pct,Status
+Train,2736,0.5254,0.4055,117.32,43,1.57%,Thành công
+Validation,684,0.5274,0.3382,17.46,10,1.46%,Ổn định (Val)
+Test,855,0.5298,0.4017,25.43,14,1.64%,Bộ lọc ngoại lai tốt nhất
