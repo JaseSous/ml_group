@@ -24,7 +24,10 @@ CARD_BG = RGBColor(0x1e, 0x29, 0x3b)  # #1e293b
 
 W = Inches(13.33)
 H = Inches(7.5)
-FIGS = "figures"
+script_dir = os.path.dirname(os.path.abspath(__file__))
+FIGS = os.path.join(script_dir, "figures")
+if not os.path.exists(FIGS):
+    FIGS = "figures"
 
 prs = Presentation()
 prs.slide_width  = W
@@ -132,7 +135,7 @@ header(sl, "TỔNG QUAN HÀNH TRÌNH ĐỒ ÁN", "Cấu Trúc 7 Hồi Khoa Học
 acts = [
     ("HỒI 1", "Bối Cảnh & Nỗi Đau Kinh Doanh", "Nỗi đau tiếp thị đại trà 'One-Size-Fits-All' và mục tiêu phân khúc vi mô tối ưu CLV.", BLUE),
     ("HỒI 2", "Khám Phá Dữ Liệu (EDA)", "Cấu trúc 8 thuộc tính gốc, 405K giao dịch, tính toàn vẹn 100% và bệnh lý phân phối lệch.", EMERALD),
-    ("HỒI 3", "Cái Bẫy Ban Đầu: Baseline", "Nghịch lý Silhouette 0.64: Phân cụm cấp độ giỏ hàng (Basket-level) thất bại về nghiệp vụ.", CORAL),
+    ("HỒI 3", "Thực Nghiệm Mô Hình Baseline", "Thuộc tính giao dịch, không gian 2D PCA & giải phẫu nguyên nhân thất bại nghiệp vụ.", CORAL),
     ("HỒI 4", "Bước Ngoặt Kỹ Nghệ RFM", "Nén dữ liệu về 4,275 KH, triệt tiêu 98.7% độ lệch bằng Log Transform & Zero Leakage.", BLUE),
     ("HỒI 5", "Cuộc Đua Tam Mã (Tuning)", "Tối ưu hóa 3 trường phái K-Means (K=4), Hierarchical Ward, DBSCAN bóc tách ngoại lai.", EMERALD),
     ("HỒI 6", "Đột Phá Kiến Trúc Lai", "Mô hình Lai 2 tầng bóc tách 22 Super Whales (£55.7K) & Đỉnh cao Tri-Model Consensus 80.85%.", AMBER),
@@ -310,46 +313,76 @@ txb(sl, "• Quantity đạt max tới 600 sản phẩm: Đây là các đơn h�
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 9 — HỒI 3: CÁI BẪY BAN ĐẦU - BASELINE METRICS
+# SLIDE 9 — HỒI 3: PHẦN 1 - THIẾT LẬP THUỘC TÍNH & HIỆU NĂNG 3 MÔ HÌNH BASELINE
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "HỒI 3 · CÁI BẪY BAN ĐẦU: MÔ HÌNH BASELINE (THE BASELINE TRAP)",
-       "Trực Giác Ban Đầu & Thực Nghiệm 3 Mô Hình Baseline Trên Giao Dịch", BLUE)
+header(sl, "HỒI 3 · THỰC NGHIỆM MÔ HÌNH CƠ SỞ (BASELINE MODEL)",
+       "Phần 1: Thiết Lập Ban Đầu - 3 Thuộc Tính Huấn Luyện Giao Dịch & Hiệu Năng Đối Chuẩn", BLUE)
 
-img(sl, "fig_baseline_metrics_comparison.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
+img(sl, "fig_baseline_metrics_comparison.png", Inches(0.4), Inches(1.4), Inches(8.3), Inches(5.7))
 
-kpi_card(sl, "K-Means (K=3)", "Mô hình tốt nhất Baseline\nSil Test: 0.6417 | DB: 0.6040\nCalinski-Harabasz: 150,925\nThời gian chạy: 0.52s",
-         Inches(9.2), Inches(1.45), w=Inches(3.7), h=Inches(1.75), num_color=EMERALD, num_size=20)
-kpi_card(sl, "Hierarchical (K=4)", "Ward Linkage (5K mẫu)\nSil Test: 0.6566 | DB: 0.6074\nGiới hạn bộ nhớ O(N²)",
-         Inches(9.2), Inches(3.35), w=Inches(3.7), h=Inches(1.75), num_color=AMBER, num_size=20)
-kpi_card(sl, "DBSCAN (eps=0.5)", "MinPts = 10\nSil Test: 0.6600 | DB: 0.4015\nTỷ lệ ngoại lai: 0.94% - 1.94%",
-         Inches(9.2), Inches(5.25), w=Inches(3.7), h=Inches(1.75), num_color=CORAL, num_size=20)
+kpi_card(sl, "['Quantity', 'Price', 'TotalPrice']",
+         "3 thuộc tính giao dịch cơ bản\nChuẩn hóa StandardScaler\nTrain 255K | Val 63K | Test 79K\nChống rò rỉ dữ liệu (Zero Leakage)",
+         Inches(8.9), Inches(1.45), w=Inches(4.0), h=Inches(1.75), num_color=BLUE, num_size=15)
+
+kpi_card(sl, "K-Means (K=3) — Tốt Nhất",
+         "Mô hình Baseline tốt nhất\nSil Test: 0.6417 | DB: 0.6040\nCalinski-Harabasz: 150,925\nThời gian chạy siêu tốc: 0.52s",
+         Inches(8.9), Inches(3.35), w=Inches(4.0), h=Inches(1.75), num_color=EMERALD, num_size=18)
+
+kpi_card(sl, "Hierarchical & DBSCAN",
+         "• Hierarchical (K=4): Sil Test = 0.6566\n  Nghẽn bộ nhớ O(N²), sample 5,000 dòng\n• DBSCAN (eps=0.5): Sil Test = 0.6600\n  DB: 0.4015 | Lọc 0.94% - 1.94% ngoại lai",
+         Inches(8.9), Inches(5.25), w=Inches(4.0), h=Inches(1.75), num_color=AMBER, num_size=18)
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 10 — HỒI 3: CÁI BẪY BAN ĐẦU - NGHỊCH LÝ SILHOUETTE & BƯỚC NGOẶT
+# SLIDE 10 — HỒI 3: PHẦN 2 - TRỰC QUAN HÓA KHÔNG GIAN 2D PCA 3 MÔ HÌNH BASELINE
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "HỒI 3 · CÁI BẪY BAN ĐẦU: MÔ HÌNH BASELINE (THE BASELINE TRAP)",
-       "Ảo Ảnh Điểm Số Cao & Thất Bại Về Mặt Nghiệp Vụ Tiếp Thị", CORAL)
+header(sl, "HỒI 3 · THỰC NGHIỆM MÔ HÌNH CƠ SỞ (BASELINE MODEL)",
+       "Phần 2: Trực Quan Hóa Không Gian 2D PCA - So Sánh Hình Thái Phân Cụm 3 Mô Hình", EMERALD)
+
+img(sl, "fig_baseline_pca_2d_models.png", Inches(0.4), Inches(1.4), Inches(8.8), Inches(5.7))
+
+kpi_card(sl, "89.7% Thông Tin",
+         "Phương sai giải thích tích lũy 2D PCA:\n• PC1 (54.8%): Quy mô số lượng & doanh thu\n• PC2 (34.9%): Mức giá bán lẻ sản phẩm",
+         Inches(9.4), Inches(1.45), w=Inches(3.5), h=Inches(1.75), num_color=AMBER, num_size=20)
+
+kpi_card(sl, "K-Means: Cụm Bị Kéo Lệch",
+         "• Cụm 0 (84.0%): Dồn cục ở gốc tọa độ\n• Cụm 2 (14.6%): Kéo dạt sang phải dọc PC1\n• Cụm 1 (1.4%): Giật lên đỉnh cao theo PC2",
+         Inches(9.4), Inches(3.35), w=Inches(3.5), h=Inches(1.75), num_color=BLUE, num_size=17)
+
+kpi_card(sl, "DBSCAN: Lọc Nhiễu -1",
+         "• Cụm 0 (95.1%): Giao dịch bình thường\n• Noise -1 (107 mẫu): Lọc chính xác các\nđơn hàng ngoại lai bị kéo dạt ra ngoài rìa",
+         Inches(9.4), Inches(5.25), w=Inches(3.5), h=Inches(1.75), num_color=CORAL, num_size=17)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# SLIDE 11 — HỒI 3: PHẦN 3 - GIẢI PHẪU THUỘC TÍNH KÉO KHÔNG GIAN & CÁI BẪY NGHIỆP VỤ
+# ═══════════════════════════════════════════════════════════════════
+sl = prs.slides.add_slide(blank_layout)
+add_bg(sl, NAVY)
+header(sl, "HỒI 3 · THỰC NGHIỆM MÔ HÌNH CƠ SỞ (BASELINE MODEL)",
+       "Phần 3: Giải Phẫu Thuộc Tính Kéo Không Gian & Bản Chất Thất Bại Nghiệp Vụ", CORAL)
 
 img(sl, "fig_baseline_feature_importance.png", Inches(0.4), Inches(1.4), Inches(7.5), Inches(5.7))
 
-kpi_card(sl, "Price (44.8%)", "Thuộc tính chi phối lớn nhất K-Means\n(Quantity: 38.5% | TotalPrice: 16.7%)",
-         Inches(8.2), Inches(1.45), w=Inches(4.7), h=Inches(1.3), num_color=AMBER)
-kpi_card(sl, "Price (53.1%)", "Thuộc tính chi phối lớn nhất DBSCAN\n(Quantity: 29.9% | TotalPrice: 17.0%)",
-         Inches(8.2), Inches(2.9), w=Inches(4.7), h=Inches(1.3), num_color=CORAL)
+kpi_card(sl, "Price (44.8% - 53.1%)",
+         "Kéo tuyệt đối trục PC2 (Loading: +0.9634)\nChi phối lớn nhất K-Means (44.8%) & DBSCAN (53.1%)\nĐơn giá cao giật ngược dữ liệu lên đỉnh",
+         Inches(8.2), Inches(1.45), w=Inches(4.7), h=Inches(1.3), num_color=AMBER, num_size=19)
+kpi_card(sl, "Quantity (29.9% - 38.5%)",
+         "Kéo trục PC1 (Loading: +0.7120) cùng TotalPrice (+0.6996)\nĐơn hàng bán sỉ kéo dạt dữ liệu sang cực bên phải\nTotalPrice đóng góp phần còn lại (16.7% - 17.0%)",
+         Inches(8.2), Inches(2.9), w=Inches(4.7), h=Inches(1.3), num_color=BLUE, num_size=19)
 
 panel = sl.shapes.add_shape(1, Inches(8.2), Inches(4.35), Inches(4.7), Inches(2.75))
 panel.fill.solid(); panel.fill.fore_color.rgb = CARD_BG
 panel.line.color.rgb = CORAL; panel.line.width = Pt(1.5)
 
-txb(sl, "🚨 VÌ SAO BASELINE THẤT BẠI?", Inches(8.4), Inches(4.5), Inches(4.3), Inches(0.35),
-    size=13, bold=True, color=CORAL, align=PP_ALIGN.CENTER)
-txb(sl, "• Silhouette đạt 0.64 rất cao nhưng là ẢO ẢNH TOÁN HỌC do các đơn hàng cực đoan kéo giãn không gian.\n• Mô hình chỉ phân loại kích thước giỏ hàng (Basket-level) chứ không phân khúc khách hàng (Customer-level).\n• Cùng một khách hàng hôm nay mua đơn nhỏ nằm cụm 0, ngày mai mua đơn lớn bị ném sang cụm 1.\n→ Bắt buộc phải chuyển sang cấp độ Khách hàng (RFM)!",
-    Inches(8.4), Inches(4.9), Inches(4.3), Inches(2.1), size=11, color=LIGHT)
+txb(sl, "🚨 VÌ SAO BASELINE THẤT BẠI VỀ NGHIỆP VỤ?", Inches(8.4), Inches(4.5), Inches(4.3), Inches(0.35),
+    size=12, bold=True, color=CORAL, align=PP_ALIGN.CENTER)
+txb(sl, "• Silhouette đạt 0.64 rất cao là ẢO ẢNH TOÁN HỌC do các đơn hàng cực đoan kéo giãn không gian, tạo khoảng trống giả tạo.\n• Mô hình chỉ phân loại KÍCH THƯỚC GIỎ HÀNG (Basket-level) chứ không phân khúc KHÁCH HÀNG (Customer-level).\n• Cùng một khách hàng hôm nay mua đơn nhỏ nằm Cụm 0, ngày mai mua đơn lớn bị ném sang Cụm 2.\n→ Bắt buộc phải chuyển đổi sang cấp độ Khách hàng (RFM)!",
+    Inches(8.4), Inches(4.88), Inches(4.3), Inches(2.15), size=11, color=LIGHT)
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -786,12 +819,15 @@ txb(sl, "Rất mong nhận được đóng góp quý báu từ Thầy/Cô!",
 
 
 # ─── Save ─────────────────────────────────────────────────────────
-out_path = "Slide_Cuoi_Ky_Nhom05_OnlineRetailII.pptx"
-try:
-    prs.save(out_path)
-    print(f"[OK] Saved: {out_path}")
-except PermissionError:
-    alt_path = "Slide_Cuoi_Ky_Nhom05_OnlineRetailII_7Hoi.pptx"
-    prs.save(alt_path)
-    print(f"[NOTE] '{out_path}' dang mo trong PowerPoint, da luu ban moi vao: {alt_path}")
+target_dir = os.path.dirname(os.path.abspath(__file__))
+paths_to_save = [
+    os.path.join(target_dir, "Slide_Cuoi_Ky_Nhom05_OnlineRetailII.pptx"),
+    os.path.join(target_dir, "Slide_Cuoi_Ky_Nhom05_OnlineRetailII_7Hoi.pptx")
+]
+for p in paths_to_save:
+    try:
+        prs.save(p)
+        print(f"[OK] Saved: {p}")
+    except PermissionError:
+        print(f"[WARNING] File dang mo trong PowerPoint, vui long dong de ghi de: {p}")
 print(f"     Total slides: {len(prs.slides)}")

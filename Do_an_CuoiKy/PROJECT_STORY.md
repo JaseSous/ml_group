@@ -51,33 +51,57 @@ Tập dữ liệu thô gồm 8 thuộc tính phản ánh từng dòng đơn hàn
 - `CustomerID`: Mã định danh duy nhất của từng khách hàng.
 - `Country`: Quốc gia của khách hàng (UK chiếm >90%).
 
-### 2.2. Bốn "bệnh lý" lớn được phát hiện qua EDA
-1. **Dữ liệu trùng lặp hoàn toàn:** Phát hiện **34,335 dòng trùng lặp** do ghi nhận đơn hàng lặp lại từ hệ thống web.
-2. **Dữ liệu khuyết thiếu nghiêm trọng:** Có tới **243,007 dòng thiếu `CustomerID`** (chiếm ~22.8%). Do mục tiêu đề tài là phân khúc khách hàng, các giao dịch không định danh bắt buộc phải được bóc tách xử lý riêng.
-3. **Giá trị âm và bằng 0 bất thường:**
-   - 22,950 dòng có `Quantity < 0` (hàng hoàn trả, đơn bị hủy bỏ).
-   - 6,207 dòng có `Price <= 0` (lỗi kế toán, quà tặng thử nghiệm, điều chỉnh công nợ).
-4. **Phân phối lệch phải cực đoan (Extreme Right-Skewness):**
-   - Đơn giá `Price` lệch phải với Skewness lên tới **24.22** (hầu hết hàng hóa dưới £10, nhưng cá biệt có dịch vụ manual tính tới £38,970).
-   - Số lượng `Quantity` lệch phải với Skewness **9.94** (xuất hiện đơn hàng sỉ lên tới hàng chục nghìn sản phẩm).
+### 2.2. Đặc tính & Thách thức lớn của dữ liệu qua EDA
+1. **Dữ liệu thô ban đầu:** 405,714 dòng giao dịch, 8 thuộc tính gốc.
+2. **Độ toàn vẹn thuộc tính định danh:** Đầy đủ **100% CustomerID** (0 dòng bị thiếu mã khách hàng).
+3. **Dữ liệu trùng lặp hoàn toàn:** Phát hiện **6,743 dòng trùng lặp** (chiếm 1.66% dữ liệu) $\to$ được loại bỏ, còn lại **398,971 dòng giao dịch sạch**.
+4. **Phân phối lệch phải cực đoan (Right-Skewed Distribution):**
+   - Đơn giá `Price`: Trung bình £3.52 nhưng xuất hiện dịch vụ/hàng hóa cá biệt lên tới hàng nghìn Bảng.
+   - Số lượng `Quantity`: Trung bình 11.8 sản phẩm nhưng có các đơn hàng sỉ lên tới hàng trăm sản phẩm.
+5. **Ngoại lai theo phương pháp IQR (Boxplot):**
+   - Ngoại lai `Quantity`: **25,944 dòng (6.39%)** vượt ngưỡng trên IQR (> 27 sản phẩm).
+   - Ngoại lai `Price`: **31,722 dòng (7.82%)** vượt ngưỡng trên IQR (> £7.50).
+   - Nhận định nghiệp vụ: Đây không phải lỗi nhập liệu mà là các đơn hàng bán sỉ B2B và mặt hàng giá trị cao — cần phương pháp phân cụm mật độ để bóc tách chứ không thể xóa bỏ cơ học.
 
 ---
 
-## HỒI 3: CÁI BẪY BAN ĐẦU: MÔ HÌNH BASELINE & NGHỊCH LÝ SILHOUETTE (THE BASELINE TRAP)
+## HỒI 3: THỰC NGHIỆM MÔ HÌNH CƠ SỞ (BASELINE MODEL) & CÁI BẪY NGHIỆP VỤ
 
-### 3.1. Trực giác ban đầu và sai lầm thường gặp
-Khi bắt tay vào đề tài, trực giác đầu tiên của nhóm (cũng là sai lầm phổ biến của nhiều người mới làm quen với dữ liệu e-commerce) là: *Làm sạch các dòng giao dịch và đưa trực tiếp các thuộc tính số có sẵn (`Quantity`, `Price`, `TotalPrice`) vào các thuật toán phân cụm.*
+### 3.1. Thiết lập Baseline & Thuộc tính huấn luyện giao dịch
+Khi bắt tay vào bài toán, trực giác ban đầu của nhóm là thử nghiệm phân cụm trực tiếp trên các thuộc tính giao dịch cơ bản của đơn hàng:
+- **Thuộc tính dùng để train baseline:** 3 thuộc tính số cơ bản của từng dòng giao dịch: `['Quantity', 'Price', 'TotalPrice']` (với `TotalPrice = Quantity * Price`).
+- **Chiến lược chống rò rỉ dữ liệu (Zero Data Leakage):**
+  - Dữ liệu giao dịch được phân chia theo khách hàng: Tập Train (255,341 dòng - 64%), Validation (63,835 dòng - 16%), Test (79,795 dòng - 20%).
+  - Khởi tạo `StandardScaler` và **chỉ fit_transform trên tập Train**, sau đó dùng chính scaler này để transform trên tập Validation và Test.
+- **Kết quả thực nghiệm đối chuẩn (Benchmark Metrics) 3 mô hình Baseline:**
+  - **K-Means Baseline ($K=3$):** Silhouette Test = **0.6417**, Davies-Bouldin = **0.6040**, Calinski-Harabasz = **150,925**, thời gian huấn luyện siêu tốc **0.52s**. Đây là mô hình Baseline có hiệu năng tổng thể tốt nhất.
+  - **Hierarchical Baseline ($K=4$, Ward):** Silhouette Test = **0.6566**, Davies-Bouldin = **0.6074**. Giới hạn thuật toán $\mathcal{O}(N^2)$ đòi hỏi quá nhiều bộ nhớ nên phải lấy mẫu đại diện 5,000 dòng.
+  - **DBSCAN Baseline ($\varepsilon=0.5, \text{MinPts}=10$):** Silhouette Test = **0.6600**, Davies-Bouldin = **0.4015**, nhận diện được 0.94% - 1.94% đơn hàng ngoại lai.
 
-Sau khi tiền xử lý lọc đơn hủy/hoàn và đơn giá âm, tập dữ liệu sạch còn lại 251,000 dòng giao dịch ở tập Train. Nhóm xây dựng 3 mô hình Baseline:
-- **K-Means Baseline ($K=3$):** Silhouette = 0.6244 (Train), 0.6417 (Test).
-- **Hierarchical Baseline ($K=4$, Ward):** Silhouette = 0.6258 (Mẫu 5,000 dòng).
-- **DBSCAN Baseline ($\epsilon=0.5, \text{min}=10$):** Silhouette = 0.6440.
+### 3.2. Trực quan hóa Không gian 2D PCA & Hình thái phân cụm 3 mô hình
+Để quan sát cách các mô hình Baseline chia cắt dữ liệu giao dịch, nhóm áp dụng Principal Component Analysis (PCA) để giảm 3 chiều về 2D:
+- **Tỷ lệ giải thích phương sai:**
+  - **PC1 giải thích 54.8% phương sai:** Đo lường quy mô độ lớn của đơn hàng.
+  - **PC2 giải thích 34.9% phương sai:** Đo lường mức độ đắt đỏ của đơn giá.
+  - **Tổng phương sai giải thích: 89.7%** (giữ lại gần như trọn vẹn thông tin gốc của 3 thuộc tính giao dịch).
+- **So sánh hình thái phân cụm của 3 mô hình:**
+  - **K-Means ($K=3$):** Cụm 0 (84.0%) dồn cục ở vùng đơn hàng phổ thông gần gốc tọa độ; Cụm 2 (14.6%) bị kéo dạt sang phải dọc theo trục PC1; Cụm 1 (1.4%) bị giật lên đỉnh theo trục PC2 do đơn giá đắt.
+  - **Hierarchical ($K=4$, Ward):** Tách được cụm phổ thông (Cụm 0), cụm số lượng vừa (Cụm 2), cụm đơn giá cao (Cụm 1) và cô lập 6 điểm giao dịch đơn giá cực đoan nhất thành Cụm 3 riêng biệt.
+  - **DBSCAN Baseline ($\varepsilon=0.5, \text{MinPts}=10$):** Gom trọn vẹn 95.1% đơn hàng bình thường vào Cụm 0 mật độ dày đặc, và gán nhãn 107 điểm giao dịch kéo dạt ra ngoài rìa thành điểm Nhiễu / Ngoại lai (Noise label = -1).
 
-### 3.2. Điểm số cao ngất ngưởng... nhưng thất bại hoàn toàn về nghiệp vụ!
-Thoạt nhìn, chỉ số Silhouette Score trên 0.64 là một kết quả "trong mơ" của bài toán phân cụm. Tuy nhiên, khi đào sâu phân tích bản chất hình học và kinh doanh, nhóm nhận ra đây là một **"ảo ảnh toán học" (Mathematical Illusion)**:
-- **Hiện tượng dồn cục cực đoan:** Hơn **98.2% dòng giao dịch** bị dồn vào Cụm 0 (các đơn hàng nhỏ lẻ phổ thông), trong khi Cụm 1 và Cụm 2 chỉ chứa vỏn vẹn một vài đơn hàng mua số lượng lớn hoặc giá trị cao.
-- **Nghẽn bộ nhớ:** Hierarchical bị tràn bộ nhớ $\mathcal{O}(N^2)$ (đòi hỏi ~500 GB RAM trên 251K dòng), buộc phải lấy mẫu 5,000 dòng mới chạy được.
-- **Sai lệch đối tượng nghiên cứu:** Mô hình chỉ đang **phân loại quy mô giỏ hàng (Basket-level)** chứ không hề **phân khúc khách hàng (Customer-level)**. Cùng một khách hàng $A$, hôm nay mua 1 món đồ nhỏ thì nằm ở Cụm 0, ngày mai mua hộ công ty đơn lớn thì bị ném sang Cụm 1. Phòng Marketing hoàn toàn không biết khách hàng $A$ thực chất thuộc nhóm đối tượng nào để chăm sóc!
+### 3.3. Giải phẫu thuộc tính "Kéo" không gian & Cái bẫy nghiệp vụ (The Baseline Trap)
+Nhóm đi sâu phân tích định lượng lý do vì sao dữ liệu bị phân tách theo hình thái trên:
+- **Thuộc tính nào kéo các trục PCA? (PCA Loadings):**
+  - **Trục PC1 (54.8%):** Trọng số của `Quantity` (+0.7120) và `TotalPrice` (+0.6996) chi phối tuyệt đối. Các đơn hàng bán sỉ khối lượng lớn kéo dạt các điểm dữ liệu sang cực bên phải.
+  - **Trục PC2 (34.9%):** Trọng số của `Price` (+0.9634) chi phối áp đảo. Các mặt hàng đơn giá cao kéo vọt các điểm dữ liệu lên đỉnh phía trên.
+- **Đo lường mức độ chi phối qua kiểm định ANOVA F-Score (`f_classif`):**
+  - `Price` là thuộc tính chi phối mạnh nhất: **44.80%** (K-Means), **53.11%** (DBSCAN), **30.08%** (Hierarchical).
+  - `Quantity` chi phối thứ nhì: **38.48%** (K-Means), **29.91%** (DBSCAN), **30.06%** (Hierarchical).
+  - `TotalPrice` đóng góp: **16.72%** (K-Means), **16.98%** (DBSCAN), **39.86%** (Hierarchical).
+- **Vạch trần cái bẫy Baseline:**
+  - **Ảo ảnh toán học:** Silhouette Score đạt 0.64 – 0.66 rất cao nhưng không phản ánh phân cụm có ý nghĩa, mà do các điểm ngoại lai kéo giãn không gian, tạo khoảng cách giả tạo giữa các cụm.
+  - **Sai lệch cấp độ nghiên cứu:** Mô hình chỉ đang **phân loại kích thước giỏ hàng (Basket-level)** chứ không hề **phân khúc khách hàng (Customer-level)**. Một khách hàng mua 10 lần với 10 quy mô đơn khác nhau sẽ bị phân mảnh vào nhiều cụm khác nhau $\to$ Vô dụng cho chiến dịch tiếp thị và quản trị quan hệ khách hàng (CRM).
+  - **Bước ngoặt bắt buộc:** Phải rời bỏ cấp độ Giao dịch, tiến hành nén dữ liệu và chuyển sang **Kỹ nghệ đặc trưng RFM ở cấp độ Khách hàng**!
 
 ---
 
