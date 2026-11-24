@@ -1,0 +1,4 @@
+﻿Tập dữ liệu,Quy mô (KH),Silhouette Score (↑),Davies-Bouldin Index (↓),Calinski-Harabasz (↑),Inertia (SSE),Đánh giá
+Train (64%),2736,0.3385,0.996,2090.8,2490.39,"Huấn luyện tối ưu K=4, n_init=25"
+Validation (16%),684,0.3193,1.021,503.8,N/A,Kiểm định suy luận tâm cụm ổn định
+Test (20%),855,0.3253,1.0248,629.08,N/A,"Tổng quát hóa xuất sắc, không overfit"

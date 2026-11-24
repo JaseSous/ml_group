@@ -1,0 +1,86 @@
+{
+  "experiment_id": "Exp07_KMeans_Tuned_Khoi",
+  "model_name": "Tuned K-Means (RFM)",
+  "author": "Phạm Minh Khôi",
+  "parameters": {
+    "n_clusters": 4,
+    "init": "k-means++",
+    "n_init": 25,
+    "max_iter": 300,
+    "algorithm": "lloyd",
+    "random_state": 42
+  },
+  "metrics": {
+    "train": {
+      "num_samples": 2736,
+      "silhouette_score": 0.3385,
+      "davies_bouldin_index": 0.996,
+      "calinski_harabasz_score": 2090.8,
+      "inertia": 2490.39,
+      "iterations_to_converge": 11
+    },
+    "validation": {
+      "num_samples": 684,
+      "silhouette_score": 0.3193,
+      "davies_bouldin_index": 1.021,
+      "calinski_harabasz_score": 503.8
+    },
+    "test": {
+      "num_samples": 855,
+      "silhouette_score": 0.3253,
+      "davies_bouldin_index": 1.0248,
+      "calinski_harabasz_score": 629.08
+    }
+  },
+  "cluster_distribution_train": {
+    "0": {
+      "persona": "At Risk",
+      "count": 746,
+      "percentage": 27.27,
+      "recency_mean": 86.31,
+      "frequency_mean": 4.1,
+      "monetary_mean": 1688.04
+    },
+    "1": {
+      "persona": "Champions",
+      "count": 498,
+      "percentage": 18.2,
+      "recency_mean": 14.26,
+      "frequency_mean": 13.48,
+      "monetary_mean": 7362.15
+    },
+    "2": {
+      "persona": "Lost / Hibernating",
+      "count": 898,
+      "percentage": 32.82,
+      "recency_mean": 189.35,
+      "frequency_mean": 1.28,
+      "monetary_mean": 291.28
+    },
+    "3": {
+      "persona": "Potential Loyalists",
+      "count": 594,
+      "percentage": 21.71,
+      "recency_mean": 22.21,
+      "frequency_mean": 2.07,
+      "monetary_mean": 552.35
+    }
+  },
+  "anova_fscore": {
+    "Recency": {
+      "f_score": 1109.84,
+      "p_value": 0.0,
+      "contribution_pct": 28.5
+    },
+    "Frequency": {
+      "f_score": 1395.22,
+      "p_value": 0.0,
+      "contribution_pct": 35.8
+    },
+    "Monetary": {
+      "f_score": 1391.07,
+      "p_value": 0.0,
+      "contribution_pct": 35.7
+    }
+  }
+}
