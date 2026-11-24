@@ -42,6 +42,8 @@ def add_bg(slide, color=NAVY):
     fill.solid()
     fill.fore_color.rgb = color
 
+FONT_FAMILY = "Times New Roman"
+
 def txb(slide, text, l, t, w, h, size=18, bold=False, color=WHITE,
         align=PP_ALIGN.LEFT, italic=False, wrap=True):
     tb = slide.shapes.add_textbox(l, t, w, h)
@@ -52,6 +54,7 @@ def txb(slide, text, l, t, w, h, size=18, bold=False, color=WHITE,
     p.alignment = align
     run = p.add_run()
     run.text = text
+    run.font.name = FONT_FAMILY
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.color.rgb = color
@@ -236,6 +239,7 @@ for j, (h_text, h_col) in enumerate(headers_t):
     cell.fill.solid(); cell.fill.fore_color.rgb = CARD_BG
     p = cell.text_frame.paragraphs[0]
     p.text = h_text
+    p.font.name = FONT_FAMILY
     p.font.size = Pt(11); p.font.bold = True; p.font.color.rgb = h_col
 
 rows_data = [
@@ -254,6 +258,7 @@ for i, row in enumerate(rows_data):
         cell.fill.solid(); cell.fill.fore_color.rgb = RGBColor(0x13, 0x1d, 0x2e)
         p = cell.text_frame.paragraphs[0]
         p.text = val
+        p.font.name = FONT_FAMILY
         p.font.size = Pt(10)
         p.font.color.rgb = WHITE if j==0 else (AMBER if j==1 else (EMERALD if "ĐỦ 100%" in val else LIGHT))
 
@@ -885,39 +890,39 @@ for cdata in col_defs:
     
     # Tag
     txb(sl, cdata["tag"], left_c + Inches(0.15), Inches(1.65), Inches(3.62), Inches(0.22),
-        size=8.5, bold=True, color=cdata["col"])
+        size=9.5, bold=True, color=cdata["col"])
     
     # Title
     txb(sl, cdata["title"], left_c + Inches(0.15), Inches(1.87), Inches(3.62), Inches(0.32),
-        size=11.5, bold=True, color=WHITE)
+        size=13, bold=True, color=WHITE)
     
     # Top KPI pills
     pill1 = sl.shapes.add_shape(1, left_c + Inches(0.15), Inches(2.22), Inches(1.75), Inches(0.26))
     pill1.fill.solid(); pill1.fill.fore_color.rgb = cdata["col"]; pill1.line.fill.background()
     txb(sl, cdata["kpi1"], left_c + Inches(0.15), Inches(2.25), Inches(1.75), Inches(0.22),
-        size=8, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+        size=9, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
         
     pill2 = sl.shapes.add_shape(1, left_c + Inches(1.98), Inches(2.22), Inches(1.79), Inches(0.26))
     pill2.fill.solid(); pill2.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
     pill2.line.color.rgb = cdata["col"]; pill2.line.width = Pt(1.0)
     txb(sl, cdata["kpi2"], left_c + Inches(1.98), Inches(2.25), Inches(1.79), Inches(0.22),
-        size=8, bold=True, color=cdata["col"], align=PP_ALIGN.CENTER)
+        size=9, bold=True, color=cdata["col"], align=PP_ALIGN.CENTER)
     
     # Sections inside column
     sec_y = Inches(2.58)
     for stitle, sbody, scol in cdata["sections"]:
-        sbox = sl.shapes.add_shape(1, left_c + Inches(0.15), sec_y, Inches(3.62), Inches(0.24))
+        sbox = sl.shapes.add_shape(1, left_c + Inches(0.15), sec_y, Inches(3.62), Inches(0.26))
         sbox.fill.solid(); sbox.fill.fore_color.rgb = RGBColor(0x0f, 0x17, 0x2a)
         sbox.line.color.rgb = scol; sbox.line.width = Pt(0.75)
-        txb(sl, stitle, left_c + Inches(0.22), sec_y + Inches(0.02), Inches(3.48), Inches(0.20),
-            size=9, bold=True, color=scol)
-        sec_y += Inches(0.28)
+        txb(sl, stitle, left_c + Inches(0.22), sec_y + Inches(0.02), Inches(3.48), Inches(0.22),
+            size=11, bold=True, color=scol)
+        sec_y += Inches(0.30)
         
-        # Body text
+        # Body text (Font size = 14)
         b_lines = sbody.count('\n') + 1
-        b_h = Inches(0.20 * b_lines + 0.35)
-        txb(sl, sbody, left_c + Inches(0.20), sec_y, Inches(3.52), b_h,
-            size=8.8, color=LIGHT)
+        b_h = Inches(0.28 * b_lines + 0.40)
+        txb(sl, sbody, left_c + Inches(0.18), sec_y, Inches(3.56), b_h,
+            size=14, color=LIGHT)
         sec_y += b_h + Inches(0.10)
     
     left_c += Inches(3.92 + 0.36)
@@ -933,7 +938,7 @@ header(sl, "TỔNG KẾT TÁC ĐỘNG NGHIỆP VỤ & HIỆU QUẢ KINH DOANH (B
 
 # Subtitle banner
 txb(sl, "Phụ đề: Tối ưu hóa ngân sách tiếp thị & Tối đa hóa giá trị vòng đời khách hàng (CLV)",
-    Inches(0.40), Inches(1.28), Inches(12.5), Inches(0.24), size=9.5, italic=True, color=LIGHT)
+    Inches(0.40), Inches(1.28), Inches(12.5), Inches(0.24), size=11, italic=True, color=LIGHT)
 
 # LƯỚI 2x2: 4 THẺ CHI TIẾT (W = 6.05 in, H = 2.65 in)
 biz_cards = [
@@ -989,27 +994,27 @@ for bdata in biz_cards:
     bcard.line.color.rgb = bdata["col"]; bcard.line.width = Pt(1.5)
     
     # Title
-    txb(sl, bdata["title"], bdata["left"] + Inches(0.20), bdata["top"] + Inches(0.15),
-        Inches(5.65), Inches(0.30), size=11, bold=True, color=bdata["col"])
+    txb(sl, bdata["title"], bdata["left"] + Inches(0.20), bdata["top"] + Inches(0.12),
+        Inches(5.65), Inches(0.30), size=12.5, bold=True, color=bdata["col"])
     
     # 2 KPI Pills
-    p1 = sl.shapes.add_shape(1, bdata["left"] + Inches(0.20), bdata["top"] + Inches(0.52), Inches(2.2), Inches(0.28))
+    p1 = sl.shapes.add_shape(1, bdata["left"] + Inches(0.20), bdata["top"] + Inches(0.48), Inches(2.2), Inches(0.28))
     p1.fill.solid(); p1.fill.fore_color.rgb = bdata["col"]; p1.line.fill.background()
-    txb(sl, bdata["pill1"], bdata["left"] + Inches(0.20), bdata["top"] + Inches(0.55), Inches(2.2), Inches(0.24),
-        size=9, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    txb(sl, bdata["pill1"], bdata["left"] + Inches(0.20), bdata["top"] + Inches(0.51), Inches(2.2), Inches(0.24),
+        size=10, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
         
-    p2 = sl.shapes.add_shape(1, bdata["left"] + Inches(2.50), bdata["top"] + Inches(0.52), Inches(2.4), Inches(0.28))
+    p2 = sl.shapes.add_shape(1, bdata["left"] + Inches(2.50), bdata["top"] + Inches(0.48), Inches(2.4), Inches(0.28))
     p2.fill.solid(); p2.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
     p2.line.color.rgb = bdata["col"]; p2.line.width = Pt(1.0)
-    txb(sl, bdata["pill2"], bdata["left"] + Inches(2.50), bdata["top"] + Inches(0.55), Inches(2.4), Inches(0.24),
-        size=9, bold=True, color=bdata["col"], align=PP_ALIGN.CENTER)
+    txb(sl, bdata["pill2"], bdata["left"] + Inches(2.50), bdata["top"] + Inches(0.51), Inches(2.4), Inches(0.24),
+        size=10, bold=True, color=bdata["col"], align=PP_ALIGN.CENTER)
     
-    # Bullets
-    by = bdata["top"] + Inches(0.95)
+    # Bullets (Font size = 14)
+    by = bdata["top"] + Inches(0.88)
     for btext in bdata["bullets"]:
-        txb(sl, f"• {btext}", bdata["left"] + Inches(0.20), by, Inches(5.65), Inches(0.65),
-            size=9.5, color=LIGHT)
-        by += Inches(0.70)
+        txb(sl, f"• {btext}", bdata["left"] + Inches(0.20), by, Inches(5.65), Inches(0.72),
+            size=14, color=LIGHT)
+        by += Inches(0.78)
 
 
 
