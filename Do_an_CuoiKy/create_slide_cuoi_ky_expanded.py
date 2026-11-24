@@ -134,7 +134,7 @@ header(sl, "TỔNG QUAN HÀNH TRÌNH ĐỒ ÁN", "Cấu Trúc 7 Hồi Khoa Học
 
 acts = [
     ("HỒI 1", "Bối Cảnh & Nỗi Đau Kinh Doanh", "Nỗi đau tiếp thị đại trà 'One-Size-Fits-All' và mục tiêu phân khúc vi mô tối ưu CLV.", BLUE),
-    ("HỒI 2", "Khám Phá Dữ Liệu (EDA)", "Cấu trúc 8 thuộc tính gốc, 405K giao dịch, tính toàn vẹn 100% và bệnh lý phân phối lệch.", EMERALD),
+    ("HỒI 2", "Khám Phá Dữ Liệu & Tiền Xử Lý", "Cấu trúc 8 thuộc tính, quy trình 7 bước làm sạch và đặc tả 2 Database được huấn luyện.", EMERALD),
     ("HỒI 3", "Thực Nghiệm Mô Hình Baseline", "Thuộc tính giao dịch, không gian 2D PCA & giải phẫu nguyên nhân thất bại nghiệp vụ.", CORAL),
     ("HỒI 4", "Bước Ngoặt Kỹ Nghệ RFM", "Nén dữ liệu về 4,275 KH, triệt tiêu 98.7% độ lệch bằng Log Transform & Zero Leakage.", BLUE),
     ("HỒI 5", "Cuộc Đua Tam Mã (Tuning)", "Tối ưu hóa 3 trường phái K-Means (K=4), Hierarchical Ward, DBSCAN bóc tách ngoại lai.", EMERALD),
@@ -163,7 +163,7 @@ for code, title, desc, col in acts:
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
 header(sl, "HỒI 1 · BỐI CẢNH & NỖI ĐAU KINH DOANH (THE BUSINESS DILEMMA)",
-       "Vì Sao Doanh Nghiệp Bắt Buộc Phải Phân Cụm Khách Hàng?", BLUE)
+       "Bối Cảnh Thị Trường Bán Lẻ & 3 Mục Tiêu Chiến Lược Của Đồ Án", BLUE)
 
 cards_s2 = [
     ("405,714", "Giao dịch thực tế\n(Giai đoạn 2009–2010)", EMERALD),
@@ -173,24 +173,47 @@ cards_s2 = [
 ]
 bx = Inches(0.4)
 for num, lbl, col in cards_s2:
-    kpi_card(sl, num, lbl, bx, Inches(1.5), w=Inches(2.95), h=Inches(1.4), num_color=col, num_size=26)
+    kpi_card(sl, num, lbl, bx, Inches(1.4), w=Inches(2.95), h=Inches(1.25), num_color=col, num_size=24)
     bx += Inches(3.18)
 
-panel = sl.shapes.add_shape(1, Inches(0.4), Inches(3.2), Inches(12.5), Inches(3.9))
-panel.fill.solid(); panel.fill.fore_color.rgb = CARD_BG
-panel.line.color.rgb = BLUE; panel.line.width = Pt(1.5)
+# Panel Trái: Bối cảnh thị trường & 3 Nỗi đau kinh doanh
+panel_l = sl.shapes.add_shape(1, Inches(0.4), Inches(2.85), Inches(6.1), Inches(4.35))
+panel_l.fill.solid(); panel_l.fill.fore_color.rgb = CARD_BG
+panel_l.line.color.rgb = CORAL; panel_l.line.width = Pt(1.5)
 
-pains = [
-    ("❌", "Thực trạng kinh doanh:", "Doanh nghiệp không biết ai là khách VIP, ai đang có nguy cơ rời bỏ (Churn) để chăm sóc."),
-    ("📉", "Hệ quả tiếp thị:", "Chiến dịch Marketing 'cào bằng' gây lãng phí ngân sách và tỷ lệ chuyển đổi đơn hàng thấp."),
-    ("🔍", "Thách thức Machine Learning:", "Phân phối giao dịch bị lệch phải cực nặng, tồn tại ngoại lai đơn hàng lớn kéo dạt cụm."),
-    ("🎯", "Mục tiêu cốt lõi:", "Xây dựng hệ thống phân khúc vi mô (Micro-segmentation) chính xác cao, tăng Customer Lifetime Value (CLV)."),
+txb(sl, "🏢 BỐI CẢNH THỊ TRƯỜNG & 3 NỖI ĐAU CỐT TỬ", Inches(0.6), Inches(3.0), Inches(5.7), Inches(0.35),
+    size=12, bold=True, color=CORAL)
+
+pains_text = [
+    ("📌 Bối cảnh thực tế:", "Nhà bán lẻ trực tuyến quà tặng UK (Online Retail II) kết hợp bán lẻ B2C cho cá nhân và bán sỉ B2B quy mô lớn trên 37 quốc gia, khiến hành vi khách hàng cực kỳ đa dạng và phức tạp."),
+    ("❌ Tiếp thị 'cào bằng' (One-Size-Fits-All):", "Gửi email đại trà và voucher nhỏ lẻ cào bằng cho toàn bộ danh sách, làm phiền khách VIP và làm suy giảm nghiêm trọng uy tín thương hiệu."),
+    ("📉 Nguy cơ mất khách hàng âm thầm (Churn):", "Không có cơ chế nhận diện khách hàng có nguy cơ rời bỏ để can thiệp kịp thời, dẫn đến chảy máu khách hàng trung thành vào tay đối thủ."),
+    ("💸 Lãng phí ngân sách tiếp thị:", "Đốt tiền quảng cáo vào tài khoản ảo/ngưng hoạt động; tỷ lệ chuyển đổi đơn hàng và ROI thấp do thiếu định vị và cá nhân hóa thông điệp.")
 ]
-ty = Inches(3.45)
-for icon, title, desc in pains:
-    txb(sl, f"{icon}  {title}", Inches(0.7), ty, Inches(2.9), Inches(0.45), size=14, bold=True, color=AMBER)
-    txb(sl, desc, Inches(3.6), ty, Inches(9.0), Inches(0.7), size=14, color=LIGHT)
-    ty += Inches(0.85)
+ty_l = Inches(3.42)
+for title_p, desc_p in pains_text:
+    txb(sl, title_p, Inches(0.6), ty_l, Inches(5.7), Inches(0.24), size=10, bold=True, color=AMBER)
+    txb(sl, desc_p, Inches(0.6), ty_l + Inches(0.24), Inches(5.7), Inches(0.55), size=9, color=LIGHT)
+    ty_l += Inches(0.85)
+
+# Panel Phải: 3 Mục tiêu chiến lược của đề tài
+panel_r = sl.shapes.add_shape(1, Inches(6.8), Inches(2.85), Inches(6.1), Inches(4.35))
+panel_r.fill.solid(); panel_r.fill.fore_color.rgb = CARD_BG
+panel_r.line.color.rgb = EMERALD; panel_r.line.width = Pt(1.5)
+
+txb(sl, "🎯 3 MỤC TIÊU CHIẾN LƯỢC CỦA ĐỒ ÁN", Inches(7.0), Inches(3.0), Inches(5.7), Inches(0.35),
+    size=12, bold=True, color=EMERALD)
+
+goals_text = [
+    ("🤖 1. Mục tiêu Khoa học (Machine Learning Pipeline):", "Xây dựng quy trình phân cụm không giám sát khách quan, chống rò rỉ dữ liệu (Zero Data Leakage), giải quyết phân phối lệch phải (Extreme Skewness) và bóc tách chuẩn xác ngoại lai Super Whales B2B."),
+    ("📊 2. Mục tiêu Nghiệp vụ (Marketing & CRM Actionable):", "Chuyển đổi thành công từ cấp độ giỏ hàng (Basket-level) sang cấp độ khách hàng (Customer-level RFM); định hình chân dung sắc nét và xây dựng Playbook chiến lược hành động cá nhân hóa từng nhóm tăng CLV."),
+    ("⚡ 3. Mục tiêu Vận hành (Production-Ready Tool):", "Đóng gói toàn bộ mô hình tối ưu thành công cụ dòng lệnh predict.py có khả năng suy luận thời gian thực siêu tốc (< 2 mili-giây) phục vụ trực tiếp cho đội ngũ bán hàng và tích hợp hệ thống.")
+]
+ty_r = Inches(3.42)
+for title_g, desc_g in goals_text:
+    txb(sl, title_g, Inches(7.0), ty_r, Inches(5.7), Inches(0.24), size=10, bold=True, color=EMERALD)
+    txb(sl, desc_g, Inches(7.0), ty_r + Inches(0.24), Inches(5.7), Inches(0.75), size=9, color=LIGHT)
+    ty_r += Inches(1.1)
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -313,7 +336,99 @@ txb(sl, "• Quantity đạt max tới 600 sản phẩm: Đây là các đơn h�
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 9 — HỒI 3: PHẦN 1 - THIẾT LẬP THUỘC TÍNH & HIỆU NĂNG 3 MÔ HÌNH BASELINE
+# SLIDE 9 — GIAI ĐOẠN 2: TIỀN XỬ LÝ & LÀM SẠCH DỮ LIỆU (PREPROCESSING)
+# ═══════════════════════════════════════════════════════════════════
+sl = prs.slides.add_slide(blank_layout)
+add_bg(sl, NAVY)
+header(sl, "GIAI ĐOẠN 2 · TIỀN XỬ LÝ & LÀM SẠCH DỮ LIỆU (DATA PREPROCESSING)",
+       "Quy Trình 7 Bước Làm Sạch Dữ Liệu & Phân Chia Chống Rò Rỉ (Zero Data Leakage)", EMERALD)
+
+img(sl, "fig04_preprocessing_funnel.png", Inches(0.4), Inches(1.4), Inches(7.2), Inches(5.7))
+
+kpi_card(sl, "405,714", "Dữ liệu ban đầu\n(Tập nạp gốc)",
+         Inches(7.9), Inches(1.45), w=Inches(2.45), h=Inches(1.2), num_color=WHITE, num_size=19)
+kpi_card(sl, "-6,743", "Khử trùng lặp\n(Duplicate 1.66%)",
+         Inches(10.5), Inches(1.45), w=Inches(2.45), h=Inches(1.2), num_color=AMBER, num_size=19)
+kpi_card(sl, "398,971", "Giao dịch sạch\n(Toàn vẹn 100% ID)",
+         Inches(7.9), Inches(2.75), w=Inches(2.45), h=Inches(1.2), num_color=EMERALD, num_size=19)
+kpi_card(sl, "4,275 KH", "Khách hàng duy nhất\n(Zero Leakage Split)",
+         Inches(10.5), Inches(2.75), w=Inches(2.45), h=Inches(1.2), num_color=BLUE, num_size=19)
+
+panel_prep = sl.shapes.add_shape(1, Inches(7.9), Inches(4.1), Inches(5.05), Inches(3.0))
+panel_prep.fill.solid(); panel_prep.fill.fore_color.rgb = CARD_BG
+panel_prep.line.color.rgb = EMERALD; panel_prep.line.width = Pt(1.5)
+
+txb(sl, "📋 QUY TRÌNH TIỀN XỬ LÝ CHUẨN MỰC (NOTEBOOK 02)", Inches(8.1), Inches(4.2), Inches(4.7), Inches(0.3),
+    size=11, bold=True, color=EMERALD)
+
+steps_txt = [
+    "1. Khử trùng lặp: Loại bỏ 6,743 dòng lặp lại hoàn toàn (1.66%).",
+    "2. Kiểm tra dữ liệu thiếu: 100% CustomerID toàn vẹn (0 dòng thiếu).",
+    "3. Ép kiểu chuẩn hóa: CustomerID (int/string), InvoiceDate (datetime).",
+    "4. Lọc dữ liệu không hợp lệ: Không có đơn hủy ('C'), Quantity & Price > 0.",
+    "5. Tính trường thành tiền: TotalPrice = Quantity × Price.",
+    "6. Bảo toàn ngoại lai IQR: Giữ nguyên đơn hàng sỉ lớn làm đầu vào DBSCAN.",
+    "7. Phân chia Train/Val/Test (64%/16%/20%) theo CustomerID độc lập."
+]
+ty_step = Inches(4.55)
+for s in steps_txt:
+    txb(sl, s, Inches(8.1), ty_step, Inches(4.7), Inches(0.28), size=9, color=LIGHT)
+    ty_step += Inches(0.34)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# SLIDE 10 — KIẾN TRÚC DỮ LIỆU: ĐẶC TẢ DATABASE & BỘ THUỘC TÍNH HUẤN LUYỆN
+# ═══════════════════════════════════════════════════════════════════
+sl = prs.slides.add_slide(blank_layout)
+add_bg(sl, NAVY)
+header(sl, "KIẾN TRÚC DỮ LIỆU · ĐẶC TẢ DATABASE & BỘ THUỘC TÍNH HUẤN LUYỆN",
+       "Phân Định 2 Cơ Sở Dữ Liệu Được Huấn Luyện: Database Giao Dịch vs Database Khách Hàng", BLUE)
+
+panel_d1 = sl.shapes.add_shape(1, Inches(0.4), Inches(1.4), Inches(6.1), Inches(5.7))
+panel_d1.fill.solid(); panel_d1.fill.fore_color.rgb = CARD_BG
+panel_d1.line.color.rgb = BLUE; panel_d1.line.width = Pt(1.5)
+
+txb(sl, "📦 DATABASE 1: GIAO DỊCH SẠCH (TRANSACTION-LEVEL)", Inches(0.6), Inches(1.55), Inches(5.7), Inches(0.35),
+    size=12, bold=True, color=BLUE)
+
+d1_items = [
+    ("Tệp dữ liệu lưu trữ:", "data/train.csv (251,501 dòng - 64%)\ndata/valid.csv (72,685 dòng - 16%)\ndata/test.csv (74,785 dòng - 20%)"),
+    ("Đơn vị quan sát (Sample Unit):", "Từng dòng mặt hàng trong hóa đơn giỏ hàng (Basket-level)."),
+    ("THUỘC TÍNH DÙNG ĐỂ TRAIN (X):", "['Quantity', 'Price', 'TotalPrice']\n• Quantity: Số lượng sản phẩm mua trong từng dòng đơn hàng\n• Price: Đơn giá bán lẻ từng mặt hàng (£)\n• TotalPrice: Thành tiền của mặt hàng (Quantity × Price)"),
+    ("Phương pháp chuẩn hóa:", "StandardScaler (chỉ fit_transform trên tập Train 255K dòng, transform cho Validation và Test)."),
+    ("Mô hình áp dụng huấn luyện:", "K-Means Baseline (K=3), Hierarchical Baseline (K=4), DBSCAN Baseline (eps=0.5)."),
+    ("Mục đích nghiên cứu:", "Thiết lập mốc đối chuẩn ban đầu (Baseline Benchmark) và vạch trần bẫy phân cụm trên cấp độ giỏ hàng.")
+]
+ty_d1 = Inches(1.95)
+for title_d, desc_d in d1_items:
+    txb(sl, title_d, Inches(0.6), ty_d1, Inches(5.7), Inches(0.24), size=10, bold=True, color=AMBER if "TRAIN" in title_d else WHITE)
+    txb(sl, desc_d, Inches(0.6), ty_d1 + Inches(0.22), Inches(5.7), Inches(0.55), size=9, color=LIGHT)
+    ty_d1 += Inches(0.84)
+
+panel_d2 = sl.shapes.add_shape(1, Inches(6.8), Inches(1.4), Inches(6.1), Inches(5.7))
+panel_d2.fill.solid(); panel_d2.fill.fore_color.rgb = CARD_BG
+panel_d2.line.color.rgb = EMERALD; panel_d2.line.width = Pt(1.5)
+
+txb(sl, "👥 DATABASE 2: KHÁCH HÀNG RFM (CUSTOMER-LEVEL)", Inches(7.0), Inches(1.55), Inches(5.7), Inches(0.35),
+    size=12, bold=True, color=EMERALD)
+
+d2_items = [
+    ("Tệp dữ liệu lưu trữ:", "data/rfm_train.csv (2,736 khách hàng - 64%)\ndata/rfm_val.csv (684 khách hàng - 16%)\ndata/rfm_test.csv (855 khách hàng - 20%)"),
+    ("Đơn vị quan sát (Sample Unit):", "Từng tài khoản khách hàng định danh duy nhất (CustomerID)."),
+    ("THUỘC TÍNH DÙNG ĐỂ TRAIN (X):", "['Recency_log', 'Frequency_log', 'Monetary_log']\n• Recency_log: ln(1 + Số ngày từ lần mua cuối đến 2010-12-10)\n• Frequency_log: ln(1 + Tổng số hóa đơn độc lập InvoiceNo)\n• Monetary_log: ln(1 + Tổng chi tiêu tích lũy TotalPrice)"),
+    ("Phương pháp chuẩn hóa:", "Biến đổi phi tuyến ln(1+x) triệt tiêu 98.7% skewness + StandardScaler (fit trên RFM Train)."),
+    ("Mô hình áp dụng huấn luyện:", "Tuned K-Means (K=4), Tuned Hierarchical Ward, Tuned DBSCAN, Mô hình Lai 2 tầng, Tri-Model Consensus."),
+    ("Mục đích nghiên cứu:", "Định hình chân dung hành vi khách hàng toàn diện phục vụ tiếp thị cá nhân hóa và quản trị quan hệ khách hàng (CRM).")
+]
+ty_d2 = Inches(1.95)
+for title_d, desc_d in d2_items:
+    txb(sl, title_d, Inches(7.0), ty_d2, Inches(5.7), Inches(0.24), size=10, bold=True, color=EMERALD if "TRAIN" in title_d else WHITE)
+    txb(sl, desc_d, Inches(7.0), ty_d2 + Inches(0.22), Inches(5.7), Inches(0.55), size=9, color=LIGHT)
+    ty_d2 += Inches(0.84)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# SLIDE 11 — HỒI 3: PHẦN 1 - THIẾT LẬP THUỘC TÍNH & HIỆU NĂNG 3 MÔ HÌNH BASELINE
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
@@ -336,7 +451,7 @@ kpi_card(sl, "Hierarchical & DBSCAN",
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 10 — HỒI 3: PHẦN 2 - TRỰC QUAN HÓA KHÔNG GIAN 2D PCA 3 MÔ HÌNH BASELINE
+# SLIDE 12 — HỒI 3: PHẦN 2 - TRỰC QUAN HÓA KHÔNG GIAN 2D PCA 3 MÔ HÌNH BASELINE
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
@@ -359,7 +474,7 @@ kpi_card(sl, "DBSCAN: Lọc Nhiễu -1",
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 11 — HỒI 3: PHẦN 3 - GIẢI PHẪU THUỘC TÍNH KÉO KHÔNG GIAN & CÁI BẪY NGHIỆP VỤ
+# SLIDE 13 — HỒI 3: PHẦN 3 - GIẢI PHẪU THUỘC TÍNH KÉO KHÔNG GIAN & CÁI BẪY NGHIỆP VỤ
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
@@ -383,26 +498,6 @@ txb(sl, "🚨 VÌ SAO BASELINE THẤT BẠI VỀ NGHIỆP VỤ?", Inches(8.4), I
     size=12, bold=True, color=CORAL, align=PP_ALIGN.CENTER)
 txb(sl, "• Silhouette đạt 0.64 rất cao là ẢO ẢNH TOÁN HỌC do các đơn hàng cực đoan kéo giãn không gian, tạo khoảng trống giả tạo.\n• Mô hình chỉ phân loại KÍCH THƯỚC GIỎ HÀNG (Basket-level) chứ không phân khúc KHÁCH HÀNG (Customer-level).\n• Cùng một khách hàng hôm nay mua đơn nhỏ nằm Cụm 0, ngày mai mua đơn lớn bị ném sang Cụm 2.\n→ Bắt buộc phải chuyển đổi sang cấp độ Khách hàng (RFM)!",
     Inches(8.4), Inches(4.88), Inches(4.3), Inches(2.15), size=11, color=LIGHT)
-
-
-# ═══════════════════════════════════════════════════════════════════
-# SLIDE 11 — HỒI 4: BƯỚC NGOẶT RFM - PHỄU TIỀN XỬ LÝ
-# ═══════════════════════════════════════════════════════════════════
-sl = prs.slides.add_slide(blank_layout)
-add_bg(sl, NAVY)
-header(sl, "HỒI 4 · BƯỚC NGOẶT KỸ NGHỆ ĐẶC TRƯNG RFM (FEATURE ENGINEERING)",
-       "Quy Trình Phễu Làm Sạch & Nén Dữ Liệu Về Cấp Độ Khách Hàng", EMERALD)
-
-img(sl, "fig04_preprocessing_funnel.png", Inches(0.4), Inches(1.4), Inches(8.8), Inches(5.7))
-
-kpi_card(sl, "405,714", "Dữ liệu ban đầu\n(Tập nạp gốc)",
-         Inches(9.5), Inches(1.5), w=Inches(3.4), h=Inches(1.2), num_color=WHITE)
-kpi_card(sl, "-6,743", "Loại bỏ trùng lặp\n(Duplicate 1.66%)",
-         Inches(9.5), Inches(2.95), w=Inches(3.4), h=Inches(1.2), num_color=AMBER)
-kpi_card(sl, "398,971", "Giao dịch sạch\n(Toàn vẹn 100%)",
-         Inches(9.5), Inches(4.4), w=Inches(3.4), h=Inches(1.2), num_color=EMERALD)
-kpi_card(sl, "4,275 KH", "Khách hàng duy nhất\n(Gom nhóm theo ID)",
-         Inches(9.5), Inches(5.85), w=Inches(3.4), h=Inches(1.2), num_color=BLUE)
 
 
 # ═══════════════════════════════════════════════════════════════════

@@ -20,21 +20,21 @@
 
 ## HỒI 1: BỐI CẢNH & NỖI ĐAU KINH DOANH (THE BUSINESS DILEMMA)
 
-### 1.1. Bối cảnh thị trường
-Doanh nghiệp trong đề tài là một nhà bán lẻ trực tuyến tại Vương quốc Anh (*Online Retail II*), chuyên phân phối sỉ và lẻ các mặt hàng quà tặng độc đáo trên toàn cầu. Tập dữ liệu ghi nhận hơn **1 triệu dòng giao dịch** (1,067,371 records) phát sinh từ tháng 12/2009 đến tháng 12/2011.
+### 1.1. Bối cảnh thị trường & Thực trạng doanh nghiệp
+Doanh nghiệp trong đề tài là một nhà bán lẻ trực tuyến tại Vương quốc Anh (*Online Retail II*), chuyên kinh doanh sỉ và lẻ các mặt hàng quà tặng độc đáo và đồ gia dụng trên toàn cầu (phủ sóng 37 quốc gia, trong đó thị trường UK chiếm 91.2%).
+- Quy mô khảo sát ghi nhận **405,714 giao dịch thực tế** (12/2009 – 12/2010), phục vụ **4,275 khách hàng định danh duy nhất** với **4,420 chủng loại mặt hàng**.
+- Mô hình kinh doanh hỗn hợp (vừa bán lẻ B2C cho người tiêu dùng cá nhân, vừa bán sỉ B2B khối lượng lớn cho các đại lý quà tặng) khiến hành vi mua sắm cực kỳ đa dạng và phức tạp.
 
-### 1.2. Nỗi đau thực tế của doanh nghiệp (The Business Pain Point)
-- Doanh nghiệp đối mặt với bài toán kinh điển: **Đối xử với mọi khách hàng như nhau (One-Size-Fits-All Marketing)**.
-- Khi có chương trình khuyến mãi, doanh nghiệp gửi email hàng loạt tới toàn bộ danh sách:
-  - Khách hàng VIP cảm thấy bị quấy rầy bởi các voucher giảm giá đại trà nhỏ lẻ, làm giảm giá trị thương hiệu.
-  - Khách hàng có nguy cơ rời bỏ (*At Risk*) không nhận được sự quan tâm kịp thời để níu chân.
-  - Ngân sách tiếp thị bị lãng phí nghiêm trọng vào nhóm tài khoản ảo hoặc những người đã từ bỏ thương hiệu nhiều năm.
+### 1.2. Ba nỗi đau kinh doanh cốt tử (The Core Business Pain Points)
+1. **Tiếp thị đại trà "cào bằng" (One-Size-Fits-All Dilemma):** Doanh nghiệp không phân loại được khách hàng, gửi cùng một thông điệp tiếp thị và voucher giảm giá nhỏ lẻ cho toàn bộ danh sách. Khách hàng VIP cảm thấy bị quấy rầy và làm giảm uy tín thương hiệu.
+2. **Nguy cơ mất khách hàng âm thầm (Customer Churn Risk):** Thiếu cơ chế phát hiện sớm những khách hàng từng mua nhiều nhưng đã lâu không quay lại (*At-Risk / Hibernating*), dẫn đến việc đánh mất khách hàng vào tay đối thủ cạnh tranh.
+3. **Lãng phí ngân sách tiếp thị (Budget Inefficiency):** Đốt tiền quảng cáo và email vào các tài khoản không hoạt động hoặc khách hàng một lần, trong khi nhóm khách hàng mang lại 80% doanh thu không được chăm sóc đặc quyền.
 
-### 1.3. Mục tiêu của đề tài
-Xây dựng một hệ thống phân khúc khách hàng tự động dựa trên học máy không giám sát (Unsupervised Learning) thỏa mãn 3 tiêu chuẩn khắt khe:
-1. **Khách quan và chặt chẽ về toán học:** Không gán nhãn thủ công chủ quan, triệt tiêu hoàn toàn hiện tượng rò rỉ dữ liệu (Zero Data Leakage).
-2. **Tính hành động kinh doanh cao (Actionable):** Mỗi phân khúc phải có chân dung hành vi rõ ràng, đi kèm chiến lược tiếp thị khả thi.
-3. **Sẵn sàng triển khai thực tế (Production-Ready):** Có khả năng dự đoán phân khúc cho khách hàng mới trong thời gian thực ($< 5$ mili-giây).
+### 1.3. Ba mục tiêu chiến lược của đề tài
+Đồ án đặt ra 3 mục tiêu cụ thể, chặt chẽ từ lý thuyết học máy đến ứng dụng thực tiễn:
+1. **Mục tiêu Khoa học (Machine Learning Pipeline):** Xây dựng quy trình phân cụm không giám sát (Unsupervised Learning) khách quan, chống rò rỉ dữ liệu (Zero Data Leakage), giải quyết triệt để phân phối lệch phải (Extreme Skewness) và bóc tách ngoại lai Super Whales B2B.
+2. **Mục tiêu Nghiệp vụ (Marketing & CRM Actionability):** Chuyển đổi thành công từ cấp độ giỏ hàng (Basket-level) sang cấp độ khách hàng (Customer-level RFM); định hình chân dung sắc nét và xây dựng Playbook chiến lược hành động cá nhân hóa cho từng phân khúc nhằm tối đa hóa Giá trị vòng đời khách hàng (CLV).
+3. **Mục tiêu Ứng dụng & Triển khai (Production-Ready Tool):** Đóng gói toàn bộ mô hình tối ưu thành công cụ dòng lệnh `predict.py` có khả năng suy luận thời gian thực siêu tốc ($< 2$ mili-giây) phục vụ tích hợp trực tiếp vào hệ thống vận hành.
 
 ---
 
@@ -62,6 +62,32 @@ Tập dữ liệu thô gồm 8 thuộc tính phản ánh từng dòng đơn hàn
    - Ngoại lai `Quantity`: **25,944 dòng (6.39%)** vượt ngưỡng trên IQR (> 27 sản phẩm).
    - Ngoại lai `Price`: **31,722 dòng (7.82%)** vượt ngưỡng trên IQR (> £7.50).
    - Nhận định nghiệp vụ: Đây không phải lỗi nhập liệu mà là các đơn hàng bán sỉ B2B và mặt hàng giá trị cao — cần phương pháp phân cụm mật độ để bóc tách chứ không thể xóa bỏ cơ học.
+
+### 2.3. Quy trình 7 bước tiền xử lý & làm sạch dữ liệu (Data Preprocessing Pipeline)
+Từ các phát hiện bệnh lý trong EDA, nhóm tiến hành tiền xử lý toàn diện qua notebook `02_Tien_xu_ly/Tien_xu_ly.ipynb`:
+1. **Khử trùng lặp (Deduplication):** Loại bỏ **6,743 dòng giao dịch trùng lặp hoàn toàn** (chiếm 1.66%), giữ lại **398,971 dòng giao dịch sạch**.
+2. **Kiểm tra dữ liệu thiếu:** Toàn vẹn 100% thuộc tính `CustomerID` (0 dòng khuyết thiếu).
+3. **Chuẩn hóa tên cột & Ép kiểu dữ liệu:** Đổi tên `Invoice` $\to$ `InvoiceNo`, `Customer ID` $\to$ `CustomerID`. Ép `CustomerID` về chuỗi số nguyên chuẩn, `InvoiceDate` về định dạng Datetime chuẩn.
+4. **Kiểm tra đơn hủy & Lọc giá trị không hợp lệ:** Kiểm tra mã đơn hủy ('C') và các đơn giá/số lượng $\le 0$. Kết quả không tồn tại đơn hủy hay giá âm bất thường.
+5. **Tính toán trường thành tiền:** $\text{TotalPrice} = \text{Quantity} \times \text{Price}$.
+6. **Khảo sát ngoại lai cực đại ($Q_{99}$ & IQR):** Bảo toàn các đơn hàng sỉ có khối lượng lớn (B2B Whales) để làm đầu vào cho mô hình phân cụm mật độ, không cắt bỏ cơ học.
+7. **Phân chia dữ liệu sạch Train / Val / Test (Chống Data Leakage):** Phân chia dựa trên danh sách 4,275 mã `CustomerID` duy nhất:
+   - **Tập Train (64%):** 251,501 giao dịch (2,736 khách hàng) $\to$ `data/train.csv`.
+   - **Tập Validation (16%):** 72,685 giao dịch (684 khách hàng) $\to$ `data/valid.csv`.
+   - **Tập Test (20%):** 74,785 giao dịch (855 khách hàng) $\to$ `data/test.csv`.
+
+### 2.4. Đặc tả 2 Cơ sở dữ liệu & Bộ thuộc tính được huấn luyện (Training Feature Matrix)
+Đồ án sử dụng **2 cơ sở dữ liệu với 2 bộ ma trận đặc trưng khác nhau** ở 2 giai đoạn nghiên cứu:
+
+| Tiêu chí | Cơ sở dữ liệu 1: Giao Dịch Sạch (Transaction-level) | Cơ sở dữ liệu 2: Khách Hàng RFM (Customer-level) |
+| :--- | :--- | :--- |
+| **Tệp dữ liệu** | `data/train.csv`, `valid.csv`, `test.csv` | `data/rfm_train.csv`, `rfm_val.csv`, `rfm_test.csv` |
+| **Đơn vị mẫu (Sample)** | Từng dòng mặt hàng trong hóa đơn | Từng tài khoản khách hàng duy nhất (`CustomerID`) |
+| **Quy mô mẫu** | 251,501 dòng Train / 72,685 Val / 74,785 Test | 2,736 khách hàng Train / 684 Val / 855 Test |
+| **Thuộc tính dùng để TRAIN ($X$)** | **`['Quantity', 'Price', 'TotalPrice']`** | **`['Recency_log', 'Frequency_log', 'Monetary_log']`** |
+| **Phương pháp biến đổi** | Chuẩn hóa `StandardScaler` (z-score) | Biến đổi phi tuyến $\ln(1+x)$ + `StandardScaler` |
+| **Mô hình áp dụng** | K-Means Baseline, Hierarchical Baseline, DBSCAN Baseline | Tuned K-Means, Tuned Hierarchical, Tuned DBSCAN, Hybrid 2 Tầng, Consensus |
+| **Mục đích sử dụng** | Thiết lập mốc đối chuẩn ban đầu (Baseline Benchmark) | Phân khúc hành vi khách hàng phục vụ chiến lược kinh doanh và Marketing CRM |
 
 ---
 
