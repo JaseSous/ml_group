@@ -1,0 +1,122 @@
+{
+  "experiment_id": "Exp09_Hierarchical_DBSCAN_ThuanPhu",
+  "experiment_name": "Advanced Two-Stage Hybrid Clustering: Tuned Hierarchical Macro & Tuned DBSCAN Micro on RFM Features",
+  "researcher": "Trương Thuận Phú",
+  "date_executed": "2026-11-24 14:00:00",
+  "architecture": "Two-Stage Hierarchical-Density Outlier Profiling Pipeline",
+  "hyperparameters": {
+    "stage_1_macro": {
+      "algorithm": "AgglomerativeClustering",
+      "n_clusters": 4,
+      "linkage": "ward",
+      "metric": "euclidean"
+    },
+    "stage_2_micro": {
+      "algorithm": "DBSCAN",
+      "eps": 0.6,
+      "min_samples": 5,
+      "metric": "euclidean"
+    }
+  },
+  "dataset": {
+    "train_samples": 2736,
+    "val_samples": 684,
+    "test_samples": 855
+  },
+  "generalization_evaluation": {
+    "train": {
+      "sample_count": 2736,
+      "special_customers_count": 30,
+      "special_percentage": "1.10%",
+      "macro_silhouette": 0.2976,
+      "role": "Học ranh giới mật độ 4 cụm thứ bậc"
+    },
+    "validation": {
+      "sample_count": 684,
+      "special_customers_count": 8,
+      "special_percentage": "1.17%",
+      "macro_silhouette": 0.3093,
+      "inference_method": "NearestCentroid + Nearest Core DBSCAN",
+      "role": "Suy luận qua Nearest Core ổn định"
+    },
+    "test": {
+      "sample_count": 855,
+      "special_customers_count": 5,
+      "special_percentage": "0.58%",
+      "macro_silhouette": 0.321,
+      "inference_method": "NearestCentroid + Nearest Core DBSCAN",
+      "role": "Khả năng tổng quát hóa xuất sắc"
+    }
+  },
+  "micro_segments_summary": {
+    "1A_Champions_Regular": {
+      "count": 469,
+      "pct": "17.14%",
+      "recency_mean": 13.63,
+      "frequency_mean": 11.62,
+      "monetary_mean": 5159.54,
+      "monetary_max": 47111.18
+    },
+    "1B_Champions_Super_Whales": {
+      "count": 21,
+      "pct": "0.77%",
+      "recency_mean": 28.62,
+      "frequency_mean": 54.76,
+      "monetary_mean": 58148.04,
+      "monetary_max": 323860.53
+    },
+    "0A_Potential_Loyalists_Core": {
+      "count": 895,
+      "pct": "32.71%",
+      "recency_mean": 30.14,
+      "frequency_mean": 2.19,
+      "monetary_mean": 660.13,
+      "monetary_max": 3386.33
+    },
+    "0B_Potential_High_Velocity": {
+      "count": 3,
+      "pct": "0.11%",
+      "recency_mean": 5.33,
+      "frequency_mean": 2.0,
+      "monetary_mean": 1011.58,
+      "monetary_max": 2904.83
+    },
+    "3A_At_Risk_Core": {
+      "count": 706,
+      "pct": "25.80%",
+      "recency_mean": 105.31,
+      "frequency_mean": 3.96,
+      "monetary_mean": 1562.55,
+      "monetary_max": 12931.44
+    },
+    "3B_At_Risk_High_Value": {
+      "count": 5,
+      "pct": "0.18%",
+      "recency_mean": 118.0,
+      "frequency_mean": 7.4,
+      "monetary_mean": 2447.7,
+      "monetary_max": 11229.99
+    },
+    "2A_Lost_Standard": {
+      "count": 636,
+      "pct": "23.25%",
+      "recency_mean": 228.67,
+      "frequency_mean": 1.19,
+      "monetary_mean": 259.61,
+      "monetary_max": 1248.48
+    },
+    "2B_Lost_Dead_Accounts": {
+      "count": 1,
+      "pct": "0.04%",
+      "recency_mean": 358.0,
+      "frequency_mean": 1.0,
+      "monetary_mean": 2.95,
+      "monetary_max": 2.95
+    }
+  },
+  "evaluation_verdict": {
+    "status": "Mô hình lai thứ bậc - mật độ tối ưu (Optimal Deterministic Hybrid Architecture)",
+    "breakthrough": "Đạt tính xác định 100% nhờ cấu trúc cây phả hệ Ward ở Tầng 1, kết hợp khả năng lọc mật độ Tầng 2 bóc tách chính xác 21 siêu cá voi B2B (£58.1K chi tiêu trung bình, cực đại £323.9K) tinh chọn và cô đọng hơn mô hình KMeans + DBSCAN.",
+    "generalization": "Tỷ lệ khách dị biệt duy trì từ 0.58% đến 1.17% qua 3 tập dữ liệu độc lập nhờ cơ chế kết hợp NearestCentroid và Nearest Core Samples, đảm bảo tính vững chắc cao khi triển khai thực tế."
+  }
+}
