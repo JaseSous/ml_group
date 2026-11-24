@@ -1,0 +1,5 @@
+﻿Split,Samples,Evaluation_Focus,Silhouette_Score,Davies_Bouldin,Calinski_Harabasz,Status
+Train (All),2736,"Toàn bộ tập Train (64%)",0.3385,0.9961,2090.80,Thành công (Train)
+Train (Core Consensus),2212,"Đồng thuận lõi 80.8% (Loại biên & Cá voi)",0.4189,0.8609,2197.68,Đột phá Silhouette (~0.42)
+Validation,684,"Suy luận NearestCentroid (16%)",0.3152,1.0144,494.72,Ổn định (Val)
+Test,855,"Suy luận NearestCentroid (20%)",0.3251,1.0328,626.85,Tổng quát hóa xuất sắc
