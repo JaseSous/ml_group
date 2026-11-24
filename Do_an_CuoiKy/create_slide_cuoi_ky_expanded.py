@@ -815,31 +815,77 @@ kpi_card(sl, "1.57%", "SUPER WHALES (43 KH)\nNgoại lệ giá trị cao\nDoanh 
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
 header(sl, "TỔNG KẾT TOÀN DIỆN · QUÁ TRÌNH THỰC NGHIỆM & KẾT QUẢ NGHIỆP VỤ",
-       "Hành Trình Khắc Phục Bệnh Lý Dữ Liệu & 4 Tác Động Kinh Doanh Đột Phá Cho Nghiệp Vụ", EMERALD)
+       "Hành Trình Khắc Phục Bệnh Lý Dữ Liệu & 4 Tác Động Kinh Doanh Đột Phá Cho Doanh Nghiệp", EMERALD)
 
-# Cột trái: Biểu đồ đối chuẩn tổng hợp tiến hóa các mô hình
-img(sl, "fig13_note_final_benchmark_bars.png", Inches(0.4), Inches(1.4), Inches(6.0), Inches(5.6))
+# ── CỘT TRÁI (W = 6.1 in): 5 CHẶNG TIẾN HÓA MÔ HÌNH HỌC MÁY ──
+panel_l = sl.shapes.add_shape(1, Inches(0.4), Inches(1.45), Inches(6.1), Inches(5.6))
+panel_l.fill.solid(); panel_l.fill.fore_color.rgb = CARD_BG
+panel_l.line.color.rgb = BLUE; panel_l.line.width = Pt(1.5)
 
-# Cột phải: 4 Kết quả đột phá cho nghiệp vụ kinh doanh bán lẻ
-biz_results = [
-    ("🐳 Bóc Tách Khách Sỉ B2B (Super Whales)", 
-     "Phát hiện 21-22 tài khoản cá voi chi tiêu TB £55.7K - £58.1K (gấp 11 lần VIP thường, cá biệt £323.8K). Thiết lập kênh Account Manager riêng 1:1, bảo toàn 35%+ tổng doanh thu.", AMBER),
-    ("🛡 Chặn Đứng Rời Bỏ (Churn Prevention)", 
-     "Nhận diện chính xác 17.6% - 21.8% khách hàng nhóm Nguy cơ (At Risk / Sleeping) trước khi họ rời bỏ, kích hoạt kịch bản Re-engagement giữ chân kịp thời.", EMERALD),
-    ("💰 Tiết Kiệm 80% Ngân Sách Tiếp Thị", 
-     "Cắt giảm hoàn toàn chi phí quảng cáo và email spam cho nhóm Rời bỏ (Lost 32.8%), dồn ngân sách vào kích hoạt nhóm Khách hàng Tiềm năng (Potential Loyalists 27.1%).", BLUE),
-    ("📈 Tối Đa Hóa Giá Trị Vòng Đời (CLV)", 
-     "Chuyển đổi toàn diện từ tư duy bán lẻ đại trà 'One-Size-Fits-All' sang Hệ thống phân khúc vi mô (Micro-segmentation) 4-8 nhóm dựa trên hành vi thực tế.", CORAL),
+txb(sl, "🔬 5 CHẶNG ĐƯỜNG TIẾN HÓA HỌC MÁY KHOA HỌC", Inches(0.55), Inches(1.55), Inches(5.8), Inches(0.35), size=12, bold=True, color=BLUE)
+
+ml_stages = [
+    ("1", "EDA & Tiền Xử Lý 7 Bước", "405K tx thô lệch phải nặng (Skew > 10) → Làm sạch chuẩn mực, lọc âm/hủy/trùng → 4,275 KH toàn vẹn 100% ID.", BLUE),
+    ("2", "Thất Bại Của Baseline (The Trap)", "Gom cụm trên giỏ hàng: Cụm 0 nuốt 98.2% dữ liệu. Silhouette 0.64 là con số giả tạo do ngoại lai kéo dạt cụm.", CORAL),
+    ("3", "Bước Ngoặt Kỹ Nghệ RFM", "Nén về cấp độ Khách hàng (R-F-M), biến đổi Log1p triệt tiêu 98.7% độ lệch, chuẩn hóa chia tập chống rò rỉ dữ liệu.", AMBER),
+    ("4", "Tinh Chỉnh Tam Mã (Tuning)", "K-Means (K=4, ANOVA F=2,475), Ward Dendrogram, DBSCAN (k-dist) → Định hình 4 phân khúc khách hàng cốt lõi.", EMERALD),
+    ("5", "Đột Phá Lai & Tri-Model Consensus", "Lai 2 tầng bóc tách 21-22 Siêu Cá Voi (£58K) & Consensus Ensemble đạt 80.85% vùng lõi với Silhouette đạt 0.420!", AMBER),
 ]
+
+ty_s = Inches(1.95)
+for num, st_title, st_desc, st_col in ml_stages:
+    st_card = sl.shapes.add_shape(1, Inches(0.55), ty_s, Inches(5.8), Inches(0.88))
+    st_card.fill.solid(); st_card.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
+    st_card.line.color.rgb = st_col; st_card.line.width = Pt(1.0)
+    
+    # Badge number
+    badge = sl.shapes.add_shape(1, Inches(0.65), ty_s + Inches(0.1), Inches(0.34), Inches(0.34))
+    badge.fill.solid(); badge.fill.fore_color.rgb = st_col; badge.line.fill.background()
+    txb(sl, num, Inches(0.65), ty_s + Inches(0.12), Inches(0.34), Inches(0.28), size=11, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    
+    txb(sl, st_title, Inches(1.1), ty_s + Inches(0.08), Inches(5.1), Inches(0.26), size=11, bold=True, color=st_col)
+    txb(sl, st_desc, Inches(1.1), ty_s + Inches(0.34), Inches(5.1), Inches(0.50), size=9.5, color=LIGHT)
+    ty_s += Inches(0.96)
+
+
+# ── CỘT PHẢI (W = 6.1 in): 4 KẾT QUẢ NGHIỆP VỤ BÁN LẺ ĐỘT PHÁ ──
+biz_impacts = [
+    ("🐳 BÓC TÁCH KHÁCH SỈ B2B (SUPER WHALES)",
+     "£58,148 TB", "21 - 22 Doanh Nghiệp (Max £323.8K)",
+     "Tách riêng nhóm khách sỉ B2B (chi tiêu gấp 11 lần VIP thường). Thiết lập kênh Account Manager riêng 1:1, chính sách chiết khấu sỉ để bảo toàn hơn 35% tổng doanh thu.", AMBER),
+    
+    ("🛡️ CHẶN ĐỨNG NGUY CƠ RỜI BỎ (ANTI-CHURN)",
+     "17.6% - 21.8%", "481 - 596 Khách Nguy Cơ / Sleeping",
+     "Định danh sớm khách hàng suy giảm tần suất trước khi mất hẳn (R: 126-180 ngày). Kích hoạt tự động chuỗi email nuôi dưỡng & voucher ngắn hạn để giữ chân kịp thời.", EMERALD),
+    
+    ("💰 TIẾT KIỆM 80% NGÂN SÁCH TIẾP THỊ",
+     "Cắt Giảm 80%", "Nhóm Rời Bỏ Lost (32.8% Khách Hàng)",
+     "Dừng ngay việc gửi email đại trà và quảng cáo tốn kém vào nhóm khách rời bỏ (đóng góp <3% doanh thu). Dồn toàn lực ngân sách nuôi dưỡng nhóm Tiềm năng (27.1%).", BLUE),
+    
+    ("📈 TỐI ĐA HÓA VÒNG ĐỜI KHÁCH HÀNG (CLV)",
+     "4 - 8 Phân Khúc", "Micro-Segmentation Vi Mô Cá Nhân Hóa",
+     "Xóa bỏ hoàn toàn tiếp thị 'cào bằng', xây dựng phễu tăng trưởng khách hàng thông minh: Tiềm năng → Thân thiết → VIP Champions, tối đa hóa giá trị vòng đời lâu dài.", CORAL),
+]
+
 ty_b = Inches(1.45)
-for b_title, b_desc, b_col in biz_results:
-    b_card = sl.shapes.add_shape(1, Inches(6.6), ty_b, Inches(6.3), Inches(1.3))
+for b_title, b_kpi, b_badge, b_desc, b_col in biz_impacts:
+    b_card = sl.shapes.add_shape(1, Inches(6.8), ty_b, Inches(6.1), Inches(1.28))
     b_card.fill.solid(); b_card.fill.fore_color.rgb = CARD_BG
     b_card.line.color.rgb = b_col; b_card.line.width = Pt(1.5)
     
-    txb(sl, b_title, Inches(6.75), ty_b + Inches(0.08), Inches(6.0), Inches(0.35), size=12, bold=True, color=b_col)
-    txb(sl, b_desc, Inches(6.75), ty_b + Inches(0.42), Inches(6.0), Inches(0.8), size=10, color=LIGHT)
-    ty_b += Inches(1.42)
+    # Header title
+    txb(sl, b_title, Inches(6.95), ty_b + Inches(0.08), Inches(5.8), Inches(0.28), size=11.5, bold=True, color=b_col)
+    
+    # KPI pill & subtext
+    pill = sl.shapes.add_shape(1, Inches(6.95), ty_b + Inches(0.36), Inches(1.6), Inches(0.30))
+    pill.fill.solid(); pill.fill.fore_color.rgb = b_col; pill.line.fill.background()
+    txb(sl, b_kpi, Inches(6.95), ty_b + Inches(0.39), Inches(1.6), Inches(0.24), size=10, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    
+    txb(sl, f"📌 {b_badge}", Inches(8.65), ty_b + Inches(0.39), Inches(4.1), Inches(0.24), size=9.5, bold=True, color=LIGHT)
+    
+    # Description
+    txb(sl, b_desc, Inches(6.95), ty_b + Inches(0.70), Inches(5.8), Inches(0.52), size=9.5, color=LIGHT)
+    ty_b += Inches(1.38)
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -848,60 +894,88 @@ for b_title, b_desc, b_col in biz_results:
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
 header(sl, "TỔNG KẾT & NGHIỆM THU ĐỒ ÁN",
-       "Danh Mục Sản Phẩm Bàn Giao & 6 Đóng Góp Cốt Lõi", EMERALD)
+       "Danh Mục Sản Phẩm Bàn Giao Hoàn Chỉnh & 6 Đóng Góp Khoa Học Cốt Lõi", EMERALD)
 
-# Table on left (deliverables)
-tbl_shape = sl.shapes.add_table(6, 3, Inches(0.4), Inches(1.45), Inches(6.8), Inches(5.6))
-tbl = tbl_shape.table
-tbl.columns[0].width = Inches(0.7)
-tbl.columns[1].width = Inches(2.3)
-tbl.columns[2].width = Inches(3.8)
+# ── CỘT TRÁI (W = 6.1 in): 5 SẢN PHẨM BÀN GIAO CHUẨN MỰC ──
+panel_d = sl.shapes.add_shape(1, Inches(0.4), Inches(1.45), Inches(6.1), Inches(5.6))
+panel_d.fill.solid(); panel_d.fill.fore_color.rgb = CARD_BG
+panel_d.line.color.rgb = BLUE; panel_d.line.width = Pt(1.5)
 
-headers_d = [("STT", BLUE), ("Sản phẩm", AMBER), ("Mô tả & Trạng thái", EMERALD)]
-for j, (h_text, h_col) in enumerate(headers_d):
-    cell = tbl.cell(0, j)
-    cell.fill.solid(); cell.fill.fore_color.rgb = CARD_BG
-    p = cell.text_frame.paragraphs[0]
-    p.text = h_text
-    p.font.size = Pt(11); p.font.bold = True; p.font.color.rgb = h_col
+txb(sl, "📦 DANH MỤC 5 SẢN PHẨM BÀN GIAO ĐỒ ÁN", Inches(0.55), Inches(1.55), Inches(5.8), Inches(0.35), size=12, bold=True, color=BLUE)
 
-rows_deliv = [
-    ("1", "Báo cáo chi tiết", "Báo cáo Word chuẩn học thuật đầy đủ 7 hồi nghiên cứu"),
-    ("2", "Slide thuyết trình", "Slide PowerPoint 30 trang chuẩn 16:9, hình ảnh trực quan"),
-    ("3", "Mã nguồn Notebook", "Hệ thống Jupyter Notebooks đã chạy đầy đủ kết quả thực nghiệm"),
-    ("4", "Bộ mô hình & Logs", "Các file mô hình (.pkl), nhật ký thực nghiệm & nhãn dự đoán"),
-    ("5", "Kho dữ liệu sạch", "Tập dữ liệu sạch, các file CSV nén RFM & báo cáo phân tích"),
+deliverable_cards = [
+    ("📄", "Báo Cáo Nghiên Cứu Chi Tiết", "HOÀN TẤT",
+     "Quy chuẩn học thuật đầy đủ 6 Hồi nghiên cứu, phụ lục toán học ANOVA, phân tích chi tiết từng kịch bản thuật toán.", EMERALD),
+    
+    ("📊", "Slide Thuyết Trình Đồ Án", "30 SLIDES",
+     "Slide Dark Theme hiện đại, trực quan hóa 100% không gian 2D/3D PCA, đầy đủ biểu đồ đối chuẩn và kịch bản nghiệp vụ.", BLUE),
+    
+    ("📓", "Hệ Thống Jupyter Notebooks", "18+1 FILES",
+     "18 notebooks module hóa theo từng thực nghiệm + 1 Master Notebook End-to-End đã thực thi và lưu đầy đủ kết quả.", AMBER),
+    
+    ("🧠", "Kho Mô Hình Huấn Luyện & Logs", "ĐÓNG GÓI",
+     "Đầy đủ các mô hình đã tinh chỉnh (Tuned K-Means, Hierarchical, DBSCAN), bộ trọng số chuẩn hóa và nhãn phân cụm.", CORAL),
+    
+    ("🗄️", "Kho Dữ Liệu Sạch & Ma Trận RFM", "TOÀN VẸN",
+     "405,714 giao dịch sạch, ma trận 4,275 KH nén RFM, bộ tập phân chia Train (64%) / Val (16%) / Test (20%) chuẩn mực.", EMERALD),
 ]
-for i, row in enumerate(rows_deliv):
-    for j, val in enumerate(row):
-        cell = tbl.cell(i+1, j)
-        cell.fill.solid(); cell.fill.fore_color.rgb = RGBColor(0x13, 0x1d, 0x2e)
-        p = cell.text_frame.paragraphs[0]
-        p.text = val
-        p.font.size = Pt(10)
-        p.font.color.rgb = WHITE if j==0 else (AMBER if j==1 else LIGHT)
 
-# Right: 6 core achievements
-panel_r = sl.shapes.add_shape(1, Inches(7.5), Inches(1.45), Inches(5.4), Inches(5.6))
+ty_dc = Inches(1.95)
+for icon, d_name, d_tag, d_detail, d_col in deliverable_cards:
+    d_card = sl.shapes.add_shape(1, Inches(0.55), ty_dc, Inches(5.8), Inches(0.88))
+    d_card.fill.solid(); d_card.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
+    d_card.line.color.rgb = d_col; d_card.line.width = Pt(1.0)
+    
+    # Icon
+    txb(sl, icon, Inches(0.65), ty_dc + Inches(0.06), Inches(0.4), Inches(0.35), size=13)
+    
+    # Title
+    txb(sl, d_name, Inches(1.1), ty_dc + Inches(0.06), Inches(3.4), Inches(0.28), size=11, bold=True, color=WHITE)
+    
+    # Tag
+    tag_shp = sl.shapes.add_shape(1, Inches(4.75), ty_dc + Inches(0.06), Inches(1.45), Inches(0.24))
+    tag_shp.fill.solid(); tag_shp.fill.fore_color.rgb = d_col; tag_shp.line.fill.background()
+    txb(sl, d_tag, Inches(4.75), ty_dc + Inches(0.08), Inches(1.45), Inches(0.22), size=8.5, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    
+    # Detail
+    txb(sl, d_detail, Inches(1.1), ty_dc + Inches(0.34), Inches(5.1), Inches(0.50), size=9, color=LIGHT)
+    ty_dc += Inches(0.96)
+
+
+# ── CỘT PHẢI (W = 6.1 in): 6 ĐÓNG GÓP KHOA HỌC & THỰC TIỄN NỔI BẬT ──
+panel_r = sl.shapes.add_shape(1, Inches(6.8), Inches(1.45), Inches(6.1), Inches(5.6))
 panel_r.fill.solid(); panel_r.fill.fore_color.rgb = CARD_BG
 panel_r.line.color.rgb = EMERALD; panel_r.line.width = Pt(1.5)
 
-txb(sl, "⭐ 6 ĐÓNG GÓP KHOA HỌC & THỰC TIỄN", Inches(7.7), Inches(1.65), Inches(5.0), Inches(0.35), size=13, bold=True, color=EMERALD)
+txb(sl, "⭐ 6 ĐÓNG GÓP KHOA HỌC & THỰC TIỄN NỔI BẬT", Inches(6.95), Inches(1.55), Inches(5.8), Inches(0.35), size=12, bold=True, color=EMERALD)
 
-achievements = [
-    ("✔", "Làm sạch chuẩn xác 405,714 giao dịch, toàn vẹn 100% ID."),
-    ("✔", "Vạch trần cái bẫy Baseline và chuyển sang cấp độ khách hàng."),
-    ("✔", "Rút trích RFM và triệt tiêu 98.7% độ lệch bằng Log Transform."),
-    ("✔", "ANOVA chứng minh Frequency là thuộc tính định hình mạnh nhất."),
-    ("✔", "Đột phá mô hình Lai 2 tầng (K-Means/Hierarchical+DB) bóc tách Super Whales (£58K)."),
-    ("✔", "Mô hình Tri-Model Consensus đạt vùng lõi tin cậy 80.85% (Sil 0.42)."),
+core_contributions = [
+    ("1", "Làm Sạch Chuẩn Xác 405,714 Giao Dịch", "Bảo toàn 100% định danh CustomerID cho 4,275 khách hàng, khử triệt để đơn hủy 'C', âm, rác và 6,743 dòng trùng lặp.", BLUE),
+    ("2", "Vạch Trần Bản Chất 'Cái Bẫy Baseline'", "Giải mã hiện tượng điểm Silhouette cao giả tạo (0.64) và chứng minh sự thất bại khi phân cụm trên dòng giỏ hàng thay vì khách hàng.", CORAL),
+    ("3", "Kỹ Nghệ RFM & Triệt Tiêu 98.7% Độ Lệch", "Áp dụng biến đổi logarit ln(1+x) đưa phân phối lệch phải về chuẩn, chuẩn hóa chia tập Train/Val/Test chống rò rỉ dữ liệu tuyệt đối.", AMBER),
+    ("4", "Kiểm Định ANOVA One-Way Độc Lập", "Chứng minh bằng toán học Frequency (F=2,475.70) là thuộc tính định hình mạnh nhất, đóng vai trò then chốt trong phân hóa khách hàng.", EMERALD),
+    ("5", "Đột Phá Kiến Trúc Mô Hình Lai 2 Tầng", "Kết hợp K-Means/Hierarchical với DBSCAN bóc tách chuẩn xác 21-22 Siêu Cá Voi (£58K) với độ trùng khớp 96.8% (Jaccard = 0.968).", AMBER),
+    ("6", "Đỉnh Cao Tri-Model Consensus Ensemble", "Xác lập vùng lõi tin cậy 80.85% (Silhouette vọt lên 0.420), giải quyết trọn vẹn khiếm khuyết của từng thuật toán đơn lẻ.", EMERALD),
 ]
-ty = Inches(2.2)
-for icon, txt in achievements:
-    txb(sl, f"{icon}  {txt}", Inches(7.7), ty, Inches(5.0), Inches(0.48), size=11, color=LIGHT)
-    ty += Inches(0.55)
 
-txb(sl, "Nhóm 05 · Đại học Sài Gòn (SGU) · 2024–2025", Inches(7.7), Inches(6.4), Inches(5.0), Inches(0.35), size=11, italic=True, color=GRAY)
+ty_c = Inches(1.95)
+for num, c_title, c_desc, c_col in core_contributions:
+    c_card = sl.shapes.add_shape(1, Inches(6.95), ty_c, Inches(5.8), Inches(0.70))
+    c_card.fill.solid(); c_card.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
+    c_card.line.color.rgb = c_col; c_card.line.width = Pt(1.0)
+    
+    # Num badge
+    nb = sl.shapes.add_shape(1, Inches(7.05), ty_c + Inches(0.08), Inches(0.28), Inches(0.28))
+    nb.fill.solid(); nb.fill.fore_color.rgb = c_col; nb.line.fill.background()
+    txb(sl, num, Inches(7.05), ty_c + Inches(0.09), Inches(0.28), Inches(0.24), size=9.5, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    
+    txb(sl, c_title, Inches(7.42), ty_c + Inches(0.06), Inches(5.2), Inches(0.24), size=10, bold=True, color=c_col)
+    txb(sl, c_desc, Inches(7.42), ty_c + Inches(0.28), Inches(5.2), Inches(0.40), size=8.5, color=LIGHT)
+    ty_c += Inches(0.76)
+
+# Footer signature
+txb(sl, "Nhóm 05 · Lớp DCT124C1 · Khoa CNTT · Trường Đại học Sài Gòn (SGU) · 2024–2025", 
+    Inches(6.95), Inches(6.62), Inches(5.8), Inches(0.28), size=9.5, italic=True, color=GRAY)
 
 
 # ═══════════════════════════════════════════════════════════════════
