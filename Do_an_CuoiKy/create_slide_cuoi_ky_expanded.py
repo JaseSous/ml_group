@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Tao slide bao cao cuoi ky toan dien - Nhom 05
-24 Slides - Visual dominant, minimal text
-LAM RO BASELINE & CAC MO HINH SAU VOI SO DO TRUC QUAN TRICH XUAT TU NOTEBOOK
+24 Slides - CAU TRUC CHUAN 7 HOI THEO PROJECT_STORY.MD
+Visual dominant (hinh anh 60-75%), minimal text, cuc ky ro rang va mach lac
 """
 
 import os
@@ -55,14 +55,18 @@ def txb(slide, text, l, t, w, h, size=18, bold=False, color=WHITE,
     run.font.italic = italic
     return tb
 
-def header(slide, tag, title, tag_color=EMERALD):
+def header(slide, act_tag, title, tag_color=EMERALD):
+    # Left accent line
     bar = slide.shapes.add_shape(1, Inches(0), Inches(0), Inches(0.12), H)
     bar.fill.solid(); bar.fill.fore_color.rgb = tag_color; bar.line.fill.background()
     
-    txb(slide, tag.upper(), Inches(0.4), Inches(0.22), Inches(8), Inches(0.35),
+    # Act Tag
+    txb(slide, act_tag.upper(), Inches(0.4), Inches(0.22), Inches(9.5), Inches(0.35),
         size=11, bold=True, color=tag_color)
+    # Title
     txb(slide, title, Inches(0.4), Inches(0.55), Inches(12.5), Inches(0.7),
-        size=24, bold=True, color=WHITE)
+        size=23, bold=True, color=WHITE)
+    # Divider line
     ln = slide.shapes.add_shape(1, Inches(0.4), Inches(1.25), Inches(12.5), Inches(0.02))
     ln.fill.solid(); ln.fill.fore_color.rgb = tag_color; ln.line.fill.background()
 
@@ -103,7 +107,7 @@ img(sl, "fig00_ml_pipeline_architecture.png",
 txb(sl, "ĐỒ ÁN CUỐI KỲ · HỌC MÁY (MACHINE LEARNING)", Inches(0.5), Inches(0.9),
     Inches(6.5), Inches(0.5), size=12, color=EMERALD, bold=True)
 
-txb(sl, "Phân Cụm Khách Hàng\nOnline Retail II",
+txb(sl, "Phân Khúc Khách Hàng\nOnline Retail II",
     Inches(0.5), Inches(1.5), Inches(6.5), Inches(2.2),
     size=44, bold=True, color=WHITE)
 
@@ -123,14 +127,15 @@ txb(sl, "Năm học 2024 – 2025", Inches(0.5), Inches(6.2),
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 2 — ĐẶT VẤN ĐỀ & MỤC TIÊU KINH DOANH
+# SLIDE 2 — HỒI 1: BỐI CẢNH & NỖI ĐAU KINH DOANH
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "01 · TỔNG QUAN", "Vì Sao Doanh Nghiệp Cần Phân Cụm Khách Hàng?", BLUE)
+header(sl, "HỒI 1 · BỐI CẢNH & NỖI ĐAU KINH DOANH (THE BUSINESS DILEMMA)",
+       "Vì Sao Doanh Nghiệp Bắt Buộc Phải Phân Cụm Khách Hàng?", BLUE)
 
 cards_s2 = [
-    ("405,714", "Giao dịch thực tế\n(Tập dữ liệu khảo sát)", EMERALD),
+    ("405,714", "Giao dịch thực tế\n(Giai đoạn 2009–2010)", EMERALD),
     ("4,275",   "Khách hàng\nđịnh danh duy nhất",       BLUE),
     ("37",      "Quốc gia\ntoàn cầu (UK 91.2%)",        AMBER),
     ("4,420",   "Mặt hàng\nquà tặng & gia dụng",        CORAL),
@@ -148,7 +153,7 @@ pains = [
     ("❌", "Thực trạng kinh doanh:", "Doanh nghiệp không biết ai là khách VIP, ai đang có nguy cơ rời bỏ (Churn) để chăm sóc."),
     ("📉", "Hệ quả tiếp thị:", "Chiến dịch Marketing 'cào bằng' gây lãng phí ngân sách và tỷ lệ chuyển đổi đơn hàng thấp."),
     ("🔍", "Thách thức Machine Learning:", "Phân phối giao dịch bị lệch phải cực nặng, tồn tại ngoại lai đơn hàng lớn kéo dạt cụm."),
-    ("🎯", "Mục tiêu đồ án:", "Xây dựng hệ thống phân khúc vi mô (Micro-segmentation) chính xác cao, tăng Customer Lifetime Value (CLV)."),
+    ("🎯", "Mục tiêu cốt lõi:", "Xây dựng hệ thống phân khúc vi mô (Micro-segmentation) chính xác cao, tăng Customer Lifetime Value (CLV)."),
 ]
 ty = Inches(3.45)
 for icon, title, desc in pains:
@@ -158,11 +163,12 @@ for icon, title, desc in pains:
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 3 — TẬP DỮ LIỆU GỐC & 8 THUỘC TÍNH (TOÀN VẸN 100%)
+# SLIDE 3 — HỒI 2: KHÁM PHÁ DỮ LIỆU (EDA) - CẤU TRÚC THUỘC TÍNH
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "02 · KHÁM PHÁ DỮ LIỆU", "Cấu Trúc Thuộc Tính & Ma Trận Tương Quan Ban Đầu", EMERALD)
+header(sl, "HỒI 2 · KHÁM PHÁ DỮ LIỆU (EDA)",
+       "Cấu Trúc 8 Thuộc Tính Gốc & Ma Trận Tương Quan Ban Đầu", EMERALD)
 
 tbl_shape = sl.shapes.add_table(9, 3, Inches(0.4), Inches(1.45), Inches(6.8), Inches(5.6))
 tbl = tbl_shape.table
@@ -201,11 +207,12 @@ img(sl, "fig_eda_correlation_heatmap.png", Inches(7.5), Inches(1.45), Inches(5.4
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 4 — EDA KINH DOANH: DOANH THU & TÍNH MÙA VỤ
+# SLIDE 4 — HỒI 2: KHÁM PHÁ DỮ LIỆU (EDA) - XU HƯỚNG DOANH THU
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "02 · KHÁM PHÁ DỮ LIỆU", "Xu Hướng Doanh Thu Hàng Tháng & Tính Mùa Vụ Bán Lẻ", AMBER)
+header(sl, "HỒI 2 · KHÁM PHÁ DỮ LIỆU (EDA)",
+       "Xu Hướng Doanh Thu Hàng Tháng & Tính Mùa Vụ Bán Lẻ", AMBER)
 
 img(sl, "fig03_eda_monthly_revenue.png", Inches(0.4), Inches(1.4), Inches(8.8), Inches(5.7))
 
@@ -218,22 +225,24 @@ kpi_card(sl, "£8.34M", "Tổng doanh thu ghi nhận\n(Trung bình £20.55/giao 
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 5 — EDA KINH DOANH: THỊ TRƯỜNG & TOP SẢN PHẨM
+# SLIDE 5 — HỒI 2: KHÁM PHÁ DỮ LIỆU (EDA) - THỊ TRƯỜNG & SẢN PHẨM
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "02 · KHÁM PHÁ DỮ LIỆU", "Phân Bố Thị Trường Quốc Gia & Top Sản Phẩm Bán Chạy", EMERALD)
+header(sl, "HỒI 2 · KHÁM PHÁ DỮ LIỆU (EDA)",
+       "Phân Bố Thị Trường Quốc Gia & Top Sản Phẩm Bán Chạy", EMERALD)
 
 img(sl, "fig_eda_top_countries.png", Inches(0.4), Inches(1.4), Inches(6.1), Inches(5.6))
 img(sl, "fig_eda_top_products.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(5.6))
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 6 — EDA THÁCH THỨC: PHÂN PHỐI LỆCH & TÍNH TOÀN VẸN
+# SLIDE 6 — HỒI 2: KHÁM PHÁ DỮ LIỆU (EDA) - BỆNH LÝ PHÂN PHỐI LỆCH
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "02 · KHÁM PHÁ DỮ LIỆU", "Dữ Liệu Thô: Toàn Vẹn 100% Thuộc Tính Nhưng Phân Phối Lệch Nặng", AMBER)
+header(sl, "HỒI 2 · KHÁM PHÁ DỮ LIỆU (EDA)",
+       "Dữ Liệu Thô: Toàn Vẹn 100% Thuộc Tính Nhưng Phân Phối Lệch Nặng", AMBER)
 
 img(sl, "fig01_eda_quantity_price_dist.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
@@ -248,11 +257,12 @@ kpi_card(sl, "Lệch Phải", "Quantity & Price lệch nặng\n(Cần xử lý n
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 7 — EDA THÁCH THỨC: NGOẠI LỆ CỰC ĐOAN (OUTLIERS THEO IQR)
+# SLIDE 7 — HỒI 2: KHÁM PHÁ DỮ LIỆU (EDA) - NGOẠI LẠI THEO IQR
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "02 · KHÁM PHÁ DỮ LIỆU", "Phát Hiện Ngoại Lai Theo Phương Pháp IQR (Boxplot)", CORAL)
+header(sl, "HỒI 2 · KHÁM PHÁ DỮ LIỆU (EDA)",
+       "Phát Hiện Ngoại Lai Cực Đoan Theo Phương Pháp IQR (Boxplot)", CORAL)
 
 img(sl, "fig02_eda_boxplot_outliers.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
@@ -272,16 +282,15 @@ txb(sl, "• Quantity đạt max tới 600 sản phẩm: Đây là các đơn h�
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 8 — THỰC NGHIỆM MÔ HÌNH BASELINE (CẤP ĐỘ GIAO DỊCH)
+# SLIDE 8 — HỒI 3: CÁI BẪY BAN ĐẦU - MÔ HÌNH BASELINE (METRICS)
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "03 · MÔ HÌNH CƠ SỞ (BASELINE)", "Thực Nghiệm 3 Mô Hình Baseline Trên Giao Dịch & Sơ Đồ Đối Chuẩn", BLUE)
+header(sl, "HỒI 3 · CÁI BẪY BAN ĐẦU: MÔ HÌNH BASELINE (THE BASELINE TRAP)",
+       "Trực Giác Ban Đầu & Thực Nghiệm 3 Mô Hình Baseline Trên Giao Dịch", BLUE)
 
-# Sơ đồ so sánh hiệu năng Baseline từ note_baseline.ipynb
 img(sl, "fig_baseline_metrics_comparison.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
-# Cột thông số & kết quả định lượng chuẩn xác
 kpi_card(sl, "K-Means (K=3)", "Mô hình tốt nhất Baseline\nSil Test: 0.6417 | DB: 0.6040\nCalinski-Harabasz: 150,925\nThời gian chạy: 0.52s",
          Inches(9.2), Inches(1.45), w=Inches(3.7), h=Inches(1.75), num_color=EMERALD, num_size=20)
 kpi_card(sl, "Hierarchical (K=4)", "Ward Linkage (5K mẫu)\nSil Test: 0.6566 | DB: 0.6074\nGiới hạn bộ nhớ O(N²)",
@@ -291,13 +300,13 @@ kpi_card(sl, "DBSCAN (eps=0.5)", "MinPts = 10\nSil Test: 0.6600 | DB: 0.4015\nT�
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 9 — PHÂN TÍCH THUỘC TÍNH BASELINE & BƯỚC NGOẶT CHUYỂN TIẾP
+# SLIDE 9 — HỒI 3: CÁI BẪY BAN ĐẦU - ANOVA & BƯỚC NGOẶT CHUYỂN TIẾP
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "03 · MÔ HÌNH CƠ SỞ (BASELINE)", "Mức Độ Chi Phối Thuộc Tính & Bước Chuyển Sang Cấp Độ Khách Hàng", BLUE)
+header(sl, "HỒI 3 · CÁI BẪY BAN ĐẦU: MÔ HÌNH BASELINE (THE BASELINE TRAP)",
+       "Mức Độ Chi Phối Thuộc Tính & Bước Chuyển Sang Cấp Độ Khách Hàng", BLUE)
 
-# Sơ đồ ANOVA % chi phối thuộc tính Baseline từ note_baseline.ipynb
 img(sl, "fig_baseline_feature_importance.png", Inches(0.4), Inches(1.4), Inches(7.5), Inches(5.7))
 
 kpi_card(sl, "Price (44.8%)", "Thuộc tính chi phối lớn nhất K-Means\n(Quantity: 38.5% | TotalPrice: 16.7%)",
@@ -316,11 +325,12 @@ txb(sl, "• Mô hình Baseline phân cụm trên cấp độ GIAO DỊCH (Trans
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 10 — PHỄU TIỀN XỬ LÝ DỮ LIỆU
+# SLIDE 10 — HỒI 4: BƯỚC NGOẶT KỸ NGHỆ RFM - PHỄU TIỀN XỬ LÝ
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "04 · TIỀN XỬ LÝ", "Quy Trình Phễu Làm Sạch Dữ Liệu Giao Dịch (Cleaning Funnel)", EMERALD)
+header(sl, "HỒI 4 · BƯỚC NGOẶT KỸ NGHỆ ĐẶC TRƯNG RFM (FEATURE ENGINEERING)",
+       "Quy Trình Phễu Làm Sạch & Nén Dữ Liệu Về Cấp Độ Khách Hàng", EMERALD)
 
 img(sl, "fig04_preprocessing_funnel.png", Inches(0.4), Inches(1.4), Inches(8.8), Inches(5.7))
 
@@ -335,11 +345,12 @@ kpi_card(sl, "4,275 KH", "Khách hàng duy nhất\n(Gom nhóm theo ID)",
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 11 — RÚT TRÍCH ĐẶC TRƯNG RFM
+# SLIDE 11 — HỒI 4: BƯỚC NGOẶT KỸ NGHỆ RFM - RÚT TRÍCH RFM KINH ĐIỂN
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "05 · KỸ NGHỆ ĐẶC TRƯNG", "Rút Trích Bộ 3 Chỉ Số Vàng RFM Cho 4,275 Khách Hàng", BLUE)
+header(sl, "HỒI 4 · BƯỚC NGOẶT KỸ NGHỆ ĐẶC TRƯNG RFM (FEATURE ENGINEERING)",
+       "Rút Trích Bộ 3 Chỉ Số Vàng RFM Cho 4,275 Khách Hàng", BLUE)
 
 rfm_defs = [
     ("R", "Recency (Độ mới)", "Số ngày kể từ lần mua gần nhất đến mốc chốt sổ (2010-12-10). R nhỏ = khách gắn kết.\nMean: 90.6 ngày | Min: 1 | Max: 373", BLUE),
@@ -360,11 +371,12 @@ img(sl, "fig01_rfm_raw_distribution.png", Inches(5.2), Inches(1.4), Inches(7.7),
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 12 — BIẾN ĐỔI LOG TRANSFORM & CHUẨN HÓA
+# SLIDE 12 — HỒI 4: BƯỚC NGOẶT KỸ NGHỆ RFM - LOG TRANSFORM & CHUẨN HÓA
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "05 · KỸ NGHỆ ĐẶC TRƯNG", "Biến Đổi Log Transform: Triệt Tiêu Độ Lệch & Chuẩn Hóa StandardScaler", EMERALD)
+header(sl, "HỒI 4 · BƯỚC NGOẶT KỸ NGHỆ ĐẶC TRƯNG RFM (FEATURE ENGINEERING)",
+       "Biến Đổi Log Transform: Triệt Tiêu Độ Lệch & Chuẩn Hóa StandardScaler", EMERALD)
 
 img(sl, "fig02_rfm_log_distribution.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
@@ -379,39 +391,50 @@ kpi_card(sl, "StandardScaler", "Chuẩn hóa z-score\n(mean=0, std=1 trên Train
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 13 — TƯƠNG QUAN & KHÔNG GIAN 3D RFM
+# SLIDE 13 — HỒI 4: BƯỚC NGOẶT KỸ NGHỆ RFM - TƯƠNG QUAN & KHÔNG GIAN 3D
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "05 · KỸ NGHỆ ĐẶC TRƯNG", "Ma Trận Tương Quan & Không Gian Đặc Trưng 3D RFM", BLUE)
+header(sl, "HỒI 4 · BƯỚC NGOẶT KỸ NGHỆ ĐẶC TRƯNG RFM (FEATURE ENGINEERING)",
+       "Ma Trận Tương Quan & Không Gian Đặc Trưng 3D RFM", BLUE)
 
 img(sl, "fig03_rfm_correlation_and_scatter.png", Inches(0.4), Inches(1.4), Inches(6.1), Inches(5.6))
 img(sl, "fig04_rfm_3d_feature_space.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(5.6))
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 14 — CHIẾN LƯỢC CHIA TẬP DỮ LIỆU
+# SLIDE 14 — HỒI 4: BƯỚC NGOẶT KỸ NGHỆ RFM - CHIA TẬP & NGHỊCH LÝ SILHOUETTE
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "06 · PHÂN CHIA DỮ LIỆU", "Chiến Lược Chia Train / Validation / Test Chống Rò Rỉ (Data Leakage)", AMBER)
+header(sl, "HỒI 4 · BƯỚC NGOẶT KỸ NGHỆ ĐẶC TRƯNG RFM (FEATURE ENGINEERING)",
+       "Chiến Lược Chia Dữ Liệu (Zero Leakage) & Giải Mã Nghịch Lý Silhouette", AMBER)
 
 img(sl, "fig03_train_val_test_split.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
 kpi_card(sl, "2,736 KH", "TẬP TRAIN (64.0%)\n251,501 giao dịch (Fit mô hình)",
-         Inches(9.2), Inches(1.5), w=Inches(3.7), h=Inches(1.5), num_color=EMERALD)
+         Inches(9.2), Inches(1.45), w=Inches(3.7), h=Inches(1.3), num_color=EMERALD)
 kpi_card(sl, "684 KH", "TẬP VALIDATION (16.0%)\n72,685 giao dịch (Dò siêu tham số)",
-         Inches(9.2), Inches(3.2), w=Inches(3.7), h=Inches(1.5), num_color=BLUE)
+         Inches(9.2), Inches(2.85), w=Inches(3.7), h=Inches(1.3), num_color=BLUE)
 kpi_card(sl, "855 KH", "TẬP TEST (20.0%)\n74,785 giao dịch (Kiểm thử cuối)",
-         Inches(9.2), Inches(4.9), w=Inches(3.7), h=Inches(1.5), num_color=AMBER)
+         Inches(9.2), Inches(4.25), w=Inches(3.7), h=Inches(1.3), num_color=AMBER)
+
+panel = sl.shapes.add_shape(1, Inches(9.2), Inches(5.65), Inches(3.7), Inches(1.45))
+panel.fill.solid(); panel.fill.fore_color.rgb = CARD_BG
+panel.line.color.rgb = AMBER; panel.line.width = Pt(1)
+
+txb(sl, "GIẢI MÃ NGHỊCH LÝ SILHOUETTE", Inches(9.3), Inches(5.75), Inches(3.5), Inches(0.3), size=11, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+txb(sl, "Điểm Sil 0.3385 ở RFM là CHẤT LƯỢNG THỰC CHẤT:\nPhân tách 4 cụm cân đối (18%-33%), không cụm nào bị nuốt chửng, mỗi khách hàng có 1 danh tính ổn định.",
+    Inches(9.3), Inches(6.05), Inches(3.5), Inches(0.95), size=10, color=LIGHT, align=PP_ALIGN.CENTER)
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 15 — K-MEANS TUNING: XÁC ĐỊNH K TỐI ƯU
+# SLIDE 15 — HỒI 5: CUỘC ĐUA TAM MÃ - K-MEANS TUNING (ELBOW & SILHOUETTE)
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "07 · MÔ HÌNH K-MEANS", "Phương Pháp Elbow SSE & Hệ Số Silhouette Tìm K Tối Ưu", BLUE)
+header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
+       "Nhánh 1 - Tuned K-Means: Phương Pháp Elbow SSE & Hệ Số Silhouette Tìm K Tối Ưu", BLUE)
 
 img(sl, "fig04_elbow_method_sse.png", Inches(0.4), Inches(1.4), Inches(6.1), Inches(4.6))
 img(sl, "fig05_silhouette_scores_k.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(4.6))
@@ -426,11 +449,12 @@ txb(sl, "• Điểm uốn Elbow xuất hiện rõ nét tại K=4 (độ dốc g
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 16 — K-MEANS SCENARIOS & PHÂN TÍCH ANOVA
+# SLIDE 16 — HỒI 5: CUỘC ĐUA TAM MÃ - K-MEANS 2D PCA & ANOVA
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "07 · MÔ HÌNH K-MEANS", "Không Gian 2D PCA & Phân Tích ANOVA: Frequency Quan Trọng Nhất", BLUE)
+header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
+       "Nhánh 1 - Tuned K-Means: Không Gian 2D PCA & Phân Tích ANOVA: Frequency Số 1", BLUE)
 
 img(sl, "fig_kmeans_scenarios_2d.png", Inches(0.4), Inches(1.4), Inches(7.5), Inches(5.7))
 
@@ -451,11 +475,12 @@ txb(sl, "✓ Độ khái quát hóa cao, không bị Overfitting", Inches(8.4), 
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 17 — HIERARCHICAL CLUSTERING TUNING
+# SLIDE 17 — HỒI 5: CUỘC ĐUA TAM MÃ - HIERARCHICAL TUNING
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "08 · MÔ HÌNH HIERARCHICAL", "Cây Phân Cấp Dendrogram & So Sánh 7 Kịch Bản Linkage", AMBER)
+header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
+       "Nhánh 2 - Tuned Hierarchical: Cây Phân Cấp Dendrogram & 7 Kịch Bản Linkage", AMBER)
 
 img(sl, "fig10_dendrogram_ward.png", Inches(0.4), Inches(1.4), Inches(6.1), Inches(4.6))
 img(sl, "fig_hierarchical_scenarios_2d.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(4.6))
@@ -469,11 +494,12 @@ kpi_card(sl, "Ward Linkage", "Tối ưu hóa tổng phương sai\n(Vượt trộ
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 18 — DBSCAN TUNING: MẬT ĐỘ & OUTLIERS
+# SLIDE 18 — HỒI 5: CUỘC ĐUA TAM MÃ - DBSCAN TUNING
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "09 · MÔ HÌNH DBSCAN", "Biểu Đồ K-Distance & Khả Năng Tách Ngoại Lệ Cực Đoan", CORAL)
+header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
+       "Nhánh 3 - Tuned DBSCAN: Biểu Đồ K-Distance & Khả Năng Tách Ngoại Lệ Cực Đoan", CORAL)
 
 img(sl, "fig11_kdistance_multiline.png", Inches(0.4), Inches(1.4), Inches(6.1), Inches(4.6))
 img(sl, "fig_dbscan_scenarios_2d.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(4.6))
@@ -487,22 +513,24 @@ kpi_card(sl, "43 KH (1.57%)", "Ngoại lệ phát hiện\n(Super Whales giá tr�
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 19 — BENCHMARK TỔNG HỢP 3 THẾ HỆ MÔ HÌNH
+# SLIDE 19 — HỒI 5: CUỘC ĐUA TAM MÃ - ĐỐI CHUẨN 3 THẾ HỆ
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "10 · ĐỐI CHUẨN 3 THẾ HỆ", "So Sánh Hiệu Năng: Baseline vs Untuned RFM vs Tuned RFM", EMERALD)
+header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
+       "Đối Chuẩn Tổng Thể: Tiến Hóa Từ Baseline → Untuned RFM → Tuned RFM", EMERALD)
 
 img(sl, "fig06_model_comparison_metrics.png", Inches(0.4), Inches(1.4), Inches(6.2), Inches(5.6))
 img(sl, "fig_comparison_kmeans_vs_hierarchical_dbscan.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(5.6))
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 20 — CHÂN DUNG 4 PHÂN KHÚC K-MEANS
+# SLIDE 20 — HỒI 5: CUỘC ĐUA TAM MÃ - CHÂN DUNG 4 PHÂN KHÚC K-MEANS
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "11 · HỒ SƠ PHÂN KHÚC", "Chân Dung 4 Nhóm Khách Hàng Từ Mô Hình K-Means K=4", EMERALD)
+header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
+       "Chân Dung 4 Phân Khúc Khách Hàng Cốt Lõi Từ Mô Hình K-Means (K=4)", EMERALD)
 
 img(sl, "fig08_rfm_cluster_profiles.png", Inches(0.4), Inches(1.4), Inches(7.5), Inches(5.7))
 
@@ -525,11 +553,12 @@ for title, pct, desc, col in segs:
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 21 — HYBRID 2-STAGE: K-MEANS + DBSCAN
+# SLIDE 21 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - MÔ HÌNH LAI 2 TẦNG
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "12 · MÔ HÌNH LAI HYBRID", "Kết Hợp K-Means + DBSCAN: Tách Rời 22 Super Whales B2B", AMBER)
+header(sl, "HỒI 6 · ĐỘT PHÁ KIẾN TRÚC: MÔ HÌNH LAI & TRI-MODEL CONSENSUS",
+       "Giải Pháp 1: Mô Hình Lai 2 Tầng (K-Means + DBSCAN) Bóc Tách 22 Super Whales", AMBER)
 
 img(sl, "fig12_hybrid_pca_and_whales_snake.png", Inches(0.4), Inches(1.4), Inches(8.8), Inches(5.7))
 
@@ -544,11 +573,12 @@ kpi_card(sl, "Bảo Toàn", "KHÔNG LỆCH TÂM\n(Cụm bán lẻ chuẩn xác)"
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 22 — TRI-MODEL CONSENSUS
+# SLIDE 22 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - TRI-MODEL CONSENSUS
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "13 · ĐỒNG THUẬN TRI-MODEL", "Mô Hình Ensemble Đồng Thuận Cả 3 Thuật Toán", EMERALD)
+header(sl, "HỒI 6 · ĐỘT PHÁ KIẾN TRÚC: MÔ HÌNH LAI & TRI-MODEL CONSENSUS",
+       "Giải Pháp 2 (Đỉnh Cao): Tri-Model Consensus Ensemble Đồng Thuận 3 Thuật Toán", EMERALD)
 
 img(sl, "fig_tri_model_hybrid_consensus_2d.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
@@ -561,11 +591,12 @@ kpi_card(sl, "1.57%", "SUPER WHALES (43 KH)\nNgoại lệ giá trị cao\nDoanh 
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 23 — CHIẾN LƯỢC KINH DOANH THỰC TẾ
+# SLIDE 23 — HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG - CHIẾN LƯỢC KINH DOANH
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "14 · ỨNG DỤNG THỰC TẾ", "Kế Hoạch Hành Động Cá Nhân Hóa Cho Từng Phân Khúc", BLUE)
+header(sl, "HỒI 7 · HIỆN THỰC HÓA ỨNG DỤNG & ĐÓNG GÓI SẢN PHẨM",
+       "Kế Hoạch Hành Động Cá Nhân Hóa Cho 5 Phân Khúc Khách Hàng", BLUE)
 
 actions = [
     ("🐳 Super Whales B2B", "Chăm sóc 1:1 qua Account Manager riêng, chiết khấu sỉ, SLA giao hàng ưu tiên.", AMBER),
@@ -588,7 +619,7 @@ img(sl, "fig13_note_final_benchmark_bars.png", Inches(6.8), Inches(1.4), Inches(
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 24 — TỔNG KẾT & CẢM ƠN (Q&A)
+# SLIDE 24 — HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG - CLI PREDICT & TỔNG KẾT
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
@@ -596,36 +627,41 @@ add_bg(sl, NAVY)
 bar = sl.shapes.add_shape(1, Inches(0), Inches(0), Inches(0.2), H)
 bar.fill.solid(); bar.fill.fore_color.rgb = EMERALD; bar.line.fill.background()
 
-txb(sl, "15 · TỔNG KẾT ĐỒ ÁN", Inches(0.5), Inches(0.5), Inches(6.5), Inches(0.4), size=12, bold=True, color=EMERALD)
-txb(sl, "Đóng Góp Cốt Lõi Của Đề Tài", Inches(0.5), Inches(0.9), Inches(6.5), Inches(0.7), size=28, bold=True, color=WHITE)
+txb(sl, "HỒI 7 · HIỆN THỰC HÓA ỨNG DỤNG & ĐÓNG GÓI SẢN PHẨM", Inches(0.5), Inches(0.45), Inches(7.5), Inches(0.35), size=11, bold=True, color=EMERALD)
+txb(sl, "Đóng Gói CLI predict.py & Tổng Kết Nghiệm Thu", Inches(0.5), Inches(0.85), Inches(7.5), Inches(0.65), size=24, bold=True, color=WHITE)
 
 checks = [
+    ("⚡", "Đóng gói CLI predict.py: Tốc độ suy luận < 2 mili-giây / khách hàng."),
     ("✅", "Làm sạch 405,714 giao dịch, toàn vẹn 100% Customer ID, loại 6,743 trùng."),
-    ("✅", "Đánh giá Baseline 3 mô hình trên giao dịch, xác định Price (44.8%) chi phối mạnh nhất."),
+    ("✅", "Đánh giá Baseline 3 mô hình trên giao dịch: Price (44.8%) chi phối mạnh nhất."),
     ("✅", "Chuyển tiếp lên cấp độ khách hàng bằng kỹ nghệ RFM + Log transform cho 4,275 KH."),
-    ("✅", "Chứng minh Frequency (F=2475.7) là thuộc tính định hình phân khúc khách hàng mạnh nhất."),
-    ("✅", "Tối ưu hóa 3 thuật toán: K-Means (K=4), Hierarchical, DBSCAN."),
-    ("✅", "Đột phá với Hybrid 2-Stage & Tri-Model: Bóc tách cá mập B2B (£55.7K) & vùng lõi 80.85%."),
+    ("✅", "Chứng minh Frequency (F=2475.7) là thuộc tính định hình phân khúc mạnh nhất."),
+    ("✅", "Đột phá Hybrid 2-Stage & Tri-Model: Bóc tách cá mập B2B (£55.7K) & vùng lõi 80.85%."),
     ("✅", "Xây dựng Playbook chiến lược cá nhân hóa gia tăng giá trị trọn đời (CLV)."),
 ]
-ty = Inches(1.7)
+ty = Inches(1.6)
 for icon, txt in checks:
-    txb(sl, f"{icon}  {txt}", Inches(0.5), ty, Inches(6.3), Inches(0.65), size=12, color=LIGHT)
-    ty += Inches(0.7)
+    txb(sl, f"{icon}  {txt}", Inches(0.5), ty, Inches(7.0), Inches(0.62), size=12, color=LIGHT)
+    ty += Inches(0.68)
 
 txb(sl, "Nhóm 05 · Đại học Sài Gòn (SGU) · 2024–2025", Inches(0.5), Inches(6.6), Inches(6.0), Inches(0.4), size=12, color=GRAY)
 
-img(sl, "fig_tri_model_hybrid_consensus_2d.png", Inches(7.2), Inches(0.5), Inches(5.7), Inches(4.2))
+img(sl, "fig_tri_model_hybrid_consensus_2d.png", Inches(7.7), Inches(0.5), Inches(5.2), Inches(4.2))
 
-txb(sl, "CẢM ƠN QUÝ THẦY CÔ\nVÀ CÁC BẠN ĐÃ LẮNG NGHE!", Inches(7.2), Inches(4.9), Inches(5.7), Inches(1.5),
-    size=26, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+txb(sl, "CẢM ƠN QUÝ THẦY CÔ\nVÀ CÁC BẠN ĐÃ LẮNG NGHE!", Inches(7.7), Inches(4.9), Inches(5.2), Inches(1.3),
+    size=23, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
 
-txb(sl, "Q & A", Inches(7.2), Inches(6.4), Inches(5.7), Inches(0.6),
+txb(sl, "Q & A", Inches(7.7), Inches(6.35), Inches(5.2), Inches(0.55),
     size=22, bold=True, color=AMBER, align=PP_ALIGN.CENTER)
 
 
 # ─── Save ─────────────────────────────────────────────────────────
 out_path = "Slide_Cuoi_Ky_Nhom05_OnlineRetailII.pptx"
-prs.save(out_path)
-print(f"[OK] Saved: {out_path}")
+try:
+    prs.save(out_path)
+    print(f"[OK] Saved: {out_path}")
+except PermissionError:
+    alt_path = "Slide_Cuoi_Ky_Nhom05_OnlineRetailII_7Hoi.pptx"
+    prs.save(alt_path)
+    print(f"[NOTE] '{out_path}' dang mo trong PowerPoint, da luu ban moi vao: {alt_path}")
 print(f"     Total slides: {len(prs.slides)}")
