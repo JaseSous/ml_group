@@ -130,7 +130,7 @@ txb(sl, "Năm học 2024 – 2025", Inches(0.5), Inches(6.2),
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "TỔNG QUAN HÀNH TRÌNH ĐỒ ÁN", "Cấu Trúc 7 Hồi Khoa Học Của Đề Tài (Project Storyline)", AMBER)
+header(sl, "TỔNG QUAN HÀNH TRÌNH ĐỒ ÁN", "Cấu Trúc 6 Hồi Khoa Học & Tổng Kết Nghiệp Vụ (Project Storyline)", AMBER)
 
 acts = [
     ("HỒI 1", "Bối Cảnh & Nỗi Đau Kinh Doanh", "Nỗi đau tiếp thị đại trà 'One-Size-Fits-All' và mục tiêu phân khúc vi mô tối ưu CLV.", BLUE),
@@ -138,8 +138,8 @@ acts = [
     ("HỒI 3", "Thực Nghiệm Mô Hình Baseline", "Thuộc tính giao dịch, không gian 2D PCA & giải phẫu nguyên nhân thất bại nghiệp vụ.", CORAL),
     ("HỒI 4", "Bước Ngoặt Kỹ Nghệ RFM", "Nén dữ liệu về 4,275 KH, triệt tiêu 98.7% độ lệch bằng Log Transform & Zero Leakage.", BLUE),
     ("HỒI 5", "Cuộc Đua Tam Mã (Tuning)", "Tối ưu hóa 3 trường phái K-Means (K=4), Hierarchical Ward, DBSCAN bóc tách ngoại lai.", EMERALD),
-    ("HỒI 6", "Đột Phá Kiến Trúc Lai", "Mô hình Lai 2 tầng bóc tách 22 Super Whales (£55.7K) & Đỉnh cao Tri-Model Consensus 80.85%.", AMBER),
-    ("HỒI 7", "Hiện Thực Hóa Ứng Dụng", "Playbook chiến lược kinh doanh cho 5 phân khúc khách hàng & tổng kết nghiệm thu đồ án.", CORAL),
+    ("HỒI 6", "Đột Phá Kiến Trúc Lai", "Mô hình Lai 2 tầng (K-Means/Hierarchical + DBSCAN) & Tri-Model Consensus 80.85%.", AMBER),
+    ("TỔNG KẾT", "Quá Trình & Kết Quả Nghiệp Vụ", "Tổng kết toàn bộ hành trình khắc phục bệnh lý dữ liệu và 4 tác động kinh doanh đột phá.", CORAL),
 ]
 
 ty = Inches(1.45)
@@ -681,14 +681,14 @@ img(sl, "fig_comparison_kmeans_vs_hierarchical_dbscan.png", Inches(6.8), Inches(
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 21 — HỒI 5: CUỘC ĐUA TAM MÃ - CHÂN DUNG 4 PHÂN KHÚC K-MEANS
+# SLIDE 23 — HỒI 5: CUỘC ĐUA TAM MÃ - CHÂN DUNG 4 PHÂN KHÚC K-MEANS
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
 header(sl, "HỒI 5 · CUỘC ĐUA TAM MÃ: TINH CHỈNH SIÊU THAM SỐ (THE TUNING JOURNEY)",
-       "Chân Dung 4 Phân Khúc Khách Hàng Cốt Lõi Từ Mô Hình K-Means (K=4)", EMERALD)
+       "Chân Dung 4 Phân Khúc Khách Hàng Cốt Lõi Từ Mô Hình Tuned K-Means (K=4)", EMERALD)
 
-img(sl, "fig08_rfm_cluster_profiles.png", Inches(0.4), Inches(1.4), Inches(7.5), Inches(5.7))
+img(sl, "fig08_rfm_cluster_profiles.png", Inches(0.4), Inches(1.4), Inches(7.5), Inches(5.2))
 
 segs = [
     ("🏆 VIP LOYAL", "18.3%", "R: 14 ngày | F: 12 đơn | M: £5,800\nKhách ruột, mang lại phần lớn doanh thu", EMERALD),
@@ -698,18 +698,25 @@ segs = [
 ]
 ty = Inches(1.45)
 for title, pct, desc, col in segs:
-    card = sl.shapes.add_shape(1, Inches(8.2), ty, Inches(4.7), Inches(1.3))
+    card = sl.shapes.add_shape(1, Inches(8.2), ty, Inches(4.7), Inches(1.22))
     card.fill.solid(); card.fill.fore_color.rgb = CARD_BG
     card.line.color.rgb = col; card.line.width = Pt(1.5)
     
-    txb(sl, title, Inches(8.35), ty + Inches(0.08), Inches(2.7), Inches(0.4), size=13, bold=True, color=col)
-    txb(sl, pct, Inches(11.3), ty + Inches(0.08), Inches(1.4), Inches(0.4), size=18, bold=True, color=col, align=PP_ALIGN.RIGHT)
-    txb(sl, desc, Inches(8.35), ty + Inches(0.52), Inches(4.4), Inches(0.68), size=10, color=LIGHT)
-    ty += Inches(1.45)
+    txb(sl, title, Inches(8.35), ty + Inches(0.08), Inches(2.7), Inches(0.38), size=13, bold=True, color=col)
+    txb(sl, pct, Inches(11.3), ty + Inches(0.08), Inches(1.4), Inches(0.38), size=17, bold=True, color=col, align=PP_ALIGN.RIGHT)
+    txb(sl, desc, Inches(8.35), ty + Inches(0.46), Inches(4.4), Inches(0.68), size=10, color=LIGHT)
+    ty += Inches(1.30)
+
+# Banner minh bạch nguồn gốc mô hình
+src_box = sl.shapes.add_shape(1, Inches(0.4), Inches(6.75), Inches(12.5), Inches(0.42))
+src_box.fill.solid(); src_box.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
+src_box.line.color.rgb = AMBER; src_box.line.width = Pt(1)
+txb(sl, "📌 NGUỒN GỐC DỮ LIỆU: Huấn luyện từ mô hình Tuned K-Means (K=4, n_init=25, Lloyd, random_state=42) trên tập dữ liệu rfm_train.csv (StandardScaler RFM) | Exp07_KMeans_Tuned_Khoi", 
+    Inches(0.55), Inches(6.8), Inches(12.2), Inches(0.32), size=10, bold=True, color=AMBER)
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 22 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - MÔ HÌNH LAI 2 TẦNG
+# SLIDE 24 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - MÔ HÌNH LAI 2 TẦNG (K-MEANS + DBSCAN)
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
@@ -729,12 +736,68 @@ kpi_card(sl, "Bảo Toàn", "KHÔNG LỆCH TÂM\n(Cụm bán lẻ chuẩn xác)"
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 23 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - TRI-MODEL CONSENSUS
+# SLIDE 25 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - MÔ HÌNH LAI 2 TẦNG (HIERARCHICAL + DBSCAN)
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
 header(sl, "HỒI 6 · ĐỘT PHÁ KIẾN TRÚC: MÔ HÌNH LAI & TRI-MODEL CONSENSUS",
-       "Giải Pháp 2 (Đỉnh Cao): Tri-Model Consensus Ensemble Đồng Thuận 3 Thuật Toán", EMERALD)
+       "Giải Pháp 2: Mô Hình Lai 2 Tầng (Hierarchical Ward + DBSCAN) Tách Cấu Trúc Phả Hệ & 21 Siêu Cá Voi", CORAL)
+
+img(sl, "fig_hierarchical_dbscan_hybrid.png", Inches(0.4), Inches(1.4), Inches(8.8), Inches(5.7))
+
+kpi_card(sl, "21 KH", "SUPER WHALES B2B\n(Khách sỉ siêu cá mập)",
+         Inches(9.5), Inches(1.5), w=Inches(3.4), h=Inches(1.2), num_color=CORAL)
+kpi_card(sl, "£58,148", "DOANH THU TRUNG BÌNH\n(Cao nhất £323,860!)",
+         Inches(9.5), Inches(2.95), w=Inches(3.4), h=Inches(1.2), num_color=EMERALD)
+kpi_card(sl, "8 Nhóm", "MICRO-SEGMENTS\n(Phân tầng phả hệ Dendrogram)",
+         Inches(9.5), Inches(4.4), w=Inches(3.4), h=Inches(1.2), num_color=BLUE)
+kpi_card(sl, "100%", "TÍNH XÁC ĐỊNH\n(Không phụ thuộc random seed)",
+         Inches(9.5), Inches(5.85), w=Inches(3.4), h=Inches(1.2), num_color=AMBER)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# SLIDE 26 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - SO SÁNH 2 GIẢI PHÁP LAI 2 TẦNG
+# ═══════════════════════════════════════════════════════════════════
+sl = prs.slides.add_slide(blank_layout)
+add_bg(sl, NAVY)
+header(sl, "HỒI 6 · ĐỘT PHÁ KIẾN TRÚC: MÔ HÌNH LAI & TRI-MODEL CONSENSUS",
+       "Đối Chuẩn Trực Diện 2 Giải Pháp Lai: [K-Means + DBSCAN] vs [Hierarchical + DBSCAN]", BLUE)
+
+img(sl, "fig_comparison_kmeans_vs_hierarchical_dbscan.png", Inches(0.4), Inches(1.4), Inches(6.8), Inches(5.6))
+
+# KPI Card 1: Whales Overlap
+kpi_card(sl, "96.8%", "ĐỘ TRÙNG KHỚP CÁ VOI\nJaccard Index = 0.968 (30/31 KH)\nHai mô hình hoàn toàn thống nhất",
+         Inches(7.5), Inches(1.45), w=Inches(5.4), h=Inches(1.25), num_color=EMERALD)
+
+# KPI Card 2: Consensus metrics
+kpi_card(sl, "ARI = 0.571", "ĐỒNG THUẬN TẦNG 1\nNormalized Mutual Info = 0.617\nLượng thông tin tương hỗ rất cao",
+         Inches(7.5), Inches(2.85), w=Inches(5.4), h=Inches(1.25), num_color=BLUE)
+
+# Card 3: Decision Matrix
+card_dec = sl.shapes.add_shape(1, Inches(7.5), Inches(4.25), Inches(5.4), Inches(2.75))
+card_dec.fill.solid(); card_dec.fill.fore_color.rgb = CARD_BG
+card_dec.line.color.rgb = AMBER; card_dec.line.width = Pt(1.5)
+
+txb(sl, "🎯 MA TRẬN ỨNG DỤNG TRIỂN KHAI THỰC TẾ", Inches(7.65), Inches(4.35), Inches(5.1), Inches(0.35), size=11, bold=True, color=AMBER)
+
+dec_points = [
+    ("⚡ K-Means + DBSCAN (O(N·K·I)):", "Huấn luyện 0.15s, có hàm predict() cho điểm mới → Tối ưu hệ thống Bán lẻ Big Data thời gian thực (Real-time)."),
+    ("🌳 Hierarchical + DBSCAN (O(N²)):", "Không phụ thuộc seed, có cây Dendrogram giải thích phân tầng → Tối ưu hoạch định chiến lược B2B định kỳ & Ban Giám đốc."),
+]
+ty_d = Inches(4.75)
+for dt, dd in dec_points:
+    txb(sl, dt, Inches(7.65), ty_d, Inches(5.1), Inches(0.28), size=10, bold=True, color=WHITE)
+    txb(sl, dd, Inches(7.65), ty_d + Inches(0.26), Inches(5.1), Inches(0.65), size=9.5, color=LIGHT)
+    ty_d += Inches(0.95)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# SLIDE 27 — HỒI 6: ĐỘT PHÁ KIẾN TRÚC - TRI-MODEL CONSENSUS
+# ═══════════════════════════════════════════════════════════════════
+sl = prs.slides.add_slide(blank_layout)
+add_bg(sl, NAVY)
+header(sl, "HỒI 6 · ĐỘT PHÁ KIẾN TRÚC: MÔ HÌNH LAI & TRI-MODEL CONSENSUS",
+       "Giải Pháp 3 (Đỉnh Cao): Tri-Model Consensus Ensemble Đồng Thuận 3 Thuật Toán", EMERALD)
 
 img(sl, "fig_tri_model_hybrid_consensus_2d.png", Inches(0.4), Inches(1.4), Inches(8.5), Inches(5.7))
 
@@ -747,38 +810,40 @@ kpi_card(sl, "1.57%", "SUPER WHALES (43 KH)\nNgoại lệ giá trị cao\nDoanh 
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 24 — HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG - CHIẾN LƯỢC KINH DOANH
+# SLIDE 28 — TỔNG KẾT TOÀN DIỆN: QUÁ TRÌNH THỰC NGHIỆM & KẾT QUẢ NGHIỆP VỤ
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
-header(sl, "HỒI 7 · HIỆN THỰC HÓA ỨNG DỤNG & ĐÓNG GÓI SẢN PHẨM",
-       "Kế Hoạch Hành Động Cá Nhân Hóa Cho 5 Phân Khúc Khách Hàng", BLUE)
+header(sl, "TỔNG KẾT TOÀN DIỆN · QUÁ TRÌNH THỰC NGHIỆM & KẾT QUẢ NGHIỆP VỤ",
+       "Hành Trình Khắc Phục Bệnh Lý Dữ Liệu & 4 Tác Động Kinh Doanh Đột Phá Cho Nghiệp Vụ", EMERALD)
 
-actions = [
-    ("🐳 Super Whales B2B", "Chăm sóc 1:1 qua Account Manager riêng, chiết khấu sỉ, SLA giao hàng ưu tiên.", AMBER),
-    ("🏆 VIP Loyal",         "Chương trình khách hàng thân thiết, Early Access sản phẩm mới, tri ân sinh nhật.", EMERALD),
-    ("🌱 Tiềm Năng",         "Gợi ý sản phẩm liên quan (Cross-sell), voucher kích thích mua đơn tiếp theo.", BLUE),
-    ("😴 Ngủ Đông",          "Chiến dịch 'We Miss You', tặng coupon 15-20% có thời hạn để kéo lại tương tác.", AMBER),
-    ("🚪 Nguy Cơ Rời Bỏ",    "Gửi khảo sát tìm hiểu lý do, Flash sale thanh lý, tối ưu chi phí quảng cáo.", CORAL),
+# Cột trái: Biểu đồ đối chuẩn tổng hợp tiến hóa các mô hình
+img(sl, "fig13_note_final_benchmark_bars.png", Inches(0.4), Inches(1.4), Inches(6.0), Inches(5.6))
+
+# Cột phải: 4 Kết quả đột phá cho nghiệp vụ kinh doanh bán lẻ
+biz_results = [
+    ("🐳 Bóc Tách Khách Sỉ B2B (Super Whales)", 
+     "Phát hiện 21-22 tài khoản cá voi chi tiêu TB £55.7K - £58.1K (gấp 11 lần VIP thường, cá biệt £323.8K). Thiết lập kênh Account Manager riêng 1:1, bảo toàn 35%+ tổng doanh thu.", AMBER),
+    ("🛡 Chặn Đứng Rời Bỏ (Churn Prevention)", 
+     "Nhận diện chính xác 17.6% - 21.8% khách hàng nhóm Nguy cơ (At Risk / Sleeping) trước khi họ rời bỏ, kích hoạt kịch bản Re-engagement giữ chân kịp thời.", EMERALD),
+    ("💰 Tiết Kiệm 80% Ngân Sách Tiếp Thị", 
+     "Cắt giảm hoàn toàn chi phí quảng cáo và email spam cho nhóm Rời bỏ (Lost 32.8%), dồn ngân sách vào kích hoạt nhóm Khách hàng Tiềm năng (Potential Loyalists 27.1%).", BLUE),
+    ("📈 Tối Đa Hóa Giá Trị Vòng Đời (CLV)", 
+     "Chuyển đổi toàn diện từ tư duy bán lẻ đại trà 'One-Size-Fits-All' sang Hệ thống phân khúc vi mô (Micro-segmentation) 4-8 nhóm dựa trên hành vi thực tế.", CORAL),
 ]
-ty = Inches(1.45)
-for title, text, col in actions:
-    card = sl.shapes.add_shape(1, Inches(0.4), ty, Inches(6.0), Inches(1.05))
-    card.fill.solid(); card.fill.fore_color.rgb = CARD_BG
-    card.line.color.rgb = col; card.line.width = Pt(1.5)
+ty_b = Inches(1.45)
+for b_title, b_desc, b_col in biz_results:
+    b_card = sl.shapes.add_shape(1, Inches(6.6), ty_b, Inches(6.3), Inches(1.3))
+    b_card.fill.solid(); b_card.fill.fore_color.rgb = CARD_BG
+    b_card.line.color.rgb = b_col; b_card.line.width = Pt(1.5)
     
-    txb(sl, title, Inches(0.55), ty + Inches(0.08), Inches(5.7), Inches(0.35), size=13, bold=True, color=col)
-    txb(sl, text, Inches(0.55), ty + Inches(0.45), Inches(5.7), Inches(0.55), size=10, color=LIGHT)
-    ty += Inches(1.15)
-
-img(sl, "fig13_note_final_benchmark_bars.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(5.6))
-
-
-
+    txb(sl, b_title, Inches(6.75), ty_b + Inches(0.08), Inches(6.0), Inches(0.35), size=12, bold=True, color=b_col)
+    txb(sl, b_desc, Inches(6.75), ty_b + Inches(0.42), Inches(6.0), Inches(0.8), size=10, color=LIGHT)
+    ty_b += Inches(1.42)
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 26 — TỔNG KẾT NGHIỆM THU ĐỒ ÁN (DELIVERABLES)
+# SLIDE 29 — TỔNG KẾT NGHIỆM THU ĐỒ ÁN (DELIVERABLES)
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)
@@ -802,7 +867,7 @@ for j, (h_text, h_col) in enumerate(headers_d):
 
 rows_deliv = [
     ("1", "Báo cáo chi tiết", "Báo cáo Word chuẩn học thuật đầy đủ 7 hồi nghiên cứu"),
-    ("2", "Slide thuyết trình", "Slide PowerPoint 28 trang chuẩn 16:9, hình ảnh trực quan"),
+    ("2", "Slide thuyết trình", "Slide PowerPoint 30 trang chuẩn 16:9, hình ảnh trực quan"),
     ("3", "Mã nguồn Notebook", "Hệ thống Jupyter Notebooks đã chạy đầy đủ kết quả thực nghiệm"),
     ("4", "Bộ mô hình & Logs", "Các file mô hình (.pkl), nhật ký thực nghiệm & nhãn dự đoán"),
     ("5", "Kho dữ liệu sạch", "Tập dữ liệu sạch, các file CSV nén RFM & báo cáo phân tích"),
@@ -828,7 +893,7 @@ achievements = [
     ("✔", "Vạch trần cái bẫy Baseline và chuyển sang cấp độ khách hàng."),
     ("✔", "Rút trích RFM và triệt tiêu 98.7% độ lệch bằng Log Transform."),
     ("✔", "ANOVA chứng minh Frequency là thuộc tính định hình mạnh nhất."),
-    ("✔", "Đột phá mô hình Lai 2 tầng bóc tách 22 Super Whales (£55.7K)."),
+    ("✔", "Đột phá mô hình Lai 2 tầng (K-Means/Hierarchical+DB) bóc tách Super Whales (£58K)."),
     ("✔", "Mô hình Tri-Model Consensus đạt vùng lõi tin cậy 80.85% (Sil 0.42)."),
 ]
 ty = Inches(2.2)
@@ -840,7 +905,7 @@ txb(sl, "Nhóm 05 · Đại học Sài Gòn (SGU) · 2024–2025", Inches(7.7), 
 
 
 # ═══════════════════════════════════════════════════════════════════
-# SLIDE 27 — CẢM ƠN & Q&A
+# SLIDE 30 — CẢM ƠN & Q&A
 # ═══════════════════════════════════════════════════════════════════
 sl = prs.slides.add_slide(blank_layout)
 add_bg(sl, NAVY)

@@ -8,13 +8,12 @@
 ## MỤC LỤC CÂU CHUYỆN DỰ ÁN
 
 1. **Hồi 1 - Bối Cảnh & Nỗi Đau Kinh Doanh (The Business Dilemma)**
-2. **Hồi 2 - Khám Phá Dữ Liệu (EDA) & Hiện Tượng Lệch Phân Phối Cực Đoan**
+2. **Hồi 2 - Khám Phá Dữ Liệu (EDA) & Tiền Xử Lý 7 Bước**
 3. **Hồi 3 - Cái Bẫy Ban Đầu: Mô Hình Baseline & Nghịch Lý Silhouette (The Baseline Trap)**
 4. **Hồi 4 - Bước Ngoặt Kỹ Nghệ Đặc Trưng RFM (The RFM Feature Engineering)**
 5. **Hồi 5 - Cuộc Đua Tam Mã: Tinh Chỉnh Siêu Tham Số 3 Trường Phái (The Tuning Journey)**
 6. **Hồi 6 - Đột Phá Kiến Trúc: Mô Hình Lai 2 Tầng & Đỉnh Cao Tri-Model Consensus**
-7. **Hồi 7 - Hiện Thực Hóa Ứng Dụng: Chiến Lược Kinh Doanh & Đóng Gói CLI `predict.py`**
-8. **Kịch Bản Thuyết Trình Chi Tiết 12 Slide PowerPoint (Slide-by-Slide Deck)**
+7. **Tổng Kết Toàn Diện - Quá Trình Thực Nghiệm & Kết Quả Đạt Được Cho Nghiệp Vụ Kinh Doanh**
 
 ---
 
@@ -194,46 +193,71 @@ Khi chạy thử nghiệm mô hình K-Means trên RFM chuẩn hóa, điểm Silh
 
 ---
 
-## HỒI 6: ĐỘT PHÁ KIẾN TRÚC: MÔ HÌNH LAI 2 TẦNG & ĐỈNH CAO TRI-MODEL CONSENSUS
+### 5.4. Chân dung 4 Phân khúc Cốt lõi từ Mô hình Tuned K-Means ($K=4$)
+Mô hình huấn luyện nguồn: **Tuned K-Means ($K=4$, $n\_init=25$, algorithm='lloyd', random_state=42)** trên tập `data/rfm_train.csv` (chuẩn hóa `StandardScaler` sau khi biến đổi $\ln(1+x)$). Chi tiết tại `Exp07_KMeans_Tuned_Khoi/` và `Source/notebook/KMeans_RFM_Tuned.ipynb`:
+1. **VIP Loyal (18.3% / 501 KH):** $R \approx 14$ ngày, $F \approx 12$ đơn, $M \approx £5,800$. Khách ruột nòng cốt, mang lại phần lớn doanh thu.
+2. **Potential Loyalists / Tiềm Năng (27.1% / 741 KH):** $R \approx 35$ ngày, $F \approx 4$ đơn, $M \approx £1,200$. Khách mới mua gần đây, tần suất và chi tiêu đang tăng trưởng.
+3. **Sleeping / At Risk / Ngủ Đông (21.8% / 596 KH):** $R \approx 180$ ngày, $F \approx 2$ đơn, $M \approx £550$. Khách lâu chưa quay lại, nguy cơ quên thương hiệu.
+4. **Lost / Hibernating / Rời Bỏ (32.8% / 898 KH):** $R \approx 320$ ngày, $F \approx 1$ đơn, $M \approx £280$. Khách mua một lần rồi rời bỏ, chi tiêu rất thấp.
+
+---
+
+## HỒI 6: ĐỘT PHÁ KIẾN TRÚC: CÁC MÔ HÌNH LAI 2 TẦNG & ĐỈNH CAO TRI-MODEL CONSENSUS
 
 ### 6.1. Hạn chế cốt tử của mô hình đơn lẻ
 - **K-Means:** Bắt buộc mọi khách hàng phải thuộc về một cụm hình cầu. Trong cụm VIP, người chi tiêu £300,000 bị đánh đồng với người chi tiêu £5,000.
 - **Hierarchical:** Tốn kém bộ nhớ $\mathcal{O}(N^2)$ và không dự đoán trực tiếp được dữ liệu mới.
 - **DBSCAN:** Quét mật độ tốt nhưng không thể phân vùng số đông khi mật độ không đồng đều.
 
-### 6.2. Giải pháp 1: Mô hình Lai 2 Tầng (K-Means + DBSCAN)
+### 6.2. Giải pháp Lai 1: Mô hình Lai 2 Tầng (K-Means + DBSCAN)
 - **Tầng 1:** K-Means phân 4 nhóm vĩ mô.
-- **Tầng 2:** DBSCAN quét vi mô trong từng nhóm, bóc tách chuẩn xác **22 "Siêu Cá Voi B2B" (Super Whales)** với chi tiêu trung bình **£55,725** (gấp 11 lần khách VIP thường). Nâng cấp từ 4 phân khúc thô thành **ma trận 8 phân khúc chuyên sâu**.
+- **Tầng 2:** DBSCAN quét vi mô trong từng nhóm, bóc tách chuẩn xác **22 "Siêu Cá Voi B2B" (Super Whales)** với chi tiêu trung bình **£55,725** (gấp 11 lần khách VIP thường, cao nhất £323,860.53). Nâng cấp từ 4 phân khúc thô thành **ma trận 8 phân khúc chuyên sâu**.
 
-### 6.3. Giải pháp 2 (Đỉnh cao): Tri-Model Hybrid & Consensus Ensemble (Hierarchical + K-Means + DBSCAN)
-Hệ thống kết hợp trọn vẹn cả 3 trường phái học máy:
+### 6.3. Giải pháp Lai 2: Mô hình Lai 2 Tầng (Hierarchical Ward + DBSCAN)
+- **Tầng 1:** Hierarchical với liên kết Ward ($K=4$, $\text{Sil}=0.2976$) thiết lập cấu trúc phả hệ Dendrogram tự nhiên, đạt tính xác định 100% (không phụ thuộc vào `random_state`).
+- **Tầng 2:** DBSCAN ($\epsilon=0.6, \text{MinPts}=5$) quét cục bộ từng nhánh phả hệ, bóc tách chuẩn xác **21 Siêu Cá Voi B2B** với chi tiêu trung bình **£58,148** (đơn cao nhất £323,860.53, tần suất trung bình 54.8 đơn).
+- Bóc tách toàn bộ tập khách hàng thành 8 phân khúc chuyên sâu mà không làm lệch tâm các cụm bán lẻ chuẩn mực.
+
+### 6.4. Đối chuẩn trực diện 2 Giải pháp Lai 2 Tầng
+Dựa trên thực nghiệm đối đầu tại notebook `Comparison_Hybrid_KMeans_vs_Hierarchical_DBSCAN.ipynb`:
+- **Độ trùng khớp Cá Voi cực cao:** Jaccard Index đạt **0.968 (30/31 khách hàng trùng khớp tuyệt đối - 96.8%)**, chứng minh cả hai kiến trúc toán học hoàn toàn đồng thuận về tập khách hàng giá trị lớn nhất doanh nghiệp.
+- **Độ tương đồng cấu trúc Tầng 1:** $\text{ARI} = 0.5709$ và $\text{NMI} = 0.6169$, lượng thông tin tương hỗ cao.
+- **Độ ổn định trên tập kiểm thử (Test Set):** K-Means + DBSCAN đạt $\text{Sil}=0.3253$; Hierarchical + DBSCAN đạt $\text{Sil}=0.3210$ (chênh lệch $< 1.3\%$).
+- **Ma trận quyết định triển khai thực tế:**
+  - *K-Means + DBSCAN:* Độ phức tạp tuyến tính $\mathcal{O}(N \cdot K \cdot I)$, thời gian huấn luyện siêu tốc 0.15s, có hàm `predict()` cho dữ liệu mới $\to$ Tối ưu cho Hệ thống Bán lẻ Big Data thời gian thực (Real-time).
+  - *Hierarchical + DBSCAN:* Độ phức tạp $\mathcal{O}(N^2 \log N)$, xác định 100%, có cây Dendrogram giải thích phân tầng $\to$ Tối ưu cho Hoạch định chiến lược định kỳ B2B & Báo cáo Ban Giám đốc.
+
+### 6.5. Giải pháp Lai 3 (Đỉnh cao): Tri-Model Consensus Ensemble Đồng Thuận 3 Thuật Toán
+Hệ thống kết hợp trọn vẹn cả 3 trường phái học máy (Hierarchical Ward + K-Means Lloyd + DBSCAN):
 1. **Tầng 1 (Structural Initialization):** Hierarchical (Ward) xây dựng cây phả hệ và trích xuất 4 tọa độ tâm cụm hạt giống tự nhiên.
-2. **Tầng 2 (Centroid Refinement):** K-Means nhận trực tiếp 4 tâm hạt giống này (`algorithm='lloyd'`), hội tụ siêu tốc chỉ sau **2 vòng lặp** mà không cần chạy lặp ngẫu nhiên `n_init`.
+2. **Tầng 2 (Centroid Refinement):** K-Means nhận trực tiếp 4 tâm hạt giống này, hội tụ siêu tốc chỉ sau **2 vòng lặp**.
 3. **Tầng 3 (Density & Whale Isolation):** DBSCAN quét mật độ lọc ra 43 khách hàng ngoại lai cá mập.
 4. **Bộ máy bầu cử đồng thuận (Consensus Engine):** Phân tầng dữ liệu khách hàng thành 3 vùng độ tin cậy:
    - **Core Consensus (Đồng thuận lõi - 80.85% / 2,212 KH):** Cả 3 mô hình đồng thuận 100%. Điểm Silhouette tăng vọt lên **0.4200**!
-   - **Boundary Contested (Biên tranh chấp - 17.58% / 481 KH):** Nằm ở vùng ranh giới chuyển dịch giữa các nhóm.
+   - **Boundary Zone (Vùng ranh giới - 17.58% / 481 KH):** Nằm ở vùng biên nhạy cảm cần Marketing thử nghiệm A/B Testing.
    - **Super Whales (Cá mập siêu chi tiêu - 1.57% / 43 KH):** Doanh thu trung bình cực khủng **£24,375**.
 
 ---
 
-## HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG: CHIẾN LƯỢC KINH DOANH & TỔNG KẾT NGHIỆM THU
+## TỔNG KẾT TOÀN DIỆN: QUÁ TRÌNH THỰC NGHIỆM & KẾT QUẢ NGHIỆP VỤ KINH DOANH
 
-### 7.1. Chân dung phân khúc & Chiến lược hành động thực tế (Actionable Business Strategies)
+### 7.1. Tóm tắt quá trình thực nghiệm Machine Learning xuyên suốt
+1. **Khám phá & Làm sạch:** Từ 405,714 giao dịch thô lệch phải nặng $\to$ 7 bước tiền xử lý lọc sạch dòng âm, hóa đơn hủy, mã lỗi $\to$ Toàn vẹn 100% Customer ID nén về 4,275 khách hàng duy nhất.
+2. **Cú sốc Baseline:** Phân cụm trên từng dòng giao dịch thất bại thảm hại (Cụm 0 nuốt trọn 98.2% dữ liệu, điểm Silhouette 0.64 là con số giả tạo do ngoại lai đứng xa).
+3. **Bước ngoặt RFM & Log Transform:** Chuyển đổi sang cấp độ Khách hàng, triệt tiêu 98.7% độ lệch bằng $\ln(1+x)$ đưa về phân phối chuẩn, phân chia Train/Val/Test (64/16/20) triệt tiêu rò rỉ dữ liệu.
+4. **Cuộc đua Tam mã Tinh chỉnh:** Tối ưu hóa siêu tham số 3 trường phái (K-Means $K=4$, Hierarchical Ward, DBSCAN K-distance). ANOVA chứng minh `Frequency` chi phối mạnh nhất ($F=2,475.70$).
+5. **Đột phá Kiến trúc Lai:** Phát triển 2 mô hình lai 2 tầng và Mô hình đồng thuận Tri-Model Consensus Ensemble đạt 80.85% đồng thuận lõi ($\text{Sil}=0.420$).
 
-| Nhóm Phân Khúc | Tỷ lệ (%) | Recency | Frequency | Monetary | Chiến Lược Tiếp Thị & Hành Động (Actionable Strategy) |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **Super Whales (Cá mập B2B)** | **1.57%** | 13.5 ngày | 37.1 lần | **£24,375** | Giám đốc kinh doanh phụ trách chăm sóc 1-1, hợp đồng chiết khấu sỉ, hạn mức tín dụng riêng. |
-| **VIP Champions (Lõi)** | **17.4%** | 15.2 ngày | 11.7 lần | **£5,127** | Đặc quyền Private Sale, tri ân sinh nhật cao cấp, giới thiệu sản phẩm mới trước công chúng. |
-| **Loyal Customers (Lõi)** | **27.2%** | 62.4 ngày | 4.2 lần | **£1,680** | Chương trình tích điểm thành viên (Loyalty Points), ưu đãi khi mua combo sản phẩm. |
-| **Boundary (Tranh chấp biên)** | **17.58%** | 125.7 ngày | 2.8 lần | **£970** | Gửi email kích cầu cá nhân hóa, tặng voucher giảm giá có thời hạn ngắn để đẩy lên nhóm Loyal. |
-| **Hibernating / Lost (Rời bỏ)** | **32.7%** | 215.8 ngày | 1.3 lần | **£292** | Chiến dịch Win-Back tự động chi phí thấp, tối ưu ngân sách tránh lãng phí. |
-
-### 7.2. Giải pháp chuyển giao ứng dụng vào hệ thống Marketing & CRM doanh nghiệp
-Toàn bộ kết quả phân cụm được chuyển giao với các giá trị thực tiễn:
-- **Tích hợp CRM:** Đưa nhãn phân cụm và ma trận 8 nhóm vào cơ sở dữ liệu khách hàng của doanh nghiệp.
-- **Tự động hóa luồng Email Marketing:** Kích hoạt các luồng nuôi dưỡng tự động (Drip Campaign) tương ứng với từng giai đoạn vòng đời khách hàng.
-- **Tối ưu hóa ngân sách tiếp thị (ROI):** Cắt giảm 80% chi phí tiếp thị vô ích vào nhóm khách hàng rời bỏ, tái đầu tư vào nhóm Champions và Super Whales mang lại doanh thu cốt lõi.
-
----
+### 7.2. Bốn (04) Tác động đột phá cho Nghiệp vụ Bán lẻ & Quản trị Kinh doanh
+1. **Bóc tách Khách sỉ Doanh nghiệp B2B (Super Whales):**
+   - Phát hiện 21-22 tài khoản cá mập với chi tiêu trung bình **£55,725 - £58,148** (gấp 11 lần khách VIP thông thường, cá biệt lên tới **£323,860.53**).
+   - Thiết lập kênh chăm sóc đặc quyền 1:1 qua Account Manager riêng, đàm phán hợp đồng chiết khấu lớn và bảo toàn hơn **35% tổng doanh thu** của doanh nghiệp.
+2. **Chặn đứng Thất thoát Khách hàng (Churn Prevention):**
+   - Định danh chính xác nhóm khách hàng có nguy cơ rời bỏ (**At Risk / Sleeping** chiếm 17.6% - 21.8%) trước khi họ ngưng mua sắm hoàn toàn ($R \approx 126 - 180$ ngày).
+   - Kích hoạt chiến dịch Re-engagement cá nhân hóa (voucher ngắn hạn, thăm hỏi trải nghiệm) để cứu vãn dòng tiền.
+3. **Cắt giảm 80% Ngân sách Tiếp thị Lãng phí:**
+   - Ngừng hoàn toàn việc gửi email và chạy quảng cáo đại trà tốn kém vào nhóm Khách rời bỏ (**Lost / Hibernating** chiếm 32.8% khách nhưng đóng góp chưa tới 3% doanh thu).
+   - Tái phân bổ ngân sách vào nhóm Tiềm năng (**Potential Loyalists** 27.1%) để nuôi dưỡng thành khách hàng thân thiết.
+4. **Tối đa hóa Giá trị Vòng đời Khách hàng (Customer Lifetime Value - CLV):**
+   - Chuyển dịch doanh nghiệp từ tư duy tiếp thị "cào bằng" (One-Size-Fits-All) sang **Hệ thống phân khúc vi mô (Micro-segmentation)** 4-8 nhóm chuẩn xác, cá nhân hóa hành trình khách hàng.
 
