@@ -139,7 +139,7 @@ acts = [
     ("HỒI 4", "Bước Ngoặt Kỹ Nghệ RFM", "Nén dữ liệu về 4,275 KH, triệt tiêu 98.7% độ lệch bằng Log Transform & Zero Leakage.", BLUE),
     ("HỒI 5", "Cuộc Đua Tam Mã (Tuning)", "Tối ưu hóa 3 trường phái K-Means (K=4), Hierarchical Ward, DBSCAN bóc tách ngoại lai.", EMERALD),
     ("HỒI 6", "Đột Phá Kiến Trúc Lai", "Mô hình Lai 2 tầng bóc tách 22 Super Whales (£55.7K) & Đỉnh cao Tri-Model Consensus 80.85%.", AMBER),
-    ("HỒI 7", "Hiện Thực Hóa Ứng Dụng", "Playbook chiến lược 5 nhóm khách hàng & Đóng gói CLI predict.py suy luận < 2 mili-giây.", CORAL),
+    ("HỒI 7", "Hiện Thực Hóa Ứng Dụng", "Playbook chiến lược kinh doanh cho 5 phân khúc khách hàng & tổng kết nghiệm thu đồ án.", CORAL),
 ]
 
 ty = Inches(1.45)
@@ -207,7 +207,7 @@ txb(sl, "🎯 3 MỤC TIÊU CHIẾN LƯỢC CỦA ĐỒ ÁN", Inches(7.0), Inche
 goals_text = [
     ("🤖 1. Mục tiêu Khoa học (Machine Learning Pipeline):", "Xây dựng quy trình phân cụm không giám sát khách quan, chống rò rỉ dữ liệu (Zero Data Leakage), giải quyết phân phối lệch phải (Extreme Skewness) và bóc tách chuẩn xác ngoại lai Super Whales B2B."),
     ("📊 2. Mục tiêu Nghiệp vụ (Marketing & CRM Actionable):", "Chuyển đổi thành công từ cấp độ giỏ hàng (Basket-level) sang cấp độ khách hàng (Customer-level RFM); định hình chân dung sắc nét và xây dựng Playbook chiến lược hành động cá nhân hóa từng nhóm tăng CLV."),
-    ("⚡ 3. Mục tiêu Vận hành (Production-Ready Tool):", "Đóng gói toàn bộ mô hình tối ưu thành công cụ dòng lệnh predict.py có khả năng suy luận thời gian thực siêu tốc (< 2 mili-giây) phục vụ trực tiếp cho đội ngũ bán hàng và tích hợp hệ thống.")
+    ("⚡ 3. Mục tiêu Ứng dụng & Triển khai thực tế:", "Xây dựng ma trận phân khúc và Playbook chiến lược tiếp thị khả thi, sẵn sàng chuyển giao cho phòng Marketing và CRM áp dụng trực tiếp.")
 ]
 ty_r = Inches(3.42)
 for title_g, desc_g in goals_text:
@@ -774,46 +774,7 @@ for title, text, col in actions:
 img(sl, "fig13_note_final_benchmark_bars.png", Inches(6.8), Inches(1.4), Inches(6.1), Inches(5.6))
 
 
-# ═══════════════════════════════════════════════════════════════════
-# SLIDE 25 — HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG - ĐÓNG GÓI CLI PREDICT
-# ═══════════════════════════════════════════════════════════════════
-sl = prs.slides.add_slide(blank_layout)
-add_bg(sl, NAVY)
-header(sl, "HỒI 7 · HIỆN THỰC HÓA ỨNG DỤNG & ĐÓNG GÓI SẢN PHẨM",
-       "Đóng Gói Công Cụ Dòng Lệnh predict.py Vận Hành Thực Tế", EMERALD)
 
-# Code / CLI showcase boxes
-panel1 = sl.shapes.add_shape(1, Inches(0.4), Inches(1.5), Inches(7.5), Inches(5.6))
-panel1.fill.solid(); panel1.fill.fore_color.rgb = RGBColor(0x05, 0x0c, 0x1a)
-panel1.line.color.rgb = EMERALD; panel1.line.width = Pt(1.5)
-
-txb(sl, "💻 CÔNG CỤ CLI SẴN SÀNG SẢN XUẤT (PRODUCTION-READY)", Inches(0.6), Inches(1.7), Inches(7.1), Inches(0.4), size=13, bold=True, color=EMERALD)
-
-cli_commands = [
-    ("# 1. Dự đoán thời gian thực (Real-time single prediction):",
-     "python predict.py --recency 15 --frequency 8 --monetary 2500",
-     "-> Kết quả: Cụm 1 - Champions (Khách Hàng VIP) | Latency: 1.8 ms"),
-    ("# 2. Dự đoán hàng loạt cho toàn bộ tệp dữ liệu (Batch inference):",
-     "python predict.py --file data/rfm_test.csv --output data/predictions_test.csv",
-     "-> Đã phân loại 855 khách hàng trong 0.08 giây (10,600 KH/giây)"),
-]
-ty = Inches(2.25)
-for title, cmd, out in cli_commands:
-    txb(sl, title, Inches(0.6), ty, Inches(7.1), Inches(0.35), size=11, color=GRAY)
-    cbox = sl.shapes.add_shape(1, Inches(0.6), ty + Inches(0.32), Inches(7.1), Inches(0.45))
-    cbox.fill.solid(); cbox.fill.fore_color.rgb = RGBColor(0x13, 0x22, 0x38)
-    cbox.line.color.rgb = BLUE; cbox.line.width = Pt(1)
-    txb(sl, cmd, Inches(0.75), ty + Inches(0.38), Inches(6.8), Inches(0.35), size=11, bold=True, color=AMBER)
-    txb(sl, out, Inches(0.6), ty + Inches(0.85), Inches(7.1), Inches(0.35), size=10, italic=True, color=EMERALD)
-    ty += Inches(1.4)
-
-# Right: 3 Advantage cards
-kpi_card(sl, "< 2 ms", "Tốc độ suy luận 1 KH\n(Thời gian thực cực nhanh)",
-         Inches(8.3), Inches(1.5), w=Inches(4.6), h=Inches(1.5), num_color=EMERALD)
-kpi_card(sl, "Zero Leakage", "Đóng gói đồng bộ\nStandardScaler + K-Means",
-         Inches(8.3), Inches(3.3), w=Inches(4.6), h=Inches(1.5), num_color=BLUE)
-kpi_card(sl, "API Ready", "Dễ dàng tích hợp vào\nCRM, Web E-Commerce",
-         Inches(8.3), Inches(5.1), w=Inches(4.6), h=Inches(1.5), num_color=AMBER)
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -841,10 +802,10 @@ for j, (h_text, h_col) in enumerate(headers_d):
 
 rows_deliv = [
     ("1", "Báo cáo chi tiết", "Báo cáo Word chuẩn học thuật đầy đủ 7 hồi nghiên cứu"),
-    ("2", "Slide thuyết trình", "Slide PowerPoint 27 trang chuẩn 16:9, hình ảnh trực quan"),
-    ("3", "Mã nguồn Notebook", "27 Jupyter Notebooks đã chạy đầy đủ kết quả thực nghiệm"),
-    ("4", "Công cụ CLI predict", "Script predict.py đóng gói sẵn sàng cho sản xuất"),
-    ("5", "Kho dữ liệu & Logs", "Tập dữ liệu sạch, các file CSV kết quả & nhật ký thực nghiệm"),
+    ("2", "Slide thuyết trình", "Slide PowerPoint 28 trang chuẩn 16:9, hình ảnh trực quan"),
+    ("3", "Mã nguồn Notebook", "Hệ thống Jupyter Notebooks đã chạy đầy đủ kết quả thực nghiệm"),
+    ("4", "Bộ mô hình & Logs", "Các file mô hình (.pkl), nhật ký thực nghiệm & nhãn dự đoán"),
+    ("5", "Kho dữ liệu sạch", "Tập dữ liệu sạch, các file CSV nén RFM & báo cáo phân tích"),
 ]
 for i, row in enumerate(rows_deliv):
     for j, val in enumerate(row):

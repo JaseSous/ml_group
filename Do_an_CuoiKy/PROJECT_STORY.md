@@ -34,7 +34,7 @@ Doanh nghiệp trong đề tài là một nhà bán lẻ trực tuyến tại V�
 Đồ án đặt ra 3 mục tiêu cụ thể, chặt chẽ từ lý thuyết học máy đến ứng dụng thực tiễn:
 1. **Mục tiêu Khoa học (Machine Learning Pipeline):** Xây dựng quy trình phân cụm không giám sát (Unsupervised Learning) khách quan, chống rò rỉ dữ liệu (Zero Data Leakage), giải quyết triệt để phân phối lệch phải (Extreme Skewness) và bóc tách ngoại lai Super Whales B2B.
 2. **Mục tiêu Nghiệp vụ (Marketing & CRM Actionability):** Chuyển đổi thành công từ cấp độ giỏ hàng (Basket-level) sang cấp độ khách hàng (Customer-level RFM); định hình chân dung sắc nét và xây dựng Playbook chiến lược hành động cá nhân hóa cho từng phân khúc nhằm tối đa hóa Giá trị vòng đời khách hàng (CLV).
-3. **Mục tiêu Ứng dụng & Triển khai (Production-Ready Tool):** Đóng gói toàn bộ mô hình tối ưu thành công cụ dòng lệnh `predict.py` có khả năng suy luận thời gian thực siêu tốc ($< 2$ mili-giây) phục vụ tích hợp trực tiếp vào hệ thống vận hành.
+3. **Mục tiêu Ứng dụng & Triển khai thực tế:** Xây dựng ma trận phân khúc và Playbook chiến lược kinh doanh khả thi, sẵn sàng chuyển giao cho phòng Marketing và ban lãnh đạo áp dụng trực tiếp vào hệ thống CRM.
 
 ---
 
@@ -217,7 +217,7 @@ Hệ thống kết hợp trọn vẹn cả 3 trường phái học máy:
 
 ---
 
-## HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG: CHIẾN LƯỢC KINH DOANH & ĐÓNG GÓI CLI `predict.py`
+## HỒI 7: HIỆN THỰC HÓA ỨNG DỤNG: CHIẾN LƯỢC KINH DOANH & TỔNG KẾT NGHIỆM THU
 
 ### 7.1. Chân dung phân khúc & Chiến lược hành động thực tế (Actionable Business Strategies)
 
@@ -229,12 +229,11 @@ Hệ thống kết hợp trọn vẹn cả 3 trường phái học máy:
 | **Boundary (Tranh chấp biên)** | **17.58%** | 125.7 ngày | 2.8 lần | **£970** | Gửi email kích cầu cá nhân hóa, tặng voucher giảm giá có thời hạn ngắn để đẩy lên nhóm Loyal. |
 | **Hibernating / Lost (Rời bỏ)** | **32.7%** | 215.8 ngày | 1.3 lần | **£292** | Chiến dịch Win-Back tự động chi phí thấp, tối ưu ngân sách tránh lãng phí. |
 
-### 7.2. Đóng gói sản phẩm CLI `predict.py`
-Toàn bộ đường ống (Pipeline) tiền xử lý và mô hình tối ưu được đóng gói thành công cụ CLI:
-- Tốc độ suy luận: **< 2 mili-giây / khách hàng**.
-- Hỗ trợ cả 2 chế độ:
-  - Dự đoán thời gian thực cho nhân viên: `python predict.py --recency 15 --frequency 8 --monetary 2500`
-  - Dự đoán hàng loạt cho hệ thống dữ liệu: `python predict.py --file data/rfm_test.csv --output data/predictions_test.csv`
+### 7.2. Giải pháp chuyển giao ứng dụng vào hệ thống Marketing & CRM doanh nghiệp
+Toàn bộ kết quả phân cụm được chuyển giao với các giá trị thực tiễn:
+- **Tích hợp CRM:** Đưa nhãn phân cụm và ma trận 8 nhóm vào cơ sở dữ liệu khách hàng của doanh nghiệp.
+- **Tự động hóa luồng Email Marketing:** Kích hoạt các luồng nuôi dưỡng tự động (Drip Campaign) tương ứng với từng giai đoạn vòng đời khách hàng.
+- **Tối ưu hóa ngân sách tiếp thị (ROI):** Cắt giảm 80% chi phí tiếp thị vô ích vào nhóm khách hàng rời bỏ, tái đầu tư vào nhóm Champions và Super Whales mang lại doanh thu cốt lõi.
 
 ---
 
